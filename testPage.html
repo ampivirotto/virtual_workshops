@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Tutorials: Jane Austen Text Analysis</title>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Data Tutorials</h1>
+  <p>Interactive Python Tutorial: Jane Austen Text Analysis</p>
+  <a class="home-button" href="index.html">🏠 Back to Tutorials Home</a>
+</header>
+
+<main>
+
+  <!-- Section 1: Web Scraping -->
+  <section>
+    <h2>Step 1: Collecting Texts from Project Gutenberg</h2>
+    <p>In this section, you will learn how to pull Jane Austen novels from Project Gutenberg for analysis. 
+       (In the full version, live web scraping is available in Colab.)</p>
+
+    <a class="colab-button" href="https://colab.research.google.com/github/yourusername/austen-tutorial/blob/main/austen_sentiment.ipynb" target="_blank">
+      Launch Full Notebook in Colab
+    </a>
+
+    <pre><code># Example placeholder code:
+# jane_austen_books = [
+#     "Pride and Prejudice", "Sense and Sensibility", "Emma"
+# ]</code></pre>
+  </section>
+
+  <!-- Section 2: Sentiment Analysis -->
+  <section>
+    <h2>Step 2: Sentiment Analysis</h2>
+    <p>We can analyze the sentiment of sentences in novels to see patterns of emotion across the story.</p>
+
+    <a class="colab-button" href="https://colab.research.google.com/github/yourusername/austen-tutorial/blob/main/austen_sentiment.ipynb" target="_blank">
+      Run Sentiment Analysis in Colab
+    </a>
+
+    <pre><code># Example placeholder:
+# from nltk.sentiment import SentimentIntensityAnalyzer
+# sia = SentimentIntensityAnalyzer()</code></pre>
+
+    <!-- Mini Exercise: Count Words -->
+    <div class="exercise">
+      <h3>Exercise: Count Words in a Sample Text</h3>
+      <py-config>
+        packages = ["pandas", "re"]
+      </py-config>
+      <py-script>
+import re
+sample_text = "Pride and Prejudice is a novel by Jane Austen. It is full of wit and social commentary."
+words = re.findall(r'\b\w+\b', sample_text.lower())
+print("Words:", words)
+print("Total words:", len(words))
+      </py-script>
+    </div>
+
+    <!-- Mini Exercise: Remove Stopwords -->
+    <div class="exercise">
+      <h3>Exercise: Filter Stopwords</h3>
+      <py-script>
+stop_words = {"and", "is", "a", "it", "of"}
+filtered_words = [w for w in words if w not in stop_words]
+print("Filtered words:", filtered_words)
+      </py-script>
+    </div>
+
+    <!-- Mini Exercise: Average Sentiment -->
+    <div class="exercise">
+      <h3>Exercise: Compute Average Sentiment</h3>
+      <py-script>
+# Dummy sentiment scores for 10 sentences
+sentiment_scores = [0.1, 0.3, 0.2, -0.1, 0.0, 0.2, 0.1, -0.2, 0.0, 0.1]
+avg_sentiment = sum(sentiment_scores)/len(sentiment_scores)
+print("Average sentiment:", avg_sentiment)
+      </py-script>
+    </div>
+
+  </section>
+
+  <!-- Section 3: Visualization -->
+  <section>
+    <h2>Step 3: Visualizing Sentiment Trajectories</h2>
+    <p>Here is a small interactive demo of sentiment trajectories using preloaded data. 
+       Try editing the code and re-running it!</p>
+
+    <py-config>
+      packages = ["pandas", "matplotlib"]
+    </py-config>
+
+    <py-script>
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Dummy sentiment data
+data = {
+    "Book": ["Pride and Prejudice"]*5 + ["Emma"]*5,
+    "Segment": [1,2,3,4,5]*2,
+    "Sentiment": [0.1,0.3,0.2,-0.1,0.0, 0.2,0.1,-0.2,0.0,0.1]
+}
+df = pd.DataFrame(data)
+
+fig, ax = plt.subplots(figsize=(6,4))
+for book, subset in df.groupby("Book"):
+    ax.plot(subset["Segment"], subset["Sentiment"], marker='o', label=book)
+
+ax.set_title("Sentiment Trajectories Across Austen Novels")
+ax.set_xlabel("Segment")
+ax.set_ylabel("Sentiment Score")
+ax.axhline(0, color='gray', linestyle='--')
+ax.legend()
+plt.show()
+    </py-script>
+
+  </section>
+
+</main>
+
+<footer>
+  Created by <a href="https://github.com/ampivirotto" target="_blank">Alyssa Pivirotto</a>
+</footer>
+
+</body>
+</html>

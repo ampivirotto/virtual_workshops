@@ -1,0 +1,80 @@
+/* Playful visual style */
+    body {
+      font-family: 'Comic Sans MS', sans-serif;
+      background: #fef6e4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #ffcb77;
+      padding: 2rem;
+      text-align: center;
+      color: #3b3b58;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    section {
+      background-color: #ffe8d6;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 15px;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    }
+
+    section h2 {
+      color: #3b3b58;
+    }
+
+    .colab-button, .home-button {
+      display: inline-block;
+      background-color: #ff6b6b;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-weight: bold;
+    }
+
+    .colab-button:hover, .home-button:hover {
+      background-color: #ff4b4b;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #ffcb77;
+      color: #3b3b58;
+      margin-top: 2rem;
+    }
+
+    pre {
+      background-color: #fff2e6;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .exercise {
+      background-color: #ffd8c4;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
