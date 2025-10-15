@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Tutorials Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Home-page specific styling */
+    .intro-box {
+      background-color: #ffe8d6;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .intro-box h2 {
+      color: #3b3b58;
+      font-size: 1.8rem;
+      margin-top: 0;
+    }
+
+    .intro-box p {
+      max-width: 700px;
+      margin: 0.5rem auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .tutorial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .tutorial-card {
+      background-color: #fff2e6;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s, background-color 0.2s;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .tutorial-card:hover {
+      transform: scale(1.05);
+      background-color: #ffd8c4;
+    }
+
+    .tutorial-card h3 {
+      margin-top: 0;
+      color: #3b3b58;
+    }
+
+    .tutorial-card p {
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Data Tutorials</h1>
+  <p>Learn Python or R, Data Analysis, and Visualization through interactive exercises!</p>
+</header>
+
+<main>
+
+  <!-- Intro section -->
+  <div class="intro-box">
+    <h2>Welcome to Data Tutorials!</h2>
+    <p>
+      This site is your hub for hands-on, creative, and accessible data science learning. 
+      Explore tutorials that combine storytelling, visualization, and real-world datasets 
+      to help you master your data skills. Each tutorial includes interactive coding exercises 
+      so you can practice as you learn. Dive in and start your data journey today!
+    </p>
+  </div>
+
+  <!-- Grid of tutorials -->
+  <h2>Available Tutorials</h2>
+  <div class="tutorial-grid">
+    <a href="austen.html" class="tutorial-card">
+      <h3>Jane Austen <br>Text Analysis</h3>
+      <p>Scrape, clean, and analyze text from Project Gutenberg. Visualize sentiment trends across Austen’s novels.</p>
+    </a>
+
+    <a href="#" class="tutorial-card">
+      <h3>Coming Soon</h3>
+      <p>Another interactive Python tutorial on data visualization or web scraping.</p>
+    </a>
+
+    <a href="#" class="tutorial-card">
+      <h3>Coming Soon</h3>
+      <p>Placeholder for a future tutorial in the Data Tutorials series.</p>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  Created by <a href="https://github.com/ampivirotto" target="_blank">Alyssa Pivirotto</a>
+</footer>
+
+</body>
+</html>
