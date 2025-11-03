@@ -1,0 +1,15 @@
+project: 
+  type:
+    website:
+      title: "Data Tutorials"
+      navbar:
+        left:
+          - text: "Home"
+            href: index.html
+        right:
+          - text: "Text Analysis Tutorial"
+            href: austen/austen.html
+  output-dir: docs
+
+extensions: 
+  - coatless-quarto/pyodide  # or r-wasm/quarto-live
