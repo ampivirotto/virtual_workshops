@@ -2,35 +2,35 @@
   {
     "objectID": "austen/austen.html",
     "href": "austen/austen.html",
-    "title": "Data Tutorials",
+    "title": "",
     "section": "",
-    "text": "Data Tutorials\n\n\nInteractive Python Tutorial: Jane Austen Text Analysis\n\n🏠 Back to Tutorials Home"
+    "text": "&lt;h1&gt;Data Tutorials&lt;/h1&gt;\n&lt;p&gt;Interactive Python Tutorial: Jane Austen Text Analysis&lt;/p&gt;\n&lt;a class=\"home-button\" href=\"../index.html\"&gt;🏠 Back to Tutorials Home&lt;/a&gt;"
   },
   {
     "objectID": "austen/austen.html#analyzing-jane-austens-novels",
     "href": "austen/austen.html#analyzing-jane-austens-novels",
-    "title": "Data Tutorials",
+    "title": "",
     "section": "Analyzing Jane Austen’s Novels",
     "text": "Analyzing Jane Austen’s Novels\nIn honor of Jane Austen’s 250th birthday we will be using her novels to begin to explore text analysis. You’ll learn how to analyze the text of Jane Austen’s novels using Python. We’ll cover text collection, sentiment analysis, and some basic visualization techniques.\n\n\n\nJane Austen birthday image"
   },
   {
     "objectID": "austen/austen.html#step-1-collecting-texts-from-project-gutenberg",
     "href": "austen/austen.html#step-1-collecting-texts-from-project-gutenberg",
-    "title": "Data Tutorials",
+    "title": "",
     "section": "Step 1: Collecting Texts from Project Gutenberg",
     "text": "Step 1: Collecting Texts from Project Gutenberg\nIn this section, you will learn how to pull Jane Austen novels from Project Gutenberg for analysis. The full version (available in Colab) includes all necessary code and explanations to download the text directly from Project Gutenberg.\n Launch Full Notebook in Colab \nIn the cell below, we give an example of how you might define the list of Jane Austen’s novels by title or ID number. This can then be used to download several different texts from Project Gutenberg at once. However, for this example we start with a single book “Pride and Prejudice” and we show how you can use the requests package to download the text.\n\nNote: The example below shows how you’d do this with requests in a full Python environment (Colab or Binder). Browser Pyodide sessions cannot use the requests library to make arbitrary network calls so this can only be completed in a full python environment.\n\njane_austen_book_titles = [\"Pride and Prejudice\", \"Sense and Sensibility\", \"Emma\"] ## Option 1: by title\njane_austen_book_ids = [1342, 161, 158]  ## Option 2: by Gutenberg ID number\n\n## let's start with downloading one book as an example\nbook_id = jane_austen_book_ids[0]  # Pride and Prejudice\n\nimport requests ## to make HTTP requests\nbook_url = f\"https://www.gutenberg.org/cache/epub/{book_id}/pg{book_id}.txt\"\n\nresponse = requests.get(book_url) ## this makes the call to the website to download the text\nif response.status_code == 200: # check if the request was successful\n    book_text = response.text\n    print(f\"Successfully downloaded book ID {book_id}\")\nelse:\n    print(f\"Failed to download book ID {book_id}\")\nNotice how we downloaded the text file by making an HTTP GET request to the Gutenberg website. The text is then stored in the book_text variable for further analysis. We can do a quick sanity check to make sure we’re downloading the correct file by following the link we created: Notice how we downloaded the text file by making an HTTP GET request to the Gutenberg website. The text is then stored in the book_text variable for further analysis. We can do a quick sanity check to make sure we’re downloading the correct file by following the link we created: https://www.gutenberg.org/cache/epub/1342/pg1342.txt."
   },
   {
     "objectID": "austen/austen.html#step-2-sentiment-analysis",
     "href": "austen/austen.html#step-2-sentiment-analysis",
-    "title": "Data Tutorials",
+    "title": "",
     "section": "Step 2: Sentiment Analysis",
     "text": "Step 2: Sentiment Analysis\nNow that we have the text of a single book “Pride and Prejudice” grabbed, we can perform some basic sentiment analysis. What is sentiment analysis? Using natural language processing (NLP) we can analyze the emotions expressed in a text. Here are three different approaches we can take to better understand the text. Each exercise is fully developed in the Colab notebook linked above, but these code snippets give you a starting point.\n\nExercise: Count Words in a Sample Text\nOne thing you might want to understand about your text is how often each word appears. We can do this by counting the occurrences of each word. Try changing the sample_text variable to see how that changes the result from the cell.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nExercise: Filter Stop Words\nYou might notice that in the sentence above “is” occurs twice, but doesn’t affect the overall meaning. Can you imagine other words that appear often but don’t have significant affect on the meaning of the text? Stopwords are common words that may not carry significant meaning in text analysis. We can filter these out to focus on more meaningful words.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nExercise: Compute Average Sentiment\nIn the actual Colab notebook, we would calculate the sentiment scores using a library like NLTK. For this sample code though, we will use dummy data sentiment scores.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "austen/austen.html#step-3-visualizing-sentiment-trajectories",
     "href": "austen/austen.html#step-3-visualizing-sentiment-trajectories",
-    "title": "Data Tutorials",
+    "title": "",
     "section": "Step 3: Visualizing Sentiment Trajectories",
     "text": "Step 3: Visualizing Sentiment Trajectories\nHere is a small interactive demo of sentiment trajectories using preloaded data. This demo visualizes sample data, but in the full notebook, we would use real sentiment analysis results.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
