@@ -1,5 +1,5 @@
 ---
-title: "Jane Austen Text Analysis"
+title: ""
 format:
     html:
         css: "../style.css"
@@ -11,19 +11,15 @@ execute:
   freeze: auto
 ---
 
-::::: header
-::: h1
-Data Tutorials
-:::
+<header>
+  <div class="header-inner" style="max-width:1100px;margin:auto;padding:1rem;">
+    <h1>Data Tutorials</h1>
+    <p>Interactive Python Tutorial: Jane Austen Text Analysis</p>
+    <a class="home-button" href="../index.html">🏠 Back to Tutorials Home</a>
+  </div>
+</header>
 
-::: p
-Interactive Python Tutorial: Jane Austen Text Analysis
 
-</p>
-
-<a class="home-button" href="../index.html">🏠 Back to Tutorials Home</a>
-:::
-:::::
 
 ::: section
 ## Analyzing Jane Austen's Novels

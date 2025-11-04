@@ -1,14 +1,5 @@
-project: 
-  type:
-    website:
-      title: "Data Tutorials"
-      navbar:
-        left:
-          - text: "Home"
-            href: index.html
-        right:
-          - text: "Text Analysis Tutorial"
-            href: austen/austen.html
+project:
+  type: website
   output-dir: docs
 
 extensions: 
