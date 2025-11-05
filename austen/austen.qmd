@@ -1,8 +1,8 @@
 ---
-title: ""
 format:
     html:
-        css: "../style.css"
+        css: ../style.css
+        include-in-header: home_button.html
 filters:
   - pyodide
 execute:
@@ -10,16 +10,6 @@ execute:
   code-tools: true
   freeze: auto
 ---
-
-<header>
-  <div class="header-inner" style="max-width:1100px;margin:auto;padding:1rem;">
-    <h1>Data Tutorials</h1>
-    <p>Interactive Python Tutorial: Jane Austen Text Analysis</p>
-    <a class="home-button" href="../index.html">🏠 Back to Tutorials Home</a>
-  </div>
-</header>
-
-
 
 ::: section
 ## Analyzing Jane Austen's Novels
@@ -61,35 +51,60 @@ else:
 Notice how we downloaded the text file by making an HTTP GET request to the Gutenberg website. The text is then stored in the `book_text` variable for further analysis. We can do a quick sanity check to make sure we're downloading the correct file by following the link we created: Notice how we downloaded the text file by making an HTTP GET request to the Gutenberg website. The text is then stored in the `book_text` variable for further analysis. We can do a quick sanity check to make sure we're downloading the correct file by following the link we created: <https://www.gutenberg.org/cache/epub/1342/pg1342.txt>.
 :::
 
-:::::: section
-## Step 2: Sentiment Analysis
+:::: {.section}
+<h2> Step 2: Sentiment Analysis </h2>
 
 Now that we have the text of a single book "Pride and Prejudice" grabbed, we can perform some basic sentiment analysis. What is sentiment analysis? [Using natural language processing (NLP) we can analyze the emotions expressed in a text.](http://geeksforgeeks.org/machine-learning/what-is-sentiment-analysis/) Here are three different approaches we can take to better understand the text. Each exercise is fully developed in the Colab notebook linked above, but these code snippets give you a starting point.
 
-::: exercise 
-Exercise: Count Words in a Sample Text
+::: {.exercise} 
+<h3> Exercise: Count Words in a Sample Text </h3>
 
-One thing you might want to understand about your text is how often each word appears. We can do this by counting the occurrences of each word. Try changing the `sample_text` variable to see how that changes the result from the cell.
+One thing you might want to understand about your text is how often each word appears. We can do this by counting the occurrences of each word. Try changing the `sample_text` variable to see how that changes the result from the cell. Try adding more words or taking away some words to see how that affects the words counted. 
 
 ```{pyodide-python}
 import re
+import pandas as pd
 
 ## Here we give a small sample text
+## HERES WHERE YOU SHOULD UPDATE THE CODE
 sample_text = "Pride and Prejudice is a novel by Jane Austen. It is full of wit and social commentary."
 
-words = re.findall(r'\b\w+\b', sample_text.lower()) ## this regex finds all words and makes them lowercase
+## this regex finds all words and makes them lowercase
+words = re.findall(r'\b\w+\b', sample_text.lower()) 
 
+## this prints all the words to the screen 
 print("Words:", words)
+
+## this prints the total number of words 
 print("Total words:", len(words))
+
+# Count word occurrences
+word_counts = {}
+for word in words:
+    if word in word_counts:
+        word_counts[word] += 1
+    else:
+        word_counts[word] = 1
+
+# Create a Pandas DataFrame for the table
+df = pd.DataFrame(list(word_counts.items()), columns=['Word', 'Frequency'])
+
+# Sort by frequency (highest to lowest)
+df = df.sort_values('Frequency', ascending=False)
+
+# Print the table
+print("\nWord Frequency Table:")
+print(df)
 ```
 :::
 
-::: exercise 
-### Exercise: Filter Stop Words
+::: {.exercise}
+<h3> Exercise: Filter Stop Words </h3>
 
-You might notice that in the sentence above "is" occurs twice, but doesn't affect the overall meaning. Can you imagine other words that appear often but don't have significant affect on the meaning of the text? Stopwords are common words that may not carry significant meaning in text analysis. We can filter these out to focus on more meaningful words.
+You might notice that in the sentence above "is" occurs twice, but doesn't affect the overall meaning. Can you imagine other words that appear often but don't have significant affect on the meaning of the text? Stopwords are common words that may not carry significant meaning in text analysis. We can filter these out to focus on more meaningful words. Try adding other words to filter out in the `stop_words` variable. 
 
 ```{pyodide-python}
+## HERES WHERE YOU SHOULD UPDATE THE CODE
 stop_words = {"and", "is", "a", "it", "of"} ## a small set of common stopwords
 
 filtered_words = [] ## empty list to hold words that are not stopwords
@@ -98,13 +113,31 @@ for word in words: ## loop through all words to filter out stopwords
         filtered_words.append(word) ## add to filtered list
 
 print("Filtered words:", filtered_words)
+
+# Count word occurrences
+filtered_word_counts = {}
+for word in filtered_words:
+    if word in filtered_word_counts:
+        filtered_word_counts[word] += 1
+    else:
+        filtered_word_counts[word] = 1
+
+# Create a Pandas DataFrame for the table
+df_filtered = pd.DataFrame(list(filtered_word_counts.items()), columns=['Filtered Word', 'Frequency'])
+
+# Sort by frequency (highest to lowest)
+df_filtered = df_filtered.sort_values('Frequency', ascending=False)
+
+# Print the table
+print("\nWord Frequency Table:")
+print(df_filtered)
 ```
 :::
 
-::: exercise 
-### Exercise: Compute Average Sentiment
+::: {.exercise} 
+<h3> Exercise: Compute Average Sentiment </h3>
 
-In the actual Colab notebook, we would calculate the sentiment scores using a library like [NLTK](https://www.nltk.org/). For this sample code though, we will use dummy data sentiment scores.
+In the actual Colab notebook, we would calculate the sentiment scores using a library like [NLTK](https://www.nltk.org/). For this sample code though, we will use dummy data sentiment scores. How does changing the scores in the list change your result?
 
 ```{pyodide-python}
 ## series of fabricated sentiment scores for a series of sentences
@@ -115,7 +148,7 @@ avg_sentiment = sum(sentiment_scores) / len(sentiment_scores) ## calculate avera
 print("Average sentiment:", avg_sentiment)
 ```
 :::
-::::::
+::::
 
 ::: section
 ## Step 3: Visualizing Sentiment Trajectories

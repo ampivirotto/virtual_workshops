@@ -1,3 +1,53 @@
+/* Full-width header */
+.page-header {
+  width: 100vw;
+  margin: 0;
+  background-color: #ffcb77;
+  color: #3b3b58;
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 3px solid #ffd9a8;
+  margin-bottom: 2rem;
+}
+
+/* Inner content constrained */
+.page-header .header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.page-header .title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.page-header .subtitle {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+/* Button */
+.page-header .home-button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #ff6b6b;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Hide Pyodide message */
+#qpyodide-status-message-area {
+  display: none;
+}
+
+.quarto-title-block {
+  display: none !important;
+}
 
 body {
   font-family: 'Comic Sans MS', sans-serif;
@@ -6,59 +56,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
-/* Hide Quarto's auto title block (so we use our manual header) */
-#title-block-header {
-  display: none;
-}
-
-/* --- Manual header block produced by Quarto's ::: blocks --- */
-.header {
-  width: 100%;
-  background-color: #ffcb77;
-  padding: 1.5rem 0;
-  box-sizing: border-box;
-  border-bottom: 3px solid #ffd9a8;
-}
-
-/* Center the header contents with a comfortable max width */
-.header .h1,
-.header .p {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  text-align: center;
-}
-
-/* Title styling */
-.header .h1 p {
-  margin: 0;
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #3b3b58;
-}
-
-/* Subtitle and button styling */
-.header .p p { margin: 0.25rem 0 0; color: #3b3b58; font-size: 1rem; }
-.header .p p a.home-button {
-  display: inline-block;
-  margin-top: 0.6rem;
-  background: #ff6b6b;
-  color: #fff;
-  padding: 0.45rem 0.9rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* Space between header and first section */
-.header + section,
-.header + .quarto-figure,
-.header + div {
-  margin-top: 1.25rem;
-  padding-top: 0.5rem;
-}
-
 
 main {
   padding: 2rem;
@@ -74,11 +71,37 @@ section {
   box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
 }
 
-section .exercise {
-  background-color: #cfceceff;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-top: 1rem;
+/* Individual grey exercise boxes inside each orange section */
+.exercise {
+  background-color: #edebebff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.25em 1.5em;
+  margin: 1.5em 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Exercise heading */
+.exercise h3 {
+  margin-top: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Optional subtle hover effect */
+.exercise:hover {
+  border-color: #bbb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Keep code blocks tidy inside exercises */
+.exercise pre {
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  padding: 0.75em;
+  overflow-x: auto;
+  font-size: 0.9em;
 }
 
 .colab-button, .home-button {
@@ -109,4 +132,21 @@ pre {
   padding: 1rem;
   border-radius: 8px;
   overflow-x: auto;
+}
+
+header {
+  background-color: #ffcb77;
+  padding: 2rem;
+  text-align: center;
+  color: #3b3b58;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header p {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
 }

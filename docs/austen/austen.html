@@ -66,6 +66,20 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+</head><body class="fullcontent quarto-light"><div class="page-header">
+
+  <div class="header-inner">
+
+    <div class="title">Data Tutorials</div>
+
+    <p class="subtitle">Interactive Python Tutorial: Jane Austen Text Analysis</p>
+
+    <a class="home-button" href="../index.html">🏠 Back to Tutorials Home</a>
+
+  </div>
+
+</div>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   
@@ -228,7 +242,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"code":"import re\n\n## Here we give a small sample text\nsample_text = \"Pride and Prejudice is a novel by Jane Austen. It is full of wit and social commentary.\"\n\nwords = re.findall(r'\\b\\w+\\b', sample_text.lower()) ## this regex finds all words and makes them lowercase\n\nprint(\"Words:\", words)\nprint(\"Total words:\", len(words))","id":1,"options":{"autorun":"","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"stop_words = {\"and\", \"is\", \"a\", \"it\", \"of\"} ## a small set of common stopwords\n\nfiltered_words = [] ## empty list to hold words that are not stopwords\nfor word in words: ## loop through all words to filter out stopwords\n    if word not in stop_words: ## check if word is not a stopword\n        filtered_words.append(word) ## add to filtered list\n\nprint(\"Filtered words:\", filtered_words)","id":2,"options":{"autorun":"","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"## series of fabricated sentiment scores for a series of sentences\nsentiment_scores = [0.1, 0.3, 0.2, -0.1, 0.0, 0.2, 0.1, -0.2, 0.0, 0.1]\n\navg_sentiment = sum(sentiment_scores) / len(sentiment_scores) ## calculate average sentiment\n\nprint(\"Average sentiment:\", avg_sentiment)","id":3,"options":{"autorun":"","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"\nimport pandas as pd ## for data table manipulation\nimport matplotlib.pyplot as plt ## for plotting\n\ndata = {\n    \"Book\": [\"Pride and Prejudice\"]*5 + [\"Emma\"]*5,\n    \"Segment\": [1,2,3,4,5]*2,\n    \"Sentiment\": [0.1,0.3,0.2,-0.1,0.0, 0.2,0.1,-0.2,0.0,0.1]\n} ## sample data representing sentiment scores across segments of two books\n\ndf = pd.DataFrame(data) ## create a DataFrame from the sample data\nfig, ax = plt.subplots(figsize=(6,4)) ## create a plot\nfor book, subset in df.groupby(\"Book\"):\n    ax.plot(subset[\"Segment\"], subset[\"Sentiment\"], marker='o', label=book) ## plot sentiment trajectories for each book\n\n## Add titles and labels\nax.set_title(\"Sentiment Trajectories Across Austen Novels\") \nax.set_xlabel(\"Segment\")\nax.set_ylabel(\"Sentiment Score\")\nax.axhline(0, color='gray', linestyle='--')\nax.legend()\nplt.show()","id":4,"options":{"autorun":"","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qpyodideCellDetails = [{"code":"import re\nimport pandas as pd\n\n## Here we give a small sample text\n## HERES WHERE YOU SHOULD UPDATE THE CODE\nsample_text = \"Pride and Prejudice is a novel by Jane Austen. It is full of wit and social commentary.\"\n\n## this regex finds all words and makes them lowercase\nwords = re.findall(r'\\b\\w+\\b', sample_text.lower()) \n\n## this prints all the words to the screen \nprint(\"Words:\", words)\n\n## this prints the total number of words \nprint(\"Total words:\", len(words))\n\n# Count word occurrences\nword_counts = {}\nfor word in words:\n    if word in word_counts:\n        word_counts[word] += 1\n    else:\n        word_counts[word] = 1\n\n# Create a Pandas DataFrame for the table\ndf = pd.DataFrame(list(word_counts.items()), columns=['Word', 'Frequency'])\n\n# Sort by frequency (highest to lowest)\ndf = df.sort_values('Frequency', ascending=False)\n\n# Print the table\nprint(\"\\nWord Frequency Table:\")\nprint(df)","id":1,"options":{"autorun":"","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"## HERES WHERE YOU SHOULD UPDATE THE CODE\nstop_words = {\"and\", \"is\", \"a\", \"it\", \"of\"} ## a small set of common stopwords\n\nfiltered_words = [] ## empty list to hold words that are not stopwords\nfor word in words: ## loop through all words to filter out stopwords\n    if word not in stop_words: ## check if word is not a stopword\n        filtered_words.append(word) ## add to filtered list\n\nprint(\"Filtered words:\", filtered_words)\n\n# Count word occurrences\nfiltered_word_counts = {}\nfor word in filtered_words:\n    if word in filtered_word_counts:\n        filtered_word_counts[word] += 1\n    else:\n        filtered_word_counts[word] = 1\n\n# Create a Pandas DataFrame for the table\ndf_filtered = pd.DataFrame(list(filtered_word_counts.items()), columns=['Filtered Word', 'Frequency'])\n\n# Sort by frequency (highest to lowest)\ndf_filtered = df_filtered.sort_values('Frequency', ascending=False)\n\n# Print the table\nprint(\"\\nWord Frequency Table:\")\nprint(df_filtered)","id":2,"options":{"autorun":"","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"## series of fabricated sentiment scores for a series of sentences\nsentiment_scores = [0.1, 0.3, 0.2, -0.1, 0.0, 0.2, 0.1, -0.2, 0.0, 0.1]\n\navg_sentiment = sum(sentiment_scores) / len(sentiment_scores) ## calculate average sentiment\n\nprint(\"Average sentiment:\", avg_sentiment)","id":3,"options":{"autorun":"","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"\nimport pandas as pd ## for data table manipulation\nimport matplotlib.pyplot as plt ## for plotting\n\ndata = {\n    \"Book\": [\"Pride and Prejudice\"]*5 + [\"Emma\"]*5,\n    \"Segment\": [1,2,3,4,5]*2,\n    \"Sentiment\": [0.1,0.3,0.2,-0.1,0.0, 0.2,0.1,-0.2,0.0,0.1]\n} ## sample data representing sentiment scores across segments of two books\n\ndf = pd.DataFrame(data) ## create a DataFrame from the sample data\nfig, ax = plt.subplots(figsize=(6,4)) ## create a plot\nfor book, subset in df.groupby(\"Book\"):\n    ax.plot(subset[\"Segment\"], subset[\"Sentiment\"], marker='o', label=book) ## plot sentiment trajectories for each book\n\n## Add titles and labels\nax.set_title(\"Sentiment Trajectories Across Austen Novels\") \nax.set_xlabel(\"Segment\")\nax.set_ylabel(\"Sentiment Score\")\nax.axhline(0, color='gray', linestyle='--')\nax.legend()\nplt.show()","id":4,"options":{"autorun":"","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 
 </script>
@@ -421,9 +435,9 @@ globalThis._qpyodideGetInstance = function() {
 
 
 <link rel="stylesheet" href="../style.css">
-</head>
 
-<body class="fullcontent quarto-light">
+
+
 
 <div id="quarto-search-results"></div>
 <!-- content -->
@@ -447,13 +461,6 @@ globalThis._qpyodideGetInstance = function() {
 
 
 
-<header>
-<div class="header-inner" style="max-width:1100px;margin:auto;padding:1rem;">
-<pre><code>&lt;h1&gt;Data Tutorials&lt;/h1&gt;
-&lt;p&gt;Interactive Python Tutorial: Jane Austen Text Analysis&lt;/p&gt;
-&lt;a class="home-button" href="../index.html"&gt;🏠 Back to Tutorials Home&lt;/a&gt;</code></pre>
-</div>
-</header>
 <section id="analyzing-jane-austens-novels" class="level2">
 <h2 class="anchored" data-anchor-id="analyzing-jane-austens-novels">Analyzing Jane Austen’s Novels</h2>
 <p>In honor of Jane Austen’s 250th birthday we will be using her novels to begin to explore text analysis. You’ll learn how to analyze the text of Jane Austen’s novels using Python. We’ll cover text collection, sentiment analysis, and some basic visualization techniques.</p>
@@ -489,27 +496,35 @@ else:
     print(f"Failed to download book ID {book_id}")</code></pre>
 <p>Notice how we downloaded the text file by making an HTTP GET request to the Gutenberg website. The text is then stored in the <code>book_text</code> variable for further analysis. We can do a quick sanity check to make sure we’re downloading the correct file by following the link we created: Notice how we downloaded the text file by making an HTTP GET request to the Gutenberg website. The text is then stored in the <code>book_text</code> variable for further analysis. We can do a quick sanity check to make sure we’re downloading the correct file by following the link we created: <a href="https://www.gutenberg.org/cache/epub/1342/pg1342.txt" class="uri">https://www.gutenberg.org/cache/epub/1342/pg1342.txt</a>.</p>
 </section>
-<section id="step-2-sentiment-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-sentiment-analysis">Step 2: Sentiment Analysis</h2>
+<section>
+<h2 class="anchored">
+Step 2: Sentiment Analysis
+</h2>
 <p>Now that we have the text of a single book “Pride and Prejudice” grabbed, we can perform some basic sentiment analysis. What is sentiment analysis? <a href="http://geeksforgeeks.org/machine-learning/what-is-sentiment-analysis/">Using natural language processing (NLP) we can analyze the emotions expressed in a text.</a> Here are three different approaches we can take to better understand the text. Each exercise is fully developed in the Colab notebook linked above, but these code snippets give you a starting point.</p>
-<section id="exercise-count-words-in-a-sample-text" class="level3 h2">
-<h3 class="anchored" data-anchor-id="exercise-count-words-in-a-sample-text">Exercise: Count Words in a Sample Text</h3>
-<p>One thing you might want to understand about your text is how often each word appears. We can do this by counting the occurrences of each word. Try changing the <code>sample_text</code> variable to see how that changes the result from the cell.</p>
+<div class="exercise">
+<h3 class="anchored">
+Exercise: Count Words in a Sample Text
+</h3>
+<p>One thing you might want to understand about your text is how often each word appears. We can do this by counting the occurrences of each word. Try changing the <code>sample_text</code> variable to see how that changes the result from the cell. Try adding more words or taking away some words to see how that affects the words counted.</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="exercise-filter-stop-words" class="level3 h2">
-<h3 class="anchored" data-anchor-id="exercise-filter-stop-words">Exercise: Filter Stop Words</h3>
-<p>You might notice that in the sentence above “is” occurs twice, but doesn’t affect the overall meaning. Can you imagine other words that appear often but don’t have significant affect on the meaning of the text? Stopwords are common words that may not carry significant meaning in text analysis. We can filter these out to focus on more meaningful words.</p>
+</div>
+<div class="exercise">
+<h3 class="anchored">
+Exercise: Filter Stop Words
+</h3>
+<p>You might notice that in the sentence above “is” occurs twice, but doesn’t affect the overall meaning. Can you imagine other words that appear often but don’t have significant affect on the meaning of the text? Stopwords are common words that may not carry significant meaning in text analysis. We can filter these out to focus on more meaningful words. Try adding other words to filter out in the <code>stop_words</code> variable.</p>
 <div id="qpyodide-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="exercise-compute-average-sentiment" class="level3 h2">
-<h3 class="anchored" data-anchor-id="exercise-compute-average-sentiment">Exercise: Compute Average Sentiment</h3>
-<p>In the actual Colab notebook, we would calculate the sentiment scores using a library like <a href="https://www.nltk.org/">NLTK</a>. For this sample code though, we will use dummy data sentiment scores.</p>
+</div>
+<div class="exercise">
+<h3 class="anchored">
+Exercise: Compute Average Sentiment
+</h3>
+<p>In the actual Colab notebook, we would calculate the sentiment scores using a library like <a href="https://www.nltk.org/">NLTK</a>. For this sample code though, we will use dummy data sentiment scores. How does changing the scores in the list change your result?</p>
 <div id="qpyodide-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
+</div>
 </section>
 <section id="step-3-visualizing-sentiment-trajectories" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-visualizing-sentiment-trajectories">Step 3: Visualizing Sentiment Trajectories</h2>
