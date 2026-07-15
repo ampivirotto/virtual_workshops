@@ -1,0 +1,263 @@
+---
+title: "Practical Statistics for Research Projects"
+author: "Alyssa Pivirotto"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    progress: true
+    controls: true
+    transition: fade
+    preview-links: auto
+---
+
+# Practical Statistics for Research Projects
+
+## Workshop Overview
+
+- Research questions → analysis plans
+- Exploratory data analysis
+- Sampling & inference
+- Choosing statistical tests
+- Interpreting results
+
+---
+
+## Research Question → Analysis Plan
+
+Every analysis starts with a well-defined research question.
+
+::: {.incremental}
+- Identify the **outcome** variable.
+- Identify predictor and grouping variables.
+- Determine whether observations are **independent** or **paired**.
+- Decide whether your goal is **association**, **comparison**, **prediction**, or **estimation**.
+:::
+
+---
+
+## Example
+
+**Research Question**
+
+Does fertilizer affect plant growth over a six-week period?
+
+- Measure plants at Week 0
+- Measure plants at Week 6
+
+> Add original fertilizer diagram here.
+
+---
+
+## Exploratory Data Analysis
+
+### Data Types
+
+- Numerical
+  - Continuous
+  - Discrete
+- Categorical
+  - Nominal
+  - Ordinal
+
+---
+
+## Measures of Center
+
+- Mean
+- Median
+
+::: {.callout-tip}
+Which measure is more robust to outliers?
+:::
+
+---
+
+## Measures of Variability
+
+- Standard deviation
+- Variance
+- Percentiles
+- Range
+
+::: {.callout-warning}
+Standard deviation and variance are sensitive to outliers.
+:::
+
+---
+
+## Visualizing Data
+
+- Histograms
+- Boxplots
+- Scatterplots
+- Bar charts
+
+> Replace with figures from PowerPoint.
+
+---
+
+## Correlation
+
+- Scatterplots visualize association.
+- Correlation ranges from **-1** to **1**.
+
+> Insert scatterplot graphic.
+
+---
+
+## Sampling Distributions
+
+- Sample statistics vary.
+- This variation is **sampling variability**.
+- Sampling distributions describe repeated samples.
+
+---
+
+## Confidence Intervals
+
+A 95% confidence interval is produced by a method that would capture the true population value about 95% of the time over repeated samples.
+
+---
+
+## Review of Hypothesis Testing
+
+:::: {.columns}
+::: {.column width="50%"}
+### Null Hypothesis
+- No difference
+- No effect
+- No association
+:::
+
+::: {.column width="50%"}
+### Alternative
+- Difference
+- Effect
+- Association
+:::
+::::
+
+---
+
+## Choosing the Right Statistical Test
+
+> Insert decision tree from original slides.
+
+---
+
+## Parametric vs. Nonparametric
+
+:::: {.columns}
+::: {.column}
+### Parametric
+
+- Normality
+- Equal variance
+- Independence
+
+Examples:
+- t-test
+- ANOVA
+- Pearson correlation
+- Linear regression
+:::
+
+::: {.column}
+### Nonparametric
+
+- Rank-based
+- Fewer assumptions
+- Robust to skew/outliers
+
+Examples:
+- Mann–Whitney U
+- Wilcoxon
+- Kruskal–Wallis
+- Spearman correlation
+:::
+::::
+
+---
+
+## t-Test
+
+Use when:
+
+- Outcome is quantitative
+- Comparing one or two means
+- Parametric assumptions hold
+
+Types:
+
+- One-sample
+- Independent
+- Paired
+
+::: notes
+Explain why multiple groups require ANOVA instead of repeated t-tests.
+:::
+
+---
+
+## ANOVA
+
+- Compare 3+ group means
+- One-way
+- Two-way
+- MANOVA
+
+---
+
+## Effect Size
+
+Effect size tells us **how large** an effect is.
+
+Examples:
+
+- Cohen's d
+- Eta-squared
+- Correlation coefficient
+
+---
+
+## Interpretation Practice
+
+What do these results tell us?
+
+- p = 0.001, Cohen's d = 0.90
+- p = 0.01, Cohen's d = 0.25
+- p = 0.08, Cohen's d = 0.85, CI = -0.2 to 2.6 cm
+
+Pause before revealing discussion.
+
+---
+
+## Practice: Which Test?
+
+1. Compare two independent treatment groups.
+2. Compare before vs. after measurements.
+3. Compare four fertilizer treatments.
+4. Assess relationship between height and biomass.
+
+---
+
+## Summary
+
+::: {.incremental}
+- Start with the research question.
+- Identify variables.
+- Check assumptions.
+- Choose the appropriate test.
+- Report effect sizes—not just p-values.
+:::
+
+---
+
+## Resources
+
+- Practical Statistics for Data Scientists
+- Office Hours
+- Friday help sessions
+
+# Questions?
