@@ -1,0 +1,20 @@
+---
+format:
+    html:
+        css: ../style.css
+        include-in-header: home_button.html
+filters:
+  - pyodide
+execute:
+  echo: true
+  code-tools: true
+  freeze: auto
+---
+
+::: section
+## Practical Statistics for Research Projects
+
+<a class="colab-button" href="https://colab.research.google.com/github/ampivirotto/virtual_workshops/blob/main/pratical_stats/Practical_Statistics.ipynb" target="_blank"> Launch Full Notebook in Colab </a>
+
+<iframe src="slideshow.html" width="800" height="500" style="border:none;"></iframe>
+
