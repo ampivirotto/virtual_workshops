@@ -11,12 +11,20 @@ execute:
   freeze: auto
 ---
 
-::: section
-## Practical Statistics for Research Projects
+## Jupyter Notebook
 
-<a class="colab-button" href="https://colab.research.google.com/github/ampivirotto/virtual_workshops/blob/main/pratical_stats/Practical_Statistics.ipynb" target="_blank"> Launch Full Notebook in Colab </a>
+<a class="colab-button" href="https://colab.research.google.com/github/ampivirotto/virtual_workshops/blob/main/practical_stats/Practical_Statistics.ipynb" target="_blank"> Launch Full Notebook in Colab </a>
 
-<iframe src="slideshow.html" width="800" height="500" style="border:none;"></iframe>
 
-:::
 
+
+## Slide deck
+
+<iframe
+  src="slideshow.html"
+  width="100%"
+  height="700"
+  style="border:none;"
+  loading="lazy"
+  allowfullscreen>
+</iframe>
