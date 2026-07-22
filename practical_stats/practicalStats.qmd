@@ -22,8 +22,6 @@ execute:
 
 <iframe
   src="slideshow.html"
-  width="100%"
-  height="700"
   style="border:none;"
   loading="lazy"
   allowfullscreen>

@@ -18,21 +18,21 @@
     "href": "practical_stats/slideshow.html#example",
     "title": "Practical Statistics for Research Projects",
     "section": "Example",
-    "text": "Example\nOur Research Question\nDoes fertilizer affect plant growth over a six-week period?\n\n\n\n\n\nPlant growing over time from week 0 to week 6.\n\n\n\n\n\n\nTable of descriptions of each variable"
+    "text": "Example\nOur Research Question\nDoes fertilizer affect plant growth over a six-week period?\n\n\n\n\n\nPlant growing over time from week 0 to week 6.\n\n\n\n\n\n\nDescriptions of each variable"
   },
   {
     "objectID": "practical_stats/slideshow.html#exploratory-data-analysis",
     "href": "practical_stats/slideshow.html#exploratory-data-analysis",
     "title": "Practical Statistics for Research Projects",
     "section": "Exploratory Data Analysis",
-    "text": "Exploratory Data Analysis\nData Types\n\n\n\nNumerical\n\nContinuous\nDiscrete\n\nCategorical\n\nNominal\nOrdinal\n\n\n\n\n\n\nTable of variable data types"
+    "text": "Exploratory Data Analysis\nData Types\n\n\n\nNumerical\n\nContinuous\nDiscrete\n\nCategorical\n\nNominal\nOrdinal\n\n\n\n\n\n\nVariable data types"
   },
   {
     "objectID": "practical_stats/slideshow.html#measures-of-center",
     "href": "practical_stats/slideshow.html#measures-of-center",
     "title": "Practical Statistics for Research Projects",
     "section": "Measures of Center",
-    "text": "Measures of Center\n\n\n\nMean\nMedian\n\n\n\n\n\nMean and Median in table for three groups: Control, Fertilizer A and B\n\n\n\n\n\n\n\n\n\nTip\n\n\nWhich measure is more robust to outliers?"
+    "text": "Measures of Center\n\n\n\nMean\nMedian\n\n\n\n\n\nMean and Median for three groups: Control, Fertilizer A and B\n\n\n\n\n\n\n\n\n\nTip\n\n\nWhich measure is more robust to outliers?"
   },
   {
     "objectID": "practical_stats/slideshow.html#measures-of-variability",
@@ -46,21 +46,21 @@
     "href": "practical_stats/slideshow.html#visualizing-data",
     "title": "Practical Statistics for Research Projects",
     "section": "Visualizing Data",
-    "text": "Visualizing Data\n\nHistograms\nBoxplots\nScatterplots\nBar charts\n\n\nReplace with figures from PowerPoint."
+    "text": "Visualizing Data\n\n\n\nTo explore one quantitative variable:\n\nHistogram: distribution shape\nBoxplot: spread and outliers\n\nTo summarize categorical data:\n\nFrequency table: category counts\nBar chart: visual category counts or percentages; also shows mode, the most common category\n\nTo compare groups:\n\nSide-by-side boxplot\nViolin plot\nDot plot or strip plot\n\nTo explore relationships:\n\nScatterplot: could add the addition of a trend line\n\nExplore changes over time\n\nLine plot\n\nExplore many relationships\n\nCorrelation matrix\nHeat map\n\n\n\n\n\n\nBoxplot of the three groups: Control, A, and B for growth in centimeters."
   },
   {
     "objectID": "practical_stats/slideshow.html#correlation",
     "href": "practical_stats/slideshow.html#correlation",
     "title": "Practical Statistics for Research Projects",
     "section": "Correlation",
-    "text": "Correlation\n\nScatterplots visualize association.\nCorrelation ranges from -1 to 1.\n\n\nInsert scatterplot graphic."
+    "text": "Correlation\n\n\n Scatterplots visualize association.\n\n Correlation coefficient is a metric that ranges from -1 to 1 measuring the association between two numerical variables."
   },
   {
     "objectID": "practical_stats/slideshow.html#sampling-distributions",
     "href": "practical_stats/slideshow.html#sampling-distributions",
     "title": "Practical Statistics for Research Projects",
     "section": "Sampling Distributions",
-    "text": "Sampling Distributions\n\nSample statistics vary.\nThis variation is sampling variability.\nSampling distributions describe repeated samples."
+    "text": "Sampling Distributions\n\nSample statistics vary.\nThis variation is sampling variability.\nSampling distributions describe repeated samples.\n\n\nExample of sampling from a population."
   },
   {
     "objectID": "practical_stats/slideshow.html#confidence-intervals",
@@ -74,14 +74,14 @@
     "href": "practical_stats/slideshow.html#review-of-hypothesis-testing",
     "title": "Practical Statistics for Research Projects",
     "section": "Review of Hypothesis Testing",
-    "text": "Review of Hypothesis Testing\n\n\nNull Hypothesis\n\nNo difference\nNo effect\nNo association\n\n\nAlternative\n\nDifference\nEffect\nAssociation"
+    "text": "Review of Hypothesis Testing\n\n\nNull Hypothesis\n\nNo difference\nNo effect\nNo association\n\n\nAlternative\n\nDifference\nEffect\nAssociation\n\n\n\nOne tail versus two tail test diagram."
   },
   {
     "objectID": "practical_stats/slideshow.html#choosing-the-right-statistical-test",
     "href": "practical_stats/slideshow.html#choosing-the-right-statistical-test",
     "title": "Practical Statistics for Research Projects",
     "section": "Choosing the Right Statistical Test",
-    "text": "Choosing the Right Statistical Test\n\nInsert decision tree from original slides."
+    "text": "Choosing the Right Statistical Test\n\nUse the chart to choose the right statistical test."
   },
   {
     "objectID": "practical_stats/slideshow.html#parametric-vs.-nonparametric",
@@ -116,14 +116,14 @@
     "href": "practical_stats/slideshow.html#interpretation-practice",
     "title": "Practical Statistics for Research Projects",
     "section": "Interpretation Practice",
-    "text": "Interpretation Practice\nWhat do these results tell us?\n\np = 0.001, Cohen’s d = 0.90\np = 0.01, Cohen’s d = 0.25\np = 0.08, Cohen’s d = 0.85, CI = -0.2 to 2.6 cm\n\nPause before revealing discussion."
+    "text": "Interpretation Practice\nWhat do these results tell us?\n\np = 0.001, Cohen’s d = 0.90\np = 0.01, Cohen’s d = 0.25\np = 0.08, Cohen’s d = 0.85, CI = -0.2 to 2.6 cm\n\nResult Interpretations\n\np = 0.001, Cohen’s d = 0.90\n\nStrong evidence of difference between the two groups with large effect size.\nLikely practically meaningful\n\np = 0.01, Cohen’s d = 0.25\n\nStatistically signficiant but small effect size.\nMay have limited practical importance\n\np = 0.08, Cohen’s d = 0.85, CI = -0.2 to 2.6 cm\n\nNot statistically significant but estimated effect is fairly large.\nConfidence interval is very wide so more data would likely be helpful before drawing a conclusion."
   },
   {
     "objectID": "practical_stats/slideshow.html#practice-which-test",
     "href": "practical_stats/slideshow.html#practice-which-test",
     "title": "Practical Statistics for Research Projects",
     "section": "Practice: Which Test?",
-    "text": "Practice: Which Test?\n\nCompare two independent treatment groups.\nCompare before vs. after measurements.\nCompare four fertilizer treatments.\nAssess relationship between height and biomass."
+    "text": "Practice: Which Test?\n\nCompare two independent treatment groups.\nCompare before vs. after measurements.\nCompare four fertilizer treatments.\nAssess relationship between height and biomass.\n\nWhich Test?\n\n\n\n\n\n\n\n\nResearch question\nParametric option\nNonparametric alternative\n\n\n\n\nCompare two independent groups\nIndependent samples t-test\nMann–Whitney U test\n\n\nCompare before vs. after\nPaired t-test\nWilcoxon signed-rank test\n\n\nCompare four fertilizer treatments\nOne-way ANOVA\nKruskal–Wallis test\n\n\nAssess relationship between height and biomass\nPearson correlation / regression\nSpearman correlation"
   },
   {
     "objectID": "practical_stats/slideshow.html#summary",
@@ -137,7 +137,7 @@
     "href": "practical_stats/slideshow.html#resources",
     "title": "Practical Statistics for Research Projects",
     "section": "Resources",
-    "text": "Resources\n\nPractical Statistics for Data Scientists\nOffice Hours\nFriday help sessions"
+    "text": "Resources\n\nPractical Statistics for Data Scientists\nOffice Hours on Wednesdays and Fridays\nTry out other online tutorials via platforms like DataCamp and LinkedIn Learning."
   },
   {
     "objectID": "practical_stats/practicalStats.html",

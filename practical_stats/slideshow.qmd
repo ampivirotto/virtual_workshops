@@ -49,7 +49,7 @@ Does fertilizer affect plant growth over a six-week period?
 :::
 
 ::: {.column width="50%"}
-![Table of descriptions of each variable](images/description_variable.jpg)
+![Descriptions of each variable](images/description_variable.jpg)
 :::
 :::::
 
@@ -70,7 +70,7 @@ Does fertilizer affect plant growth over a six-week period?
 :::
 
 ::: {.column width="50%"}
-![Table of variable data types](images/variable_type.jpg)
+![Variable data types](images/variable_type.jpg)
 :::
 :::::
 
@@ -85,7 +85,7 @@ Does fertilizer affect plant growth over a six-week period?
 :::
 
 ::: {.column width="50%"}
-![Mean and Median in table for three groups: Control, Fertilizer A and B](images/central_tendency.jpg)
+![Mean and Median for three groups: Control, Fertilizer A and B](images/central_tendency.jpg)
 :::
 :::::
 
@@ -118,21 +118,47 @@ Standard deviation and variance are sensitive to outliers.
 
 ## Visualizing Data
 
-- Histograms
-- Boxplots
-- Scatterplots
-- Bar charts
+::::: columns
+::: {.column width="50%"}
+- To explore one quantitative variable:
+  - Histogram: distribution shape
+  - Boxplot: spread and outliers
+- To summarize categorical data:
+  - Frequency table: category counts
+  - Bar chart: visual category counts or percentages; also shows mode, the most common category
+- To compare groups:
+  - Side-by-side boxplot
+  - Violin plot
+  - Dot plot or strip plot
+- To explore relationships:
+  - Scatterplot: could add the addition of a trend line 
+- Explore changes over time
+  - Line plot
+- Explore many relationships
+  - Correlation matrix
+  - Heat map
+:::
 
-> Replace with figures from PowerPoint.
+::: {.column width="50%"}
+![Boxplot of the three groups: Control, A, and B for growth in centimeters.](images/boxplot.png)
+:::
+::::
 
 ------------------------------------------------------------------------
 
 ## Correlation
 
-- Scatterplots visualize association.
-- Correlation ranges from **-1** to **1**.
+:::: {.columns}
+::: {.column width="50%"}
+![Scatterplot comparing the number of sunlight hours to growth for the three groups](images/scatterplot.png)
+Scatterplots visualize association.
+:::
 
-> Insert scatterplot graphic.
+::: {.column width="50%"}
+![Correlations for each of the three groups: Control, A, and B](images/correllation.jpg)
+Correlation coefficient is a metric that ranges from **-1** to **1** measuring the association between two numerical variables.
+:::
+::::
 
 ------------------------------------------------------------------------
 
@@ -141,6 +167,8 @@ Standard deviation and variance are sensitive to outliers.
 - Sample statistics vary.
 - This variation is **sampling variability**.
 - Sampling distributions describe repeated samples.
+
+![Example of sampling from a population.](images/sampling_distribution.gif)
 
 ------------------------------------------------------------------------
 
@@ -169,12 +197,13 @@ A 95% confidence interval is produced by a method that would capture the true po
 - Association
 :::
 :::::
+![One tail versus two tail test diagram.](images/hypothesis_testing.jpeg)
 
 ------------------------------------------------------------------------
 
 ## Choosing the Right Statistical Test
 
-> Insert decision tree from original slides.
+![Use the chart to choose the right statistical test.](images/statistical_test.png)
 
 ------------------------------------------------------------------------
 
@@ -253,7 +282,20 @@ What do these results tell us?
 - p = 0.01, Cohen's d = 0.25
 - p = 0.08, Cohen's d = 0.85, CI = -0.2 to 2.6 cm
 
-Pause before revealing discussion.
+### Result Interpretations
+
+- p = 0.001, Cohen's d = 0.90
+  - Strong evidence of difference between the two groups with large effect size. 
+  - Likely practically meaningful
+
+- p = 0.01, Cohen's d = 0.25
+  - Statistically signficiant but small effect size.
+  - May have limited practical importance
+
+- p = 0.08, Cohen's d = 0.85, CI = -0.2 to 2.6 cm
+  - Not statistically significant but estimated effect is fairly large. 
+  - Confidence interval is very wide so more data would likely be helpful before drawing a conclusion.
+
 
 ------------------------------------------------------------------------
 
@@ -263,6 +305,15 @@ Pause before revealing discussion.
 2.  Compare before vs. after measurements.
 3.  Compare four fertilizer treatments.
 4.  Assess relationship between height and biomass.
+
+### Which Test?
+
+| Research question | Parametric option | Nonparametric alternative |
+|---|---|---|
+| Compare two independent groups | Independent samples t-test | Mann–Whitney U test |
+| Compare before vs. after | Paired t-test | Wilcoxon signed-rank test |
+| Compare four fertilizer treatments | One-way ANOVA | Kruskal–Wallis test |
+| Assess relationship between height and biomass | Pearson correlation / regression | Spearman correlation |
 
 ------------------------------------------------------------------------
 
@@ -280,8 +331,8 @@ Pause before revealing discussion.
 
 ## Resources
 
-- Practical Statistics for Data Scientists
-- Office Hours
-- Friday help sessions
+- [Practical Statistics for Data Scientists](https://github.com/Chandra0505/Data-Science-Resources/blob/master/machine-learning/Practical%20Statistics%20for%20Data%20Scientists.pdf)
+- Office Hours on Wednesdays and Fridays
+- Try out other online tutorials via platforms like DataCamp and LinkedIn Learning.
 
 # Questions?

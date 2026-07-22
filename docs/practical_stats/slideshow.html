@@ -183,7 +183,7 @@ Alyssa Pivirotto
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/description_variable.jpg"></p>
-<figcaption>Table of descriptions of each variable</figcaption>
+<figcaption>Descriptions of each variable</figcaption>
 </figure>
 </div>
 </div></div>
@@ -209,7 +209,7 @@ Alyssa Pivirotto
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/variable_type.jpg"></p>
-<figcaption>Table of variable data types</figcaption>
+<figcaption>Variable data types</figcaption>
 </figure>
 </div>
 </div></div>
@@ -226,7 +226,7 @@ Alyssa Pivirotto
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/central_tendency.jpg"></p>
-<figcaption>Mean and Median in table for three groups: Control, Fertilizer A and B</figcaption>
+<figcaption>Mean and Median for three groups: Control, Fertilizer A and B</figcaption>
 </figure>
 </div>
 </div></div>
@@ -278,25 +278,56 @@ Alyssa Pivirotto
 </section>
 <section id="visualizing-data" class="slide level2">
 <h2>Visualizing Data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li>Histograms</li>
-<li>Boxplots</li>
-<li>Scatterplots</li>
-<li>Bar charts</li>
+<li>To explore one quantitative variable:
+<ul>
+<li>Histogram: distribution shape</li>
+<li>Boxplot: spread and outliers</li>
+</ul></li>
+<li>To summarize categorical data:
+<ul>
+<li>Frequency table: category counts</li>
+<li>Bar chart: visual category counts or percentages; also shows mode, the most common category</li>
+</ul></li>
+<li>To compare groups:
+<ul>
+<li>Side-by-side boxplot</li>
+<li>Violin plot</li>
+<li>Dot plot or strip plot</li>
+</ul></li>
+<li>To explore relationships:
+<ul>
+<li>Scatterplot: could add the addition of a trend line</li>
+</ul></li>
+<li>Explore changes over time
+<ul>
+<li>Line plot</li>
+</ul></li>
+<li>Explore many relationships
+<ul>
+<li>Correlation matrix</li>
+<li>Heat map</li>
+</ul></li>
 </ul>
-<blockquote>
-<p>Replace with figures from PowerPoint.</p>
-</blockquote>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/boxplot.png"></p>
+<figcaption>Boxplot of the three groups: Control, A, and B for growth in centimeters.</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="correlation" class="slide level2">
 <h2>Correlation</h2>
-<ul>
-<li>Scatterplots visualize association.</li>
-<li>Correlation ranges from <strong>-1</strong> to <strong>1</strong>.</li>
-</ul>
-<blockquote>
-<p>Insert scatterplot graphic.</p>
-</blockquote>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/scatterplot.png" alt="Scatterplot comparing the number of sunlight hours to growth for the three groups"> Scatterplots visualize association.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/correllation.jpg" alt="Correlations for each of the three groups: Control, A, and B"> Correlation coefficient is a metric that ranges from <strong>-1</strong> to <strong>1</strong> measuring the association between two numerical variables.</p>
+</div></div>
 </section>
 <section id="sampling-distributions" class="slide level2">
 <h2>Sampling Distributions</h2>
@@ -305,7 +336,8 @@ Alyssa Pivirotto
 <li>This variation is <strong>sampling variability</strong>.</li>
 <li>Sampling distributions describe repeated samples.</li>
 </ul>
-</section>
+
+<img data-src="images/sampling_distribution.gif" class="r-stretch quarto-figure-center"><p class="caption">Example of sampling from a population.</p></section>
 <section id="confidence-intervals" class="slide level2">
 <h2>Confidence Intervals</h2>
 <p>A 95% confidence interval is produced by a method that would capture the true population value about 95% of the time over repeated samples.</p>
@@ -328,13 +360,12 @@ Alyssa Pivirotto
 <li>Association</li>
 </ul>
 </div></div>
-</section>
+
+<img data-src="images/hypothesis_testing.jpeg" class="r-stretch quarto-figure-center"><p class="caption">One tail versus two tail test diagram.</p></section>
 <section id="choosing-the-right-statistical-test" class="slide level2">
 <h2>Choosing the Right Statistical Test</h2>
-<blockquote>
-<p>Insert decision tree from original slides.</p>
-</blockquote>
-</section>
+
+<img data-src="images/statistical_test.png" class="r-stretch quarto-figure-center"><p class="caption">Use the chart to choose the right statistical test.</p></section>
 <section id="parametric-vs.-nonparametric" class="slide level2">
 <h2>Parametric vs.&nbsp;Nonparametric</h2>
 <div class="columns">
@@ -411,7 +442,24 @@ Alyssa Pivirotto
 <li>p = 0.01, Cohen’s d = 0.25</li>
 <li>p = 0.08, Cohen’s d = 0.85, CI = -0.2 to 2.6 cm</li>
 </ul>
-<p>Pause before revealing discussion.</p>
+<h3 id="result-interpretations">Result Interpretations</h3>
+<ul>
+<li>p = 0.001, Cohen’s d = 0.90
+<ul>
+<li>Strong evidence of difference between the two groups with large effect size.</li>
+<li>Likely practically meaningful</li>
+</ul></li>
+<li>p = 0.01, Cohen’s d = 0.25
+<ul>
+<li>Statistically signficiant but small effect size.</li>
+<li>May have limited practical importance</li>
+</ul></li>
+<li>p = 0.08, Cohen’s d = 0.85, CI = -0.2 to 2.6 cm
+<ul>
+<li>Not statistically significant but estimated effect is fairly large.</li>
+<li>Confidence interval is very wide so more data would likely be helpful before drawing a conclusion.</li>
+</ul></li>
+</ul>
 </section>
 <section id="practice-which-test" class="slide level2">
 <h2>Practice: Which Test?</h2>
@@ -421,6 +469,43 @@ Alyssa Pivirotto
 <li>Compare four fertilizer treatments.</li>
 <li>Assess relationship between height and biomass.</li>
 </ol>
+<h3 id="which-test">Which Test?</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Research question</th>
+<th>Parametric option</th>
+<th>Nonparametric alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compare two independent groups</td>
+<td>Independent samples t-test</td>
+<td>Mann–Whitney U test</td>
+</tr>
+<tr class="even">
+<td>Compare before vs.&nbsp;after</td>
+<td>Paired t-test</td>
+<td>Wilcoxon signed-rank test</td>
+</tr>
+<tr class="odd">
+<td>Compare four fertilizer treatments</td>
+<td>One-way ANOVA</td>
+<td>Kruskal–Wallis test</td>
+</tr>
+<tr class="even">
+<td>Assess relationship between height and biomass</td>
+<td>Pearson correlation / regression</td>
+<td>Spearman correlation</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
@@ -435,9 +520,9 @@ Alyssa Pivirotto
 <section id="resources" class="slide level2">
 <h2>Resources</h2>
 <ul>
-<li>Practical Statistics for Data Scientists</li>
-<li>Office Hours</li>
-<li>Friday help sessions</li>
+<li><a href="https://github.com/Chandra0505/Data-Science-Resources/blob/master/machine-learning/Practical%20Statistics%20for%20Data%20Scientists.pdf">Practical Statistics for Data Scientists</a></li>
+<li>Office Hours on Wednesdays and Fridays</li>
+<li>Try out other online tutorials via platforms like DataCamp and LinkedIn Learning.</li>
 </ul>
 </section></section>
 <section id="questions" class="title-slide slide level1 center">
