@@ -1,143 +1,17 @@
 [
   {
-    "objectID": "practical_stats/slideshow.html#workshop-overview",
-    "href": "practical_stats/slideshow.html#workshop-overview",
+    "objectID": "practical_stats/slideshow.html#result-interpretations",
+    "href": "practical_stats/slideshow.html#result-interpretations",
     "title": "Practical Statistics for Research Projects",
-    "section": "Workshop Overview",
-    "text": "Workshop Overview\n\nResearch questions → analysis plans\nExploratory data analysis (EDA)\nSampling & inference\nChoosing statistical tests\nInterpreting results"
+    "section": "Result Interpretations",
+    "text": "Result Interpretations\n\np = 0.001, Cohen’s d = 0.90\n\nStrong evidence of difference between the two groups with large effect size.\nLikely practically meaningful\n\np = 0.01, Cohen’s d = 0.25\n\nStatistically signficiant but small effect size.\nMay have limited practical importance\n\np = 0.08, Cohen’s d = 0.85, CI = -0.2 to 2.6 cm\n\nNot statistically significant but estimated effect is fairly large.\nConfidence interval is very wide so more data would likely be helpful before drawing a conclusion."
   },
   {
-    "objectID": "practical_stats/slideshow.html#research-question-analysis-plan",
-    "href": "practical_stats/slideshow.html#research-question-analysis-plan",
+    "objectID": "practical_stats/slideshow.html#which-test",
+    "href": "practical_stats/slideshow.html#which-test",
     "title": "Practical Statistics for Research Projects",
-    "section": "Research Question → Analysis Plan",
-    "text": "Research Question → Analysis Plan\nEvery analysis starts with a well-defined research question.\n\nIdentify the outcome variable.\nIdentify predictor and grouping variables.\nDetermine whether observations are independent or paired.\nDecide whether your goal is association, comparison, prediction, or estimation. Note this will depend on your research question!"
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#example",
-    "href": "practical_stats/slideshow.html#example",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Example",
-    "text": "Example\nOur Research Question\nDoes fertilizer affect plant growth over a six-week period?\n\n\n\n\n\nPlant growing over time from week 0 to week 6.\n\n\n\n\n\n\nDescriptions of each variable"
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#exploratory-data-analysis",
-    "href": "practical_stats/slideshow.html#exploratory-data-analysis",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Exploratory Data Analysis",
-    "text": "Exploratory Data Analysis\nData Types\n\n\n\nNumerical\n\nContinuous\nDiscrete\n\nCategorical\n\nNominal\nOrdinal\n\n\n\n\n\n\nVariable data types"
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#measures-of-center",
-    "href": "practical_stats/slideshow.html#measures-of-center",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Measures of Center",
-    "text": "Measures of Center\n\n\n\nMean\nMedian\n\n\n\n\n\nMean and Median for three groups: Control, Fertilizer A and B\n\n\n\n\n\n\n\n\n\nTip\n\n\nWhich measure is more robust to outliers?"
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#measures-of-variability",
-    "href": "practical_stats/slideshow.html#measures-of-variability",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Measures of Variability",
-    "text": "Measures of Variability\n\n\n\nStandard deviation\nVariance\nPercentiles\nRange\n\n\n\n\n\nVariability estimates for the three groups: Control, A, and B\n\n\n\n\n\n\n\n\n\nWarning\n\n\nStandard deviation and variance are sensitive to outliers."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#visualizing-data",
-    "href": "practical_stats/slideshow.html#visualizing-data",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Visualizing Data",
-    "text": "Visualizing Data\n\n\n\nTo explore one quantitative variable:\n\nHistogram: distribution shape\nBoxplot: spread and outliers\n\nTo summarize categorical data:\n\nFrequency table: category counts\nBar chart: visual category counts or percentages; also shows mode, the most common category\n\nTo compare groups:\n\nSide-by-side boxplot\nViolin plot\nDot plot or strip plot\n\nTo explore relationships:\n\nScatterplot: could add the addition of a trend line\n\nExplore changes over time\n\nLine plot\n\nExplore many relationships\n\nCorrelation matrix\nHeat map\n\n\n\n\n\n\nBoxplot of the three groups: Control, A, and B for growth in centimeters."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#correlation",
-    "href": "practical_stats/slideshow.html#correlation",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Correlation",
-    "text": "Correlation\n\n\n Scatterplots visualize association.\n\n Correlation coefficient is a metric that ranges from -1 to 1 measuring the association between two numerical variables."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#sampling-distributions",
-    "href": "practical_stats/slideshow.html#sampling-distributions",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Sampling Distributions",
-    "text": "Sampling Distributions\n\nSample statistics vary.\nThis variation is sampling variability.\nSampling distributions describe repeated samples.\n\n\nExample of sampling from a population."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#confidence-intervals",
-    "href": "practical_stats/slideshow.html#confidence-intervals",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Confidence Intervals",
-    "text": "Confidence Intervals\nA 95% confidence interval is produced by a method that would capture the true population value about 95% of the time over repeated samples."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#review-of-hypothesis-testing",
-    "href": "practical_stats/slideshow.html#review-of-hypothesis-testing",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Review of Hypothesis Testing",
-    "text": "Review of Hypothesis Testing\n\n\nNull Hypothesis\n\nNo difference\nNo effect\nNo association\n\n\nAlternative\n\nDifference\nEffect\nAssociation\n\n\n\nOne tail versus two tail test diagram."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#choosing-the-right-statistical-test",
-    "href": "practical_stats/slideshow.html#choosing-the-right-statistical-test",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Choosing the Right Statistical Test",
-    "text": "Choosing the Right Statistical Test\n\nUse the chart to choose the right statistical test."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#parametric-vs.-nonparametric",
-    "href": "practical_stats/slideshow.html#parametric-vs.-nonparametric",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Parametric vs. Nonparametric",
-    "text": "Parametric vs. Nonparametric\n\n\nParametric\n\nNormality\nEqual variance\nIndependence\n\nExamples: - t-test - ANOVA - Pearson correlation - Linear regression\n\nNonparametric\n\nRank-based\nFewer assumptions\nRobust to skew/outliers\n\nExamples: - Mann–Whitney U - Wilcoxon - Kruskal–Wallis - Spearman correlation"
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#t-test",
-    "href": "practical_stats/slideshow.html#t-test",
-    "title": "Practical Statistics for Research Projects",
-    "section": "t-Test",
-    "text": "t-Test\nUse when:\n\nOutcome is quantitative\nComparing one or two means\nParametric assumptions hold\n\nTypes:\n\nOne-sample\nIndependent\nPaired\n\n\nExplain why multiple groups require ANOVA instead of repeated t-tests."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#anova",
-    "href": "practical_stats/slideshow.html#anova",
-    "title": "Practical Statistics for Research Projects",
-    "section": "ANOVA",
-    "text": "ANOVA\n\nCompare 3+ group means\nOne-way\nTwo-way\nMANOVA"
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#effect-size",
-    "href": "practical_stats/slideshow.html#effect-size",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Effect Size",
-    "text": "Effect Size\nEffect size tells us how large an effect is.\nExamples:\n\nCohen’s d\nEta-squared\nCorrelation coefficient"
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#interpretation-practice",
-    "href": "practical_stats/slideshow.html#interpretation-practice",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Interpretation Practice",
-    "text": "Interpretation Practice\nWhat do these results tell us?\n\np = 0.001, Cohen’s d = 0.90\np = 0.01, Cohen’s d = 0.25\np = 0.08, Cohen’s d = 0.85, CI = -0.2 to 2.6 cm\n\nResult Interpretations\n\np = 0.001, Cohen’s d = 0.90\n\nStrong evidence of difference between the two groups with large effect size.\nLikely practically meaningful\n\np = 0.01, Cohen’s d = 0.25\n\nStatistically signficiant but small effect size.\nMay have limited practical importance\n\np = 0.08, Cohen’s d = 0.85, CI = -0.2 to 2.6 cm\n\nNot statistically significant but estimated effect is fairly large.\nConfidence interval is very wide so more data would likely be helpful before drawing a conclusion."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#practice-which-test",
-    "href": "practical_stats/slideshow.html#practice-which-test",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Practice: Which Test?",
-    "text": "Practice: Which Test?\n\nCompare two independent treatment groups.\nCompare before vs. after measurements.\nCompare four fertilizer treatments.\nAssess relationship between height and biomass.\n\nWhich Test?\n\n\n\n\n\n\n\n\nResearch question\nParametric option\nNonparametric alternative\n\n\n\n\nCompare two independent groups\nIndependent samples t-test\nMann–Whitney U test\n\n\nCompare before vs. after\nPaired t-test\nWilcoxon signed-rank test\n\n\nCompare four fertilizer treatments\nOne-way ANOVA\nKruskal–Wallis test\n\n\nAssess relationship between height and biomass\nPearson correlation / regression\nSpearman correlation"
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#summary",
-    "href": "practical_stats/slideshow.html#summary",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Summary",
-    "text": "Summary\n\nStart with the research question.\nIdentify variables.\nCheck assumptions.\nChoose the appropriate test.\nReport effect sizes—not just p-values."
-  },
-  {
-    "objectID": "practical_stats/slideshow.html#resources",
-    "href": "practical_stats/slideshow.html#resources",
-    "title": "Practical Statistics for Research Projects",
-    "section": "Resources",
-    "text": "Resources\n\nPractical Statistics for Data Scientists\nOffice Hours on Wednesdays and Fridays\nTry out other online tutorials via platforms like DataCamp and LinkedIn Learning."
+    "section": "Which Test?",
+    "text": "Which Test?\n\n\n\n\n\n\n\n\nResearch question\nParametric option\nNonparametric alternative\n\n\n\n\nCompare two independent groups\nIndependent samples t-test\nMann–Whitney U test\n\n\nCompare before vs. after\nPaired t-test\nWilcoxon signed-rank test\n\n\nCompare four fertilizer treatments\nOne-way ANOVA\nKruskal–Wallis test\n\n\nAssess relationship between height and biomass\nPearson correlation / regression\nSpearman correlation"
   },
   {
     "objectID": "practical_stats/practicalStats.html",
