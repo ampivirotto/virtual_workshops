@@ -10,11 +10,15 @@ format:
     transition: fade
     preview-links: auto
     css: styles.css
+    navigation-mode: grid
+    scrollable: true
+    center: false
+    width: 1050
+    height: 700
 ---
 
-# INSERT QUESTION SLIDE
 
-## Workshop Overview
+# Workshop Overview
 
 - Research questions → analysis plans
 - Exploratory data analysis (EDA)
@@ -24,7 +28,7 @@ format:
 
 ------------------------------------------------------------------------
 
-## Research Question → Analysis Plan
+# Research Question → Analysis Plan
 
 Every analysis starts with a well-defined research question.
 
@@ -37,7 +41,7 @@ Every analysis starts with a well-defined research question.
 
 ------------------------------------------------------------------------
 
-## Example
+# Example
 
 **Our Research Question**
 
@@ -55,7 +59,7 @@ Does fertilizer affect plant growth over a six-week period?
 
 ------------------------------------------------------------------------
 
-## Exploratory Data Analysis
+# Exploratory Data Analysis
 
 ### Data Types
 
@@ -76,7 +80,7 @@ Does fertilizer affect plant growth over a six-week period?
 
 ------------------------------------------------------------------------
 
-## Measures of Center
+# Measures of Center
 
 ::::: columns
 ::: {.column width="50%"}
@@ -95,7 +99,7 @@ Which measure is more robust to outliers?
 
 ------------------------------------------------------------------------
 
-## Measures of Variability
+# Measures of Variability
 
 ::::: columns
 ::: {.column width="50%"}
@@ -116,7 +120,7 @@ Standard deviation and variance are sensitive to outliers.
 
 ------------------------------------------------------------------------
 
-## Visualizing Data
+# Visualizing Data
 
 ::::: columns
 ::: {.column width="50%"}
@@ -146,7 +150,7 @@ Standard deviation and variance are sensitive to outliers.
 
 ------------------------------------------------------------------------
 
-## Correlation
+# Correlation
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -162,7 +166,7 @@ Correlation coefficient is a metric that ranges from **-1** to **1** measuring t
 
 ------------------------------------------------------------------------
 
-## Sampling Distributions
+# Sampling Distributions
 
 - Sample statistics vary.
 - This variation is **sampling variability**.
@@ -172,13 +176,13 @@ Correlation coefficient is a metric that ranges from **-1** to **1** measuring t
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals
+# Confidence Intervals
 
 A 95% confidence interval is produced by a method that would capture the true population value about 95% of the time over repeated samples.
 
 ------------------------------------------------------------------------
 
-## Review of Hypothesis Testing
+# Review of Hypothesis Testing
 
 ::::: columns
 ::: {.column width="50%"}
@@ -201,13 +205,13 @@ A 95% confidence interval is produced by a method that would capture the true po
 
 ------------------------------------------------------------------------
 
-## Choosing the Right Statistical Test
+# Choosing the Right Statistical Test
 
 ![Use the chart to choose the right statistical test.](images/statistical_test.png)
 
 ------------------------------------------------------------------------
 
-## Parametric vs. Nonparametric
+# Parametric vs. Nonparametric
 
 ::::: columns
 ::: column
@@ -233,7 +237,7 @@ Examples: - Mann–Whitney U - Wilcoxon - Kruskal–Wallis - Spearman correlatio
 
 ------------------------------------------------------------------------
 
-## t-Test
+# t-Test
 
 Use when:
 
@@ -253,7 +257,7 @@ Explain why multiple groups require ANOVA instead of repeated t-tests.
 
 ------------------------------------------------------------------------
 
-## ANOVA
+# ANOVA
 
 - Compare 3+ group means
 - One-way
@@ -262,7 +266,7 @@ Explain why multiple groups require ANOVA instead of repeated t-tests.
 
 ------------------------------------------------------------------------
 
-## Effect Size
+# Effect Size
 
 Effect size tells us **how large** an effect is.
 
@@ -274,7 +278,7 @@ Examples:
 
 ------------------------------------------------------------------------
 
-## Interpretation Practice
+# Interpretation Practice
 
 What do these results tell us?
 
@@ -282,7 +286,7 @@ What do these results tell us?
 - p = 0.01, Cohen's d = 0.25
 - p = 0.08, Cohen's d = 0.85, CI = -0.2 to 2.6 cm
 
-### Result Interpretations
+## Result Interpretations
 
 - p = 0.001, Cohen's d = 0.90
   - Strong evidence of difference between the two groups with large effect size. 
@@ -299,14 +303,14 @@ What do these results tell us?
 
 ------------------------------------------------------------------------
 
-## Practice: Which Test?
+# Practice: Which Test?
 
 1.  Compare two independent treatment groups.
 2.  Compare before vs. after measurements.
 3.  Compare four fertilizer treatments.
 4.  Assess relationship between height and biomass.
 
-### Which Test?
+## Which Test?
 
 | Research question | Parametric option | Nonparametric alternative |
 |---|---|---|
@@ -317,7 +321,7 @@ What do these results tell us?
 
 ------------------------------------------------------------------------
 
-## Summary
+# Summary
 
 ::: incremental
 - Start with the research question.
@@ -329,7 +333,7 @@ What do these results tell us?
 
 ------------------------------------------------------------------------
 
-## Resources
+# Resources
 
 - [Practical Statistics for Data Scientists](https://github.com/Chandra0505/Data-Science-Resources/blob/master/machine-learning/Practical%20Statistics%20for%20Data%20Scientists.pdf)
 - Office Hours on Wednesdays and Fridays
