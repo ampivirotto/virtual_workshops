@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Alyssa Pivirotto">
   <title>Practical Statistics for Research Projects</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,7 +32,8 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2c1b5f745a11cfad616ebade4a4a7d24.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -139,15 +143,15 @@ Alyssa Pivirotto
 
 </section>
 <section>
-<section id="practical-statistics-for-research-projects" class="title-slide slide level1 center">
-<h1>Practical Statistics for Research Projects</h1>
+<section id="insert-question-slide" class="title-slide slide level1 center">
+<h1>INSERT QUESTION SLIDE</h1>
 
 </section>
 <section id="workshop-overview" class="slide level2">
 <h2>Workshop Overview</h2>
 <ul>
 <li>Research questions → analysis plans</li>
-<li>Exploratory data analysis</li>
+<li>Exploratory data analysis (EDA)</li>
 <li>Sampling &amp; inference</li>
 <li>Choosing statistical tests</li>
 <li>Interpreting results</li>
@@ -160,24 +164,35 @@ Alyssa Pivirotto
 <li class="fragment">Identify the <strong>outcome</strong> variable.</li>
 <li class="fragment">Identify predictor and grouping variables.</li>
 <li class="fragment">Determine whether observations are <strong>independent</strong> or <strong>paired</strong>.</li>
-<li class="fragment">Decide whether your goal is <strong>association</strong>, <strong>comparison</strong>, <strong>prediction</strong>, or <strong>estimation</strong>.</li>
+<li class="fragment">Decide whether your goal is <strong>association</strong>, <strong>comparison</strong>, <strong>prediction</strong>, or <strong>estimation</strong>. Note this will depend on your research question!</li>
 </ul>
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
-<p><strong>Research Question</strong></p>
+<p><strong>Our Research Question</strong></p>
 <p>Does fertilizer affect plant growth over a six-week period?</p>
-<ul>
-<li>Measure plants at Week 0</li>
-<li>Measure plants at Week 6</li>
-</ul>
-<blockquote>
-<p>Add original fertilizer diagram here.</p>
-</blockquote>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/planting.jpg"></p>
+<figcaption>Plant growing over time from week 0 to week 6.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/description_variable.jpg"></p>
+<figcaption>Table of descriptions of each variable</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="exploratory-data-analysis" class="slide level2">
 <h2>Exploratory Data Analysis</h2>
 <h3 id="data-types">Data Types</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>Numerical
 <ul>
@@ -190,13 +205,31 @@ Alyssa Pivirotto
 <li>Ordinal</li>
 </ul></li>
 </ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/variable_type.jpg"></p>
+<figcaption>Table of variable data types</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="measures-of-center" class="slide level2">
 <h2>Measures of Center</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>Mean</li>
 <li>Median</li>
 </ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/central_tendency.jpg"></p>
+<figcaption>Mean and Median in table for three groups: Control, Fertilizer A and B</figcaption>
+</figure>
+</div>
+</div></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -213,12 +246,22 @@ Alyssa Pivirotto
 </section>
 <section id="measures-of-variability" class="slide level2">
 <h2>Measures of Variability</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>Standard deviation</li>
 <li>Variance</li>
 <li>Percentiles</li>
 <li>Range</li>
 </ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/variability.jpg"></p>
+<figcaption>Variability estimates for the three groups: Control, A, and B</figcaption>
+</figure>
+</div>
+</div></div>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -591,7 +634,7 @@ Alyssa Pivirotto
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -665,13 +708,14 @@ Alyssa Pivirotto
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

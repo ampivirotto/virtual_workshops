@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Practical Statistics for Research Projects</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -58,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -70,10 +73,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-991b1886d3c685c7aa2b62b80640c7af.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ece42c8223ec2bf36298a08f122c9a68.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -101,12 +104,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -119,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -175,20 +178,20 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="dataset-overview">Dataset Overview</h2>
 <p>Let’s take a look at the first few rows of our plant growth dataset.</p>
 <div id="cell-4" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## import the packages needed for the basic analysis</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## import the packages needed for the basic analysis</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-outputid="178aec6c-da1b-49ce-97c6-ce4dae1941ed">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## read in the CSV file</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## read in the CSV file</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> pd.read_csv(<span class="st">'plant_growth_fertilizer.csv'</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">!</span>wget https:<span class="op">//</span>raw.githubusercontent.com<span class="op">/</span>ampivirotto<span class="op">/</span>virtual_workshops<span class="op">/</span>refs<span class="op">/</span>heads<span class="op">/</span>main<span class="op">/</span>practical_stats<span class="op">/</span>plant_growth_fertilizer.csv</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  df <span class="op">=</span> pd.read_csv(<span class="st">'plant_growth_fertilizer.csv'</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>--2026-07-15 16:12:10--  https://raw.githubusercontent.com/ampivirotto/virtual_workshops/refs/heads/main/practical_stats/plant_growth_fertilizer.csv
 Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
@@ -197,7 +200,9 @@ HTTP request sent, awaiting response... 200 OK
 Length: 2543 (2.5K) [text/plain]
 Saving to: ‘plant_growth_fertilizer.csv’
 
-          plant_gro   0%[                    ]       0  --.-KB/s               plant_growth_fertil 100%[===================&gt;]   2.48K  --.-KB/s    in 0s      
+
+          plant_gro   0%[                    ]       0  --.-KB/s               
+plant_growth_fertil 100%[===================&gt;]   2.48K  --.-KB/s    in 0s      
 
 2026-07-15 16:12:11 (29.1 MB/s) - ‘plant_growth_fertilizer.csv’ saved [2543/2543]
 </code></pre>
@@ -207,7 +212,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -223,7 +228,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>P001</td>
 <td>Control</td>
 <td>10.2</td>
@@ -234,7 +239,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>98</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>P002</td>
 <td>Control</td>
 <td>9.8</td>
@@ -245,7 +250,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>102</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>P003</td>
 <td>Control</td>
 <td>11.1</td>
@@ -256,7 +261,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>100</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>P004</td>
 <td>Control</td>
 <td>10.5</td>
@@ -267,7 +272,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>95</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>P005</td>
 <td>Control</td>
 <td>9.7</td>
@@ -278,7 +283,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>97</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<th data-quarto-table-cell-role="th">5</th>
 <td>P006</td>
 <td>Control</td>
 <td>10.9</td>
@@ -289,7 +294,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>101</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
+<th data-quarto-table-cell-role="th">6</th>
 <td>P007</td>
 <td>Control</td>
 <td>11.4</td>
@@ -300,7 +305,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>99</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
+<th data-quarto-table-cell-role="th">7</th>
 <td>P008</td>
 <td>Control</td>
 <td>10.1</td>
@@ -311,7 +316,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>96</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
+<th data-quarto-table-cell-role="th">8</th>
 <td>P009</td>
 <td>Control</td>
 <td>9.5</td>
@@ -322,7 +327,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>94</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
+<th data-quarto-table-cell-role="th">9</th>
 <td>P010</td>
 <td>Control</td>
 <td>10.8</td>
@@ -333,7 +338,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>103</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
+<th data-quarto-table-cell-role="th">10</th>
 <td>P011</td>
 <td>Control</td>
 <td>11.0</td>
@@ -344,7 +349,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>100</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
+<th data-quarto-table-cell-role="th">11</th>
 <td>P012</td>
 <td>Control</td>
 <td>9.9</td>
@@ -355,7 +360,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>98</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
+<th data-quarto-table-cell-role="th">12</th>
 <td>P013</td>
 <td>Control</td>
 <td>10.3</td>
@@ -366,7 +371,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>97</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
+<th data-quarto-table-cell-role="th">13</th>
 <td>P014</td>
 <td>Control</td>
 <td>10.6</td>
@@ -377,7 +382,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>101</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
+<th data-quarto-table-cell-role="th">14</th>
 <td>P015</td>
 <td>Control</td>
 <td>9.6</td>
@@ -388,7 +393,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>95</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
+<th data-quarto-table-cell-role="th">15</th>
 <td>P016</td>
 <td>Control</td>
 <td>11.2</td>
@@ -399,7 +404,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>104</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
+<th data-quarto-table-cell-role="th">16</th>
 <td>P017</td>
 <td>Control</td>
 <td>10.0</td>
@@ -410,7 +415,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>96</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
+<th data-quarto-table-cell-role="th">17</th>
 <td>P018</td>
 <td>Control</td>
 <td>10.7</td>
@@ -421,7 +426,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>99</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
+<th data-quarto-table-cell-role="th">18</th>
 <td>P019</td>
 <td>Control</td>
 <td>9.4</td>
@@ -432,7 +437,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>93</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
+<th data-quarto-table-cell-role="th">19</th>
 <td>P020</td>
 <td>Control</td>
 <td>11.3</td>
@@ -443,7 +448,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>102</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
+<th data-quarto-table-cell-role="th">20</th>
 <td>P021</td>
 <td>Fertilizer_A</td>
 <td>10.4</td>
@@ -454,7 +459,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>100</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
+<th data-quarto-table-cell-role="th">21</th>
 <td>P022</td>
 <td>Fertilizer_A</td>
 <td>9.9</td>
@@ -465,7 +470,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>102</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
+<th data-quarto-table-cell-role="th">22</th>
 <td>P023</td>
 <td>Fertilizer_A</td>
 <td>11.2</td>
@@ -476,7 +481,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>101</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
+<th data-quarto-table-cell-role="th">23</th>
 <td>P024</td>
 <td>Fertilizer_A</td>
 <td>10.6</td>
@@ -487,7 +492,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>98</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
+<th data-quarto-table-cell-role="th">24</th>
 <td>P025</td>
 <td>Fertilizer_A</td>
 <td>9.8</td>
@@ -498,7 +503,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>99</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
+<th data-quarto-table-cell-role="th">25</th>
 <td>P026</td>
 <td>Fertilizer_A</td>
 <td>10.9</td>
@@ -509,7 +514,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>103</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
+<th data-quarto-table-cell-role="th">26</th>
 <td>P027</td>
 <td>Fertilizer_A</td>
 <td>11.5</td>
@@ -520,7 +525,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>101</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
+<th data-quarto-table-cell-role="th">27</th>
 <td>P028</td>
 <td>Fertilizer_A</td>
 <td>10.2</td>
@@ -531,7 +536,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>97</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">28</td>
+<th data-quarto-table-cell-role="th">28</th>
 <td>P029</td>
 <td>Fertilizer_A</td>
 <td>9.6</td>
@@ -542,7 +547,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>96</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">29</td>
+<th data-quarto-table-cell-role="th">29</th>
 <td>P030</td>
 <td>Fertilizer_A</td>
 <td>10.8</td>
@@ -553,7 +558,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>104</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">30</td>
+<th data-quarto-table-cell-role="th">30</th>
 <td>P031</td>
 <td>Fertilizer_A</td>
 <td>11.1</td>
@@ -564,7 +569,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>100</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">31</td>
+<th data-quarto-table-cell-role="th">31</th>
 <td>P032</td>
 <td>Fertilizer_A</td>
 <td>10.0</td>
@@ -575,7 +580,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>98</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">32</td>
+<th data-quarto-table-cell-role="th">32</th>
 <td>P033</td>
 <td>Fertilizer_A</td>
 <td>10.5</td>
@@ -586,7 +591,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>99</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">33</td>
+<th data-quarto-table-cell-role="th">33</th>
 <td>P034</td>
 <td>Fertilizer_A</td>
 <td>10.7</td>
@@ -597,7 +602,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>102</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">34</td>
+<th data-quarto-table-cell-role="th">34</th>
 <td>P035</td>
 <td>Fertilizer_A</td>
 <td>9.7</td>
@@ -608,7 +613,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>97</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">35</td>
+<th data-quarto-table-cell-role="th">35</th>
 <td>P036</td>
 <td>Fertilizer_A</td>
 <td>11.3</td>
@@ -619,7 +624,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>103</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">36</td>
+<th data-quarto-table-cell-role="th">36</th>
 <td>P037</td>
 <td>Fertilizer_A</td>
 <td>10.1</td>
@@ -630,7 +635,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>98</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">37</td>
+<th data-quarto-table-cell-role="th">37</th>
 <td>P038</td>
 <td>Fertilizer_A</td>
 <td>10.6</td>
@@ -641,7 +646,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>100</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">38</td>
+<th data-quarto-table-cell-role="th">38</th>
 <td>P039</td>
 <td>Fertilizer_A</td>
 <td>9.5</td>
@@ -652,7 +657,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>95</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">39</td>
+<th data-quarto-table-cell-role="th">39</th>
 <td>P040</td>
 <td>Fertilizer_A</td>
 <td>11.4</td>
@@ -663,7 +668,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>104</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">40</td>
+<th data-quarto-table-cell-role="th">40</th>
 <td>P041</td>
 <td>Fertilizer_B</td>
 <td>10.3</td>
@@ -674,7 +679,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>101</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">41</td>
+<th data-quarto-table-cell-role="th">41</th>
 <td>P042</td>
 <td>Fertilizer_B</td>
 <td>9.8</td>
@@ -685,7 +690,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>102</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">42</td>
+<th data-quarto-table-cell-role="th">42</th>
 <td>P043</td>
 <td>Fertilizer_B</td>
 <td>11.0</td>
@@ -696,7 +701,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>103</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">43</td>
+<th data-quarto-table-cell-role="th">43</th>
 <td>P044</td>
 <td>Fertilizer_B</td>
 <td>10.7</td>
@@ -707,7 +712,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>99</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">44</td>
+<th data-quarto-table-cell-role="th">44</th>
 <td>P045</td>
 <td>Fertilizer_B</td>
 <td>9.9</td>
@@ -718,7 +723,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>98</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">45</td>
+<th data-quarto-table-cell-role="th">45</th>
 <td>P046</td>
 <td>Fertilizer_B</td>
 <td>11.2</td>
@@ -729,7 +734,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>104</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">46</td>
+<th data-quarto-table-cell-role="th">46</th>
 <td>P047</td>
 <td>Fertilizer_B</td>
 <td>11.6</td>
@@ -740,7 +745,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>102</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">47</td>
+<th data-quarto-table-cell-role="th">47</th>
 <td>P048</td>
 <td>Fertilizer_B</td>
 <td>10.1</td>
@@ -751,7 +756,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>97</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">48</td>
+<th data-quarto-table-cell-role="th">48</th>
 <td>P049</td>
 <td>Fertilizer_B</td>
 <td>9.7</td>
@@ -762,7 +767,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>96</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">49</td>
+<th data-quarto-table-cell-role="th">49</th>
 <td>P050</td>
 <td>Fertilizer_B</td>
 <td>10.9</td>
@@ -773,7 +778,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>105</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">50</td>
+<th data-quarto-table-cell-role="th">50</th>
 <td>P051</td>
 <td>Fertilizer_B</td>
 <td>11.3</td>
@@ -784,7 +789,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>101</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">51</td>
+<th data-quarto-table-cell-role="th">51</th>
 <td>P052</td>
 <td>Fertilizer_B</td>
 <td>10.0</td>
@@ -795,7 +800,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>99</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">52</td>
+<th data-quarto-table-cell-role="th">52</th>
 <td>P053</td>
 <td>Fertilizer_B</td>
 <td>10.5</td>
@@ -806,7 +811,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>100</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">53</td>
+<th data-quarto-table-cell-role="th">53</th>
 <td>P054</td>
 <td>Fertilizer_B</td>
 <td>10.8</td>
@@ -817,7 +822,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>103</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">54</td>
+<th data-quarto-table-cell-role="th">54</th>
 <td>P055</td>
 <td>Fertilizer_B</td>
 <td>9.6</td>
@@ -828,7 +833,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>97</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">55</td>
+<th data-quarto-table-cell-role="th">55</th>
 <td>P056</td>
 <td>Fertilizer_B</td>
 <td>11.4</td>
@@ -839,7 +844,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>104</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">56</td>
+<th data-quarto-table-cell-role="th">56</th>
 <td>P057</td>
 <td>Fertilizer_B</td>
 <td>10.2</td>
@@ -850,7 +855,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>98</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">57</td>
+<th data-quarto-table-cell-role="th">57</th>
 <td>P058</td>
 <td>Fertilizer_B</td>
 <td>10.6</td>
@@ -861,7 +866,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>101</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">58</td>
+<th data-quarto-table-cell-role="th">58</th>
 <td>P059</td>
 <td>Fertilizer_B</td>
 <td>9.4</td>
@@ -872,7 +877,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <td>95</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">59</td>
+<th data-quarto-table-cell-role="th">59</th>
 <td>P060</td>
 <td>Fertilizer_B</td>
 <td>11.5</td>
@@ -1026,14 +1031,14 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <section id="review-from-previous-weeks" class="level3">
 <h3 class="anchored" data-anchor-id="review-from-previous-weeks">Review from previous weeks</h3>
 <div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="375f07fc-fb89-4283-ba7c-806782b96adc">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>location_stats <span class="op">=</span> df.groupby(<span class="st">'treatment'</span>)[[<span class="st">'growth_cm'</span>]].agg([<span class="st">'mean'</span>, <span class="st">'median'</span>])</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>display(location_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>location_stats <span class="op">=</span> df.groupby(<span class="st">'treatment'</span>)[[<span class="st">'growth_cm'</span>]].agg([<span class="st">'mean'</span>, <span class="st">'median'</span>])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>display(location_stats)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="df-eccfb55e-650f-4554-8ad1-482ec8d9051d" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1052,17 +1057,17 @@ Saving to: ‘plant_growth_fertilizer.csv’
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Control</td>
+<th data-quarto-table-cell-role="th">Control</th>
 <td>4.645</td>
 <td>4.70</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Fertilizer_A</td>
+<th data-quarto-table-cell-role="th">Fertilizer_A</th>
 <td>6.975</td>
 <td>7.05</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Fertilizer_B</td>
+<th data-quarto-table-cell-role="th">Fertilizer_B</th>
 <td>8.845</td>
 <td>8.80</td>
 </tr>
@@ -1205,14 +1210,14 @@ Saving to: ‘plant_growth_fertilizer.csv’
 </div>
 </div>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="55e21f52-4c10-4654-bf2d-7d008cb86d18">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>variation_stats <span class="op">=</span> df.groupby(<span class="st">'treatment'</span>)[[<span class="st">'growth_cm'</span>]].agg([<span class="st">'std'</span>, <span class="st">'var'</span>, <span class="st">'min'</span>, <span class="st">'max'</span>])</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>display(variation_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>variation_stats <span class="op">=</span> df.groupby(<span class="st">'treatment'</span>)[[<span class="st">'growth_cm'</span>]].agg([<span class="st">'std'</span>, <span class="st">'var'</span>, <span class="st">'min'</span>, <span class="st">'max'</span>])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>display(variation_stats)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="df-6108cdbf-6ed2-44f3-a412-7192a261664b" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1235,21 +1240,21 @@ Saving to: ‘plant_growth_fertilizer.csv’
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Control</td>
+<th data-quarto-table-cell-role="th">Control</th>
 <td>0.331623</td>
 <td>0.109974</td>
 <td>4.1</td>
 <td>5.3</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Fertilizer_A</td>
+<th data-quarto-table-cell-role="th">Fertilizer_A</th>
 <td>0.482183</td>
 <td>0.232500</td>
 <td>6.1</td>
 <td>7.7</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Fertilizer_B</td>
+<th data-quarto-table-cell-role="th">Fertilizer_B</th>
 <td>0.527631</td>
 <td>0.278395</td>
 <td>7.8</td>
@@ -1394,13 +1399,13 @@ Saving to: ‘plant_growth_fertilizer.csv’
 </div>
 </div>
 <div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:564}}" data-outputid="e54df776-332a-47dd-8f79-9cfed4fe0761">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'treatment'</span>, y<span class="op">=</span><span class="st">'growth_cm'</span>, data<span class="op">=</span>df)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Plant Growth by Treatment (Boxplot)'</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Treatment'</span>)</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Growth (cm)'</span>)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">'y'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1417,7 +1422,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <section id="correlation" class="level3">
 <h3 class="anchored" data-anchor-id="correlation">Correlation</h3>
 <div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:467}}" data-outputid="e0219e11-efff-48aa-c1d8-fe737ccefe82">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">'sunlight_hours'</span>, y<span class="op">=</span><span class="st">'growth_cm'</span>, hue<span class="op">=</span><span class="st">'treatment'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">'sunlight_hours'</span>, y<span class="op">=</span><span class="st">'growth_cm'</span>, hue<span class="op">=</span><span class="st">'treatment'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1427,13 +1432,13 @@ Saving to: ‘plant_growth_fertilizer.csv’
 </div>
 </div>
 <div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:241}}" data-outputid="901e2a0e-13f5-4878-e244-b5c193fef5a4">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>correlation_by_treatment <span class="op">=</span> df.groupby(<span class="st">'treatment'</span>)[[<span class="st">'sunlight_hours'</span>, <span class="st">'growth_cm'</span>]].corr().unstack().iloc[:, <span class="dv">1</span>]</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>display(correlation_by_treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>correlation_by_treatment <span class="op">=</span> df.groupby(<span class="st">'treatment'</span>)[[<span class="st">'sunlight_hours'</span>, <span class="st">'growth_cm'</span>]].corr().unstack().iloc[:, <span class="dv">1</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>display(correlation_by_treatment)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1450,15 +1455,15 @@ Saving to: ‘plant_growth_fertilizer.csv’
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Control</td>
+<th data-quarto-table-cell-role="th">Control</th>
 <td>0.942878</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Fertilizer_A</td>
+<th data-quarto-table-cell-role="th">Fertilizer_A</th>
 <td>0.967761</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Fertilizer_B</td>
+<th data-quarto-table-cell-role="th">Fertilizer_B</th>
 <td>0.893200</td>
 </tr>
 </tbody>
@@ -1472,7 +1477,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <section id="sampling-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="sampling-distribution">Sampling Distribution</h2>
 <div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c143e2fd-e201-4e5b-a6f0-5cc8f032a318">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean, standard deviation, and count for each treatment group</span></span>
@@ -1504,7 +1509,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"95% Confidence Intervals for Mean Plant Growth (cm) by Treatment:"</span>)</span>
 <span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> treatment, ci <span class="kw">in</span> confidence_intervals.items():</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>treatment<span class="sc">}</span><span class="ss">: (</span><span class="sc">{</span>ci[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ci[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>treatment<span class="sc">}</span><span class="ss">: (</span><span class="sc">{</span>ci[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">, </span><span class="sc">{</span>ci[<span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>95% Confidence Intervals for Mean Plant Growth (cm) by Treatment:
   Control: (4.49, 4.80)
@@ -1528,7 +1533,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 </ul></li>
 </ul>
 <div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="0915fcaa-46e4-4387-aa09-358d234e5b46">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> levene</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> levene</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract growth data for each treatment group</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>control_growth <span class="op">=</span> df[df[<span class="st">'treatment'</span>] <span class="op">==</span> <span class="st">'Control'</span>][<span class="st">'growth_cm'</span>]</span>
@@ -1548,7 +1553,7 @@ Saving to: ‘plant_growth_fertilizer.csv’
 <span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This suggests that the assumption of homogeneity of variances is violated, which may impact the validity of some parametric tests like ANOVA."</span>)</span>
 <span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Based on Levene's test, we fail to reject the null hypothesis. There is no significant difference in variances between the groups (variances are equal)."</span>)</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This suggests that the assumption of homogeneity of variances is met, and parametric tests like ANOVA can be used."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This suggests that the assumption of homogeneity of variances is met, and parametric tests like ANOVA can be used."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Levene's Test Statistic: 2.20
 Levene's Test p-value: 0.120
@@ -1559,14 +1564,14 @@ This suggests that the assumption of homogeneity of variances is met, and parame
 </div>
 <p>Now let’s take a look at the distributions of the growth amounts for each treatment group to visually inspect the variances.</p>
 <div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-outputid="34cdc216-fb48-4b80-d5e5-deb17012937c">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> treatment <span class="kw">in</span> df[<span class="st">'treatment'</span>].unique():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> treatment <span class="kw">in</span> df[<span class="st">'treatment'</span>].unique():</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  subset <span class="op">=</span> df[df[<span class="st">'treatment'</span>] <span class="op">==</span> treatment]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  sns.histplot(subset[<span class="st">'growth_cm'</span>], label<span class="op">=</span>treatment, kde<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  plt.legend()</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  plt.title(<span class="ss">f'Distribution of Growth for </span><span class="sc">{</span>treatment<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  plt.xlabel(<span class="st">'Growth (cm)'</span>)</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  plt.ylabel(<span class="st">'Frequency'</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1602,7 +1607,7 @@ This suggests that the assumption of homogeneity of variances is met, and parame
 <h4 class="anchored" data-anchor-id="studentss-t-test-control-vs.-fertilizer-a">Students’s t-test: Control vs.&nbsp;Fertilizer A</h4>
 <p>Note if non equal variances you can perform a Welch’s t-test by flaging equal_var = False within the function.</p>
 <div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3c35f70d-4b1b-478c-ba44-deb6de6e92fd">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_ind</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_ind</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract growth data for Control and Fertilizer_A</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>control_growth <span class="op">=</span> df[df[<span class="st">'treatment'</span>] <span class="op">==</span> <span class="st">'Control'</span>][<span class="st">'growth_cm'</span>]</span>
@@ -1621,7 +1626,7 @@ This suggests that the assumption of homogeneity of variances is met, and parame
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"There is a statistically significant difference in mean plant growth between the Control group and Fertilizer A group."</span>)</span>
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Since the p-value (</span><span class="sc">{</span>p_value<span class="sc">:.3f}</span><span class="ss">) is greater than alpha (</span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">), we fail to reject the null hypothesis."</span>)</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"There is no statistically significant difference in mean plant growth between the Control group and Fertilizer A group."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"There is no statistically significant difference in mean plant growth between the Control group and Fertilizer A group."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Student's's t-statistic: -17.806
 p-value: 0.000
@@ -1650,7 +1655,7 @@ There is a statistically significant difference in mean plant growth between the
 <section id="one-way-anova-comparing-growth-across-all-treatments" class="level3">
 <h3 class="anchored" data-anchor-id="one-way-anova-comparing-growth-across-all-treatments">One-Way ANOVA: Comparing Growth across All Treatments</h3>
 <div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f51d23e8-0f79-451e-a450-db85b7138fd2">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> f_oneway</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> f_oneway</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract growth data for each treatment group</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>control_growth <span class="op">=</span> df[df[<span class="st">'treatment'</span>] <span class="op">==</span> <span class="st">'Control'</span>][<span class="st">'growth_cm'</span>]</span>
@@ -1671,7 +1676,7 @@ There is a statistically significant difference in mean plant growth between the
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"To find out which specific groups differ, post-hoc tests would be necessary."</span>)</span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Since the p-value (</span><span class="sc">{</span>p_value<span class="sc">:.3f}</span><span class="ss">) is greater than alpha (</span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">), we fail to reject the null hypothesis."</span>)</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"There is no statistically significant difference in mean plant growth among the treatment groups."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"There is no statistically significant difference in mean plant growth among the treatment groups."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>One-Way ANOVA F-statistic: 427.881
 One-Way ANOVA p-value: 0.000
@@ -1686,12 +1691,12 @@ To find out which specific groups differ, post-hoc tests would be necessary.</co
 <h3 class="anchored" data-anchor-id="post-hoc-analysis-tukeys-hsd-test">Post-hoc Analysis: Tukey’s HSD Test</h3>
 <p>Since the One-Way ANOVA showed a significant difference among the group means, we perform post-hoc tests to determine which specific pairs of groups are significantly different from each other. Tukey’s HSD is a common post-hoc test that controls for the family-wise error rate.</p>
 <div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="29438148-0893-4142-ba47-9d44c596dbc5">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.multicomp <span class="im">import</span> pairwise_tukeyhsd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.multicomp <span class="im">import</span> pairwise_tukeyhsd</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Tukey's HSD post-hoc test</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>tukey_result <span class="op">=</span> pairwise_tukeyhsd(endog<span class="op">=</span>df[<span class="st">'growth_cm'</span>], groups<span class="op">=</span>df[<span class="st">'treatment'</span>], alpha<span class="op">=</span><span class="fl">0.05</span>)</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tukey_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tukey_result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Multiple Comparison of Means - Tukey HSD, FWER=0.05     
 =============================================================
@@ -1724,7 +1729,7 @@ Fertilizer_A Fertilizer_B     1.87   0.0 1.5238 2.2162   True
 </ul>
 <p>Where: * <span class="math inline">\(SS_{between}\)</span> is the sum of squares between groups (variance explained by the treatment). * <span class="math inline">\(SS_{total}\)</span> is the total sum of squares (total variance in the dependent variable).</p>
 <div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="de5b471f-4e07-4083-951a-f60d650fc19e">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the ANOVA model using OLS</span></span>
@@ -1756,7 +1761,7 @@ Fertilizer_A Fertilizer_B     1.87   0.0 1.5238 2.2162   True
 <span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    interpretation <span class="op">=</span> <span class="st">"large"</span></span>
 <span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"This indicates a </span><span class="sc">{</span>interpretation<span class="sc">}</span><span class="ss"> effect of treatment on plant growth."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"This indicates a </span><span class="sc">{</span>interpretation<span class="sc">}</span><span class="ss"> effect of treatment on plant growth."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Eta-squared: 0.938
 This indicates a large effect of treatment on plant growth.</code></pre>
@@ -1778,7 +1783,7 @@ This indicates a large effect of treatment on plant growth.</code></pre>
 <p><strong>Interpretation of Cohen’s d (general guidelines by Cohen, 1988):</strong> * <strong>0.2</strong>: Small effect * <strong>0.5</strong>: Medium effect * <strong>0.8</strong>: Large effect</p>
 <p>Let’s calculate Cohen’s d for each pair from the Tukey’s HSD test.</p>
 <div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="eeb4e90d-2680-4c6b-f0d1-80243f404046">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the standard deviations for each group from the grouped_stats DataFrame</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>std_control <span class="op">=</span> grouped_stats.loc[<span class="st">'Control'</span>, <span class="st">'std'</span>]</span>
@@ -1816,7 +1821,7 @@ This indicates a large effect of treatment on plant growth.</code></pre>
 <span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Fertilizer A vs Fertilizer B</span></span>
 <span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>sp_ab <span class="op">=</span> pooled_std_dev(std_fertilizer_a, n_fertilizer_a, std_fertilizer_b, n_fertilizer_b)</span>
 <span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>d_ab <span class="op">=</span> cohen_d(mean_fertilizer_b, mean_fertilizer_a, sp_ab)</span>
-<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Fertilizer B vs Fertilizer A: </span><span class="sc">{</span>d_ab<span class="sc">:.3f}</span><span class="ss"> (</span><span class="ch">\"</span><span class="sc">{</span><span class="st">'Large'</span> <span class="cf">if</span> <span class="bu">abs</span>(d_ab) <span class="op">&gt;=</span> <span class="fl">0.8</span> <span class="cf">else</span> <span class="st">'Medium'</span> <span class="cf">if</span> <span class="bu">abs</span>(d_ab) <span class="op">&gt;=</span> <span class="fl">0.5</span> <span class="cf">else</span> <span class="st">'Small'</span> <span class="cf">if</span> <span class="bu">abs</span>(d_ab) <span class="op">&gt;=</span> <span class="fl">0.2</span> <span class="cf">else</span> <span class="st">'Very Small'</span><span class="sc">}</span><span class="ch">\"</span><span class="ss"> effect)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Fertilizer B vs Fertilizer A: </span><span class="sc">{</span>d_ab<span class="sc">:.3f}</span><span class="ss"> (</span><span class="ch">\"</span><span class="sc">{</span><span class="st">'Large'</span> <span class="cf">if</span> <span class="bu">abs</span>(d_ab) <span class="op">&gt;=</span> <span class="fl">0.8</span> <span class="cf">else</span> <span class="st">'Medium'</span> <span class="cf">if</span> <span class="bu">abs</span>(d_ab) <span class="op">&gt;=</span> <span class="fl">0.5</span> <span class="cf">else</span> <span class="st">'Small'</span> <span class="cf">if</span> <span class="bu">abs</span>(d_ab) <span class="op">&gt;=</span> <span class="fl">0.2</span> <span class="cf">else</span> <span class="st">'Very Small'</span><span class="sc">}</span><span class="ch">\"</span><span class="ss"> effect)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d for Pairwise Comparisons:
   Fertilizer A vs Control: 5.631 ("Large" effect)
@@ -1828,14 +1833,14 @@ This indicates a large effect of treatment on plant growth.</code></pre>
 <section id="linear-regression-models" class="level3">
 <h3 class="anchored" data-anchor-id="linear-regression-models">Linear Regression Models</h3>
 <div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="175f4d31-7adf-4f1f-9a70-8a4f7b0c0a9c">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the linear regression model: growth_cm as a function of sunlight_hours</span></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>model_linear <span class="op">=</span> ols(<span class="st">'growth_cm ~ sunlight_hours'</span>, data<span class="op">=</span>df).fit()</span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the summary of the regression model</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_linear.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_linear.summary())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
 ==============================================================================
@@ -1871,7 +1876,7 @@ Notes:
 <li><strong>Coefficients</strong>: These are the estimated values for the intercept and the slope of <code>sunlight_hours</code>.</li>
 </ul>
 <div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:564}}" data-outputid="c2092e5d-f344-4084-b1fa-c5b76b62a6fe">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'sunlight_hours'</span>, y<span class="op">=</span><span class="st">'growth_cm'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'treatment'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'sunlight_hours'</span>], model_linear.predict(df[<span class="st">'sunlight_hours'</span>]), color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Regression Line'</span>)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Simple Linear Regression of Growth vs. Sunlight Hours'</span>)</span>
@@ -1879,7 +1884,7 @@ Notes:
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Growth (cm)'</span>)</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1893,7 +1898,7 @@ Notes:
 <h3 class="anchored" data-anchor-id="multiple-linear-regression">Multiple Linear Regression</h3>
 <p>Now, let’s expand our regression analysis to include more variables. We will perform a multiple linear regression using <code>growth_cm</code> as the dependent variable and <code>sunlight_hours</code>, <code>water_ml_per_day</code>, and <code>treatment</code> as independent variables. Since <code>treatment</code> is a categorical variable, <code>statsmodels</code> will automatically create dummy variables for it.</p>
 <div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="76b7d003-7336-469e-b744-2359e8a0570b">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the multiple linear regression model</span></span>
@@ -1901,7 +1906,7 @@ Notes:
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>model_multiple <span class="op">=</span> ols(<span class="st">'growth_cm ~ sunlight_hours + water_ml_per_day + C(treatment)'</span>, data<span class="op">=</span>df).fit()</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the summary of the multiple regression model</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_multiple.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_multiple.summary())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
 ==============================================================================
@@ -1953,7 +1958,7 @@ strong multicollinearity or other numerical problems.</code></pre>
 <h3 class="anchored" data-anchor-id="checking-for-multicollinearity-with-a-correlation-matrix">Checking for Multicollinearity with a Correlation Matrix</h3>
 <p>Multicollinearity can be an issue in multiple regression, especially when the condition number is high (as noted in the previous model summary). Let’s examine the correlation between our independent variables: <code>sunlight_hours</code>, <code>water_ml_per_day</code>, and the dummy variables created from <code>treatment</code>.</p>
 <div id="cell-44" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:859}}" data-outputid="2e308975-016c-40bf-bf37-bb913ae8862e">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dummy variables for 'treatment'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dummy variables for 'treatment'</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df_dummies <span class="op">=</span> pd.get_dummies(df[<span class="st">'treatment'</span>], prefix<span class="op">=</span><span class="st">'treatment'</span>, drop_first<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine with numerical predictors</span></span>
@@ -1971,7 +1976,7 @@ strong multicollinearity or other numerical problems.</code></pre>
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
 <span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
 <span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Correlation Matrix of Independent Variables'</span>)</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Correlation Matrix of Predictors:</code></pre>
 </div>
@@ -1980,7 +1985,7 @@ strong multicollinearity or other numerical problems.</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1992,28 +1997,28 @@ strong multicollinearity or other numerical problems.</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">sunlight_hours</td>
+<th data-quarto-table-cell-role="th">sunlight_hours</th>
 <td>1.000000</td>
 <td>0.813936</td>
 <td>-0.034098</td>
 <td>0.262556</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">water_ml_per_day</td>
+<th data-quarto-table-cell-role="th">water_ml_per_day</th>
 <td>0.813936</td>
 <td>1.000000</td>
 <td>0.055296</td>
 <td>0.209334</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">treatment_Fertilizer_A</td>
+<th data-quarto-table-cell-role="th">treatment_Fertilizer_A</th>
 <td>-0.034098</td>
 <td>0.055296</td>
 <td>1.000000</td>
 <td>-0.500000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">treatment_Fertilizer_B</td>
+<th data-quarto-table-cell-role="th">treatment_Fertilizer_B</th>
 <td>0.262556</td>
 <td>0.209334</td>
 <td>-0.500000</td>
@@ -2177,7 +2182,7 @@ strong multicollinearity or other numerical problems.</code></pre>
 <h3 class="anchored" data-anchor-id="refitting-the-multiple-linear-regression-excluding-water_ml_per_day">Refitting the Multiple Linear Regression (Excluding <code>water_ml_per_day</code>)</h3>
 <p>Given the strong correlation between <code>sunlight_hours</code> and <code>water_ml_per_day</code>, we will refit the model without <code>water_ml_per_day</code> to see if it improves the stability and interpretability of the coefficients.</p>
 <div id="cell-47" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f5155333-6865-4326-c8df-0e15cb2ba68c">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the multiple linear regression model, excluding 'water_ml_per_day'</span></span>
@@ -2185,7 +2190,7 @@ strong multicollinearity or other numerical problems.</code></pre>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>model_refitted <span class="op">=</span> ols(<span class="st">'growth_cm ~ sunlight_hours + C(treatment)'</span>, data<span class="op">=</span>df).fit()</span>
 <span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the summary of the refitted regression model</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_refitted.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_refitted.summary())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
 ==============================================================================
@@ -2284,13 +2289,14 @@ Notes:
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

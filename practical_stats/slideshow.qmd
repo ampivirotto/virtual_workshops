@@ -9,82 +9,112 @@ format:
     controls: true
     transition: fade
     preview-links: auto
+    css: styles.css
 ---
 
-# Practical Statistics for Research Projects
+# INSERT QUESTION SLIDE
 
 ## Workshop Overview
 
 - Research questions → analysis plans
-- Exploratory data analysis
+- Exploratory data analysis (EDA)
 - Sampling & inference
 - Choosing statistical tests
 - Interpreting results
 
----
+------------------------------------------------------------------------
 
 ## Research Question → Analysis Plan
 
 Every analysis starts with a well-defined research question.
 
-::: {.incremental}
+::: incremental
 - Identify the **outcome** variable.
 - Identify predictor and grouping variables.
 - Determine whether observations are **independent** or **paired**.
-- Decide whether your goal is **association**, **comparison**, **prediction**, or **estimation**.
+- Decide whether your goal is **association**, **comparison**, **prediction**, or **estimation**. Note this will depend on your research question!
 :::
 
----
+------------------------------------------------------------------------
 
 ## Example
 
-**Research Question**
+**Our Research Question**
 
 Does fertilizer affect plant growth over a six-week period?
 
-- Measure plants at Week 0
-- Measure plants at Week 6
+::::: columns
+::: {.column width="50%"}
+![Plant growing over time from week 0 to week 6.](images/planting.jpg)
+:::
 
-> Add original fertilizer diagram here.
+::: {.column width="50%"}
+![Table of descriptions of each variable](images/description_variable.jpg)
+:::
+:::::
 
----
+------------------------------------------------------------------------
 
 ## Exploratory Data Analysis
 
 ### Data Types
 
+::::: columns
+::: {.column width="50%"}
 - Numerical
   - Continuous
   - Discrete
 - Categorical
   - Nominal
   - Ordinal
+:::
 
----
+::: {.column width="50%"}
+![Table of variable data types](images/variable_type.jpg)
+:::
+:::::
+
+------------------------------------------------------------------------
 
 ## Measures of Center
 
+::::: columns
+::: {.column width="50%"}
 - Mean
 - Median
+:::
 
-::: {.callout-tip}
+::: {.column width="50%"}
+![Mean and Median in table for three groups: Control, Fertilizer A and B](images/central_tendency.jpg)
+:::
+:::::
+
+::: callout-tip
 Which measure is more robust to outliers?
 :::
 
----
+------------------------------------------------------------------------
 
 ## Measures of Variability
 
+::::: columns
+::: {.column width="50%"}
 - Standard deviation
 - Variance
 - Percentiles
 - Range
+:::
 
-::: {.callout-warning}
+::: {.column width="50%"}
+![Variability estimates for the three groups: Control, A, and B](images/variability.jpg)
+:::
+:::::
+
+::: callout-warning
 Standard deviation and variance are sensitive to outliers.
 :::
 
----
+------------------------------------------------------------------------
 
 ## Visualizing Data
 
@@ -95,7 +125,7 @@ Standard deviation and variance are sensitive to outliers.
 
 > Replace with figures from PowerPoint.
 
----
+------------------------------------------------------------------------
 
 ## Correlation
 
@@ -104,7 +134,7 @@ Standard deviation and variance are sensitive to outliers.
 
 > Insert scatterplot graphic.
 
----
+------------------------------------------------------------------------
 
 ## Sampling Distributions
 
@@ -112,19 +142,20 @@ Standard deviation and variance are sensitive to outliers.
 - This variation is **sampling variability**.
 - Sampling distributions describe repeated samples.
 
----
+------------------------------------------------------------------------
 
 ## Confidence Intervals
 
 A 95% confidence interval is produced by a method that would capture the true population value about 95% of the time over repeated samples.
 
----
+------------------------------------------------------------------------
 
 ## Review of Hypothesis Testing
 
-:::: {.columns}
+::::: columns
 ::: {.column width="50%"}
 ### Null Hypothesis
+
 - No difference
 - No effect
 - No association
@@ -132,53 +163,46 @@ A 95% confidence interval is produced by a method that would capture the true po
 
 ::: {.column width="50%"}
 ### Alternative
+
 - Difference
 - Effect
 - Association
 :::
-::::
+:::::
 
----
+------------------------------------------------------------------------
 
 ## Choosing the Right Statistical Test
 
 > Insert decision tree from original slides.
 
----
+------------------------------------------------------------------------
 
 ## Parametric vs. Nonparametric
 
-:::: {.columns}
-::: {.column}
+::::: columns
+::: column
 ### Parametric
 
 - Normality
 - Equal variance
 - Independence
 
-Examples:
-- t-test
-- ANOVA
-- Pearson correlation
-- Linear regression
+Examples: - t-test - ANOVA - Pearson correlation - Linear regression
 :::
 
-::: {.column}
+::: column
 ### Nonparametric
 
 - Rank-based
 - Fewer assumptions
 - Robust to skew/outliers
 
-Examples:
-- Mann–Whitney U
-- Wilcoxon
-- Kruskal–Wallis
-- Spearman correlation
+Examples: - Mann–Whitney U - Wilcoxon - Kruskal–Wallis - Spearman correlation
 :::
-::::
+:::::
 
----
+------------------------------------------------------------------------
 
 ## t-Test
 
@@ -198,7 +222,7 @@ Types:
 Explain why multiple groups require ANOVA instead of repeated t-tests.
 :::
 
----
+------------------------------------------------------------------------
 
 ## ANOVA
 
@@ -207,7 +231,7 @@ Explain why multiple groups require ANOVA instead of repeated t-tests.
 - Two-way
 - MANOVA
 
----
+------------------------------------------------------------------------
 
 ## Effect Size
 
@@ -219,7 +243,7 @@ Examples:
 - Eta-squared
 - Correlation coefficient
 
----
+------------------------------------------------------------------------
 
 ## Interpretation Practice
 
@@ -231,20 +255,20 @@ What do these results tell us?
 
 Pause before revealing discussion.
 
----
+------------------------------------------------------------------------
 
 ## Practice: Which Test?
 
-1. Compare two independent treatment groups.
-2. Compare before vs. after measurements.
-3. Compare four fertilizer treatments.
-4. Assess relationship between height and biomass.
+1.  Compare two independent treatment groups.
+2.  Compare before vs. after measurements.
+3.  Compare four fertilizer treatments.
+4.  Assess relationship between height and biomass.
 
----
+------------------------------------------------------------------------
 
 ## Summary
 
-::: {.incremental}
+::: incremental
 - Start with the research question.
 - Identify variables.
 - Check assumptions.
@@ -252,7 +276,7 @@ Pause before revealing discussion.
 - Report effect sizes—not just p-values.
 :::
 
----
+------------------------------------------------------------------------
 
 ## Resources
 
