@@ -21,7 +21,6 @@ format:
 - Choosing statistical tests
 - Interpreting results
 
-------------------------------------------------------------------------
 
 # Research Question → Analysis Plan
 
@@ -34,7 +33,7 @@ Every analysis starts with a well-defined research question.
 - Decide whether your goal is **association**, **comparison**, **prediction**, or **estimation**. Note this will depend on your research question!
 :::
 
-------------------------------------------------------------------------
+
 
 # Example
 
@@ -42,7 +41,7 @@ Every analysis starts with a well-defined research question.
 
 Does fertilizer affect plant growth over a six-week period?
 
-::::: columns
+:::: columns
 ::: {.column width="50%"}
 ![Plant growing over time from week 0 to week 6.](images/planting.jpg)
 :::
@@ -50,15 +49,14 @@ Does fertilizer affect plant growth over a six-week period?
 ::: {.column width="50%"}
 ![Descriptions of each variable](images/description_variable.jpg)
 :::
-:::::
+::::
 
-------------------------------------------------------------------------
 
 # Exploratory Data Analysis
 
 ### Data Types
 
-::::: columns
+:::: columns
 ::: {.column width="50%"}
 - Numerical
   - Continuous
@@ -71,13 +69,12 @@ Does fertilizer affect plant growth over a six-week period?
 ::: {.column width="50%"}
 ![Variable data types](images/variable_type.jpg)
 :::
-:::::
+::::
 
-------------------------------------------------------------------------
 
 # Measures of Center
 
-::::: columns
+:::: columns
 ::: {.column width="50%"}
 - Mean
 - Median
@@ -86,17 +83,16 @@ Does fertilizer affect plant growth over a six-week period?
 ::: {.column width="50%"}
 ![Mean and Median for three groups: Control, Fertilizer A and B](images/central_tendency.jpg)
 :::
-:::::
+::::
 
 ::: callout-tip
 Which measure is more robust to outliers?
 :::
 
-------------------------------------------------------------------------
 
 # Measures of Variability
 
-::::: columns
+:::: columns
 ::: {.column width="50%"}
 - Standard deviation
 - Variance
@@ -107,18 +103,17 @@ Which measure is more robust to outliers?
 ::: {.column width="50%"}
 ![Variability estimates for the three groups: Control, A, and B](images/variability.jpg)
 :::
-:::::
+::::
 
 ::: callout-warning
 Standard deviation and variance are sensitive to outliers.
 :::
 
-------------------------------------------------------------------------
 
 # Visualizing Data
 
-::::: columns
-::: {.column width="50%"}
+:::: columns
+::: {.column width="50%"} {style="font-size: 60%;"}
 - To explore one quantitative variable:
   - Histogram: distribution shape
   - Boxplot: spread and outliers
@@ -143,7 +138,7 @@ Standard deviation and variance are sensitive to outliers.
 :::
 ::::
 
-------------------------------------------------------------------------
+
 
 # Correlation
 
@@ -159,7 +154,7 @@ Correlation coefficient is a metric that ranges from **-1** to **1** measuring t
 :::
 ::::
 
-------------------------------------------------------------------------
+
 
 # Sampling Distributions
 
@@ -169,17 +164,17 @@ Correlation coefficient is a metric that ranges from **-1** to **1** measuring t
 
 ![Example of sampling from a population.](images/sampling_distribution.gif)
 
-------------------------------------------------------------------------
+
 
 # Confidence Intervals
 
 A 95% confidence interval is produced by a method that would capture the true population value about 95% of the time over repeated samples.
 
-------------------------------------------------------------------------
+
 
 # Review of Hypothesis Testing
 
-::::: columns
+:::: columns
 ::: {.column width="50%"}
 ### Null Hypothesis
 
@@ -195,20 +190,20 @@ A 95% confidence interval is produced by a method that would capture the true po
 - Effect
 - Association
 :::
-:::::
+::::
 ![One tail versus two tail test diagram.](images/hypothesis_testing.jpeg)
 
-------------------------------------------------------------------------
+
 
 # Choosing the Right Statistical Test
 
 ![Use the chart to choose the right statistical test.](images/statistical_test.png)
 
-------------------------------------------------------------------------
+
 
 # Parametric vs. Nonparametric
 
-::::: columns
+:::: columns
 ::: column
 ### Parametric
 
@@ -228,9 +223,9 @@ Examples: - t-test - ANOVA - Pearson correlation - Linear regression
 
 Examples: - Mann–Whitney U - Wilcoxon - Kruskal–Wallis - Spearman correlation
 :::
-:::::
+::::
 
-------------------------------------------------------------------------
+
 
 # t-Test
 
@@ -250,7 +245,7 @@ Types:
 Explain why multiple groups require ANOVA instead of repeated t-tests.
 :::
 
-------------------------------------------------------------------------
+
 
 # ANOVA
 
@@ -259,7 +254,7 @@ Explain why multiple groups require ANOVA instead of repeated t-tests.
 - Two-way
 - MANOVA
 
-------------------------------------------------------------------------
+
 
 # Effect Size
 
@@ -271,7 +266,7 @@ Examples:
 - Eta-squared
 - Correlation coefficient
 
-------------------------------------------------------------------------
+
 
 # Interpretation Practice
 
@@ -281,7 +276,7 @@ What do these results tell us?
 - p = 0.01, Cohen's d = 0.25
 - p = 0.08, Cohen's d = 0.85, CI = -0.2 to 2.6 cm
 
-## Result Interpretations
+## Result Interpretations {style="font-size: 80%;"}
 
 - p = 0.001, Cohen's d = 0.90
   - Strong evidence of difference between the two groups with large effect size. 
@@ -296,7 +291,7 @@ What do these results tell us?
   - Confidence interval is very wide so more data would likely be helpful before drawing a conclusion.
 
 
-------------------------------------------------------------------------
+
 
 # Practice: Which Test?
 
@@ -305,7 +300,7 @@ What do these results tell us?
 3.  Compare four fertilizer treatments.
 4.  Assess relationship between height and biomass.
 
-## Which Test?
+## Which Test? {style="font-size: 80%;"}
 
 | Research question | Parametric option | Nonparametric alternative |
 |---|---|---|
@@ -314,7 +309,7 @@ What do these results tell us?
 | Compare four fertilizer treatments | One-way ANOVA | Kruskal–Wallis test |
 | Assess relationship between height and biomass | Pearson correlation / regression | Spearman correlation |
 
-------------------------------------------------------------------------
+
 
 # Summary
 
@@ -326,7 +321,7 @@ What do these results tell us?
 - Report effect sizes—not just p-values.
 :::
 
-------------------------------------------------------------------------
+
 
 # Resources
 
