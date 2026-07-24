@@ -13,20 +13,19 @@ execute:
 
 ::: section 
 
-## Jupyter Notebook
+**Jupyter Notebook**
 
 <a class="colab-button" href="https://colab.research.google.com/github/ampivirotto/virtual_workshops/blob/main/practical_stats/Practical_Statistics.ipynb" target="_blank"> Launch Full Notebook in Colab </a>
 
 :::
 
 
-::: section 
+::: section
 
-## Slide deck
+**Slide Deck**
 
 <iframe
   src="slideshow.html"
-  height="1000px"
   style="border: 1px solid #eee;"
   loading="lazy"
   allowfullscreen>

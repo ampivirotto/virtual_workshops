@@ -54,10 +54,9 @@ Does fertilizer affect plant growth over a six-week period?
 
 # Exploratory Data Analysis
 
-### Data Types
-
 :::: columns
 ::: {.column width="50%"}
+Data Types
 - Numerical
   - Continuous
   - Discrete
@@ -110,10 +109,10 @@ Standard deviation and variance are sensitive to outliers.
 :::
 
 
-# Visualizing Data
+# Visualizing Data {style="font-size: 60%;"}
 
 :::: columns
-::: {.column width="50%"} {style="font-size: 60%;"}
+::: {.column width="50%"}
 - To explore one quantitative variable:
   - Histogram: distribution shape
   - Boxplot: spread and outliers
@@ -145,11 +144,13 @@ Standard deviation and variance are sensitive to outliers.
 :::: {.columns}
 ::: {.column width="50%"}
 ![Scatterplot comparing the number of sunlight hours to growth for the three groups](images/scatterplot.png)
+
 Scatterplots visualize association.
 :::
 
 ::: {.column width="50%"}
 ![Correlations for each of the three groups: Control, A, and B](images/correllation.jpg)
+
 Correlation coefficient is a metric that ranges from **-1** to **1** measuring the association between two numerical variables.
 :::
 ::::
@@ -176,7 +177,7 @@ A 95% confidence interval is produced by a method that would capture the true po
 
 :::: columns
 ::: {.column width="50%"}
-### Null Hypothesis
+**Null Hypothesis**
 
 - No difference
 - No effect
@@ -184,14 +185,14 @@ A 95% confidence interval is produced by a method that would capture the true po
 :::
 
 ::: {.column width="50%"}
-### Alternative
+**Alternative Hypothesis** 
 
 - Difference
 - Effect
 - Association
 :::
 ::::
-![One tail versus two tail test diagram.](images/hypothesis_testing.jpeg)
+![One tail versus two tail test diagram.](images/hypothesis_testing.jpeg){width="75%"}
 
 
 
@@ -205,7 +206,7 @@ A 95% confidence interval is produced by a method that would capture the true po
 
 :::: columns
 ::: column
-### Parametric
+**Parametric**
 
 - Normality
 - Equal variance
@@ -215,7 +216,7 @@ Examples: - t-test - ANOVA - Pearson correlation - Linear regression
 :::
 
 ::: column
-### Nonparametric
+**Nonparametric**
 
 - Rank-based
 - Fewer assumptions
@@ -300,7 +301,7 @@ What do these results tell us?
 3.  Compare four fertilizer treatments.
 4.  Assess relationship between height and biomass.
 
-## Which Test? {style="font-size: 80%;"}
+## Which Test? {style="font-size: 85%;"}
 
 | Research question | Parametric option | Nonparametric alternative |
 |---|---|---|
@@ -318,7 +319,7 @@ What do these results tell us?
 - Identify variables.
 - Check assumptions.
 - Choose the appropriate test.
-- Report effect sizes—not just p-values.
+- Report effect sizes (not just p-values).
 :::
 
 
