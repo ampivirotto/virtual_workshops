@@ -3,7 +3,6 @@ title: "Practical Statistics for Research Projects"
 author: "Alyssa Pivirotto"
 format:
   revealjs:
-    theme: simple
     slide-number: true
     progress: true
     controls: true
@@ -11,10 +10,6 @@ format:
     preview-links: auto
     css: styles.css
     navigation-mode: grid
-    scrollable: true
-    center: false
-    width: 1050
-    height: 700
 ---
 
 
