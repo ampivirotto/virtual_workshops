@@ -5,17 +5,32 @@ format:
         include-in-header: home_button.html
 ---
 
-::: {.section} 
+::: section
 
-**Jupyter Notebook**
+## Jupyter Notebook
+
+Want to experiment with the conceptual topics discussed? Try the going through the tutorial in Python in Google Colab. 
 
 <a class="colab-button" href="https://colab.research.google.com/github/ampivirotto/virtual_workshops/blob/main/practical_stats/Practical_Statistics.ipynb" target="_blank"> Launch Full Notebook in Colab </a>
 
 :::
 
+::: section
 
-::: {.section}
+## Slideshow 
 
-**Slide Deck**
+<style>
+.slide-deck {
+  border: 3px solid #dee2e6;
+  width: 100%;
+  height: 475px;
+}
+</style>
 
-::: 
+<div>
+```{=html}
+<iframe class="slide-deck" src="slideshow.html"></iframe>
+```
+</div>
+
+:::
