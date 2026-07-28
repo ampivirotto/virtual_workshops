@@ -142,7 +142,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>In honor of Jane Austen’s 250th birthday we will be using her novels to begin to explore text analysis. You’ll learn how to analyze the text of Jane Austen’s novels using Python. We’ll cover text collection, sentiment analysis, and some basic visualization techniques.</p>
-<div id="e99eb74e" class="cell" data-execution_count="4">
+<p>First let’s load some libraries that we will need for this analysis.</p>
+<div id="e99eb74e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ecb9b4d4-3070-431f-ff8f-2beb1bf558ad">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Import necessary libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">## data table manipulation and analysis</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -160,68 +161,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.sentiment <span class="im">import</span> SentimentIntensityAnalyzer  <span class="co">## library for sentiment analysis</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">## plotting and visualization</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg ansi-bold">AttributeError</span>                            Traceback (most recent call last)
-Cell <span class="ansi-green-fg ansi-bold">In[4], line 3</span>
-<span class="ansi-green-fg">      1</span> <span style="font-style:italic;color:rgb(95,135,135)">## Import necessary libraries</span>
-<span class="ansi-green-fg">      2</span> <span style="font-style:italic;color:rgb(95,135,135)">## data table manipulation and analysis</span>
-<span class="ansi-green-fg ansi-bold">----&gt; 3</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> <span style="font-weight:bold;color:rgb(0,0,255)">pandas</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> <span style="font-weight:bold;color:rgb(0,0,255)">pd</span>
-<span class="ansi-green-fg">      5</span> <span style="font-style:italic;color:rgb(95,135,135)">## regular expressions, csv handling, counting elements</span>
-<span class="ansi-green-fg">      6</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> <span style="font-weight:bold;color:rgb(0,0,255)">re</span>
-
-File <span class="ansi-green-fg ansi-bold">c:\Users\apivirotto\AppData\Local\anaconda3\Lib\site-packages\pandas\__init__.py:26</span>
-<span class="ansi-green-fg">     22</span> <span style="font-weight:bold;color:rgb(0,135,0)">del</span> _hard_dependencies, _dependency, _missing_dependencies
-<span class="ansi-green-fg">     24</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">     25</span>     <span style="font-style:italic;color:rgb(95,135,135)"># numpy compat</span>
-<span class="ansi-green-fg ansi-bold">---&gt; 26</span>     <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">compat</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> (
-<span class="ansi-green-fg">     27</span>         is_numpy_dev <span style="font-weight:bold;color:rgb(0,135,0)">as</span> _is_numpy_dev,  <span style="font-style:italic;color:rgb(95,135,135)"># pyright: ignore[reportUnusedImport] # noqa: F401</span>
-<span class="ansi-green-fg">     28</span>     )
-<span class="ansi-green-fg">     29</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">ImportError</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> _err:  <span style="font-style:italic;color:rgb(95,135,135)"># pragma: no cover</span>
-<span class="ansi-green-fg">     30</span>     _module <span style="color:rgb(98,98,98)">=</span> _err<span style="color:rgb(98,98,98)">.</span>name
-
-File <span class="ansi-green-fg ansi-bold">c:\Users\apivirotto\AppData\Local\anaconda3\Lib\site-packages\pandas\compat\__init__.py:28</span>
-<span class="ansi-green-fg">     17</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">compat</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">_constants</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> (
-<span class="ansi-green-fg">     18</span>     IS64,
-<span class="ansi-green-fg">     19</span>     ISMUSL,
-<span class="ansi-green-fg ansi-bold">   (...)</span>
-<span class="ansi-green-fg">     25</span>     WARNING_CHECK_DISABLED,
-<span class="ansi-green-fg">     26</span> )
-<span class="ansi-green-fg">     27</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> <span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">compat</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">compressors</span>
-<span class="ansi-green-fg ansi-bold">---&gt; 28</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">compat</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">numpy</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> is_numpy_dev
-<span class="ansi-green-fg">     29</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">compat</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">pyarrow</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> (
-<span class="ansi-green-fg">     30</span>     HAS_PYARROW,
-<span class="ansi-green-fg">     31</span>     pa_version_under10p1,
-<span class="ansi-green-fg ansi-bold">   (...)</span>
-<span class="ansi-green-fg">     41</span>     pa_version_under21p0,
-<span class="ansi-green-fg">     42</span> )
-<span class="ansi-green-fg">     44</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> TYPE_CHECKING:
-
-File <span class="ansi-green-fg ansi-bold">c:\Users\apivirotto\AppData\Local\anaconda3\Lib\site-packages\pandas\compat\numpy\__init__.py:9</span>
-<span class="ansi-green-fg">      6</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">util</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">version</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> Version
-<span class="ansi-green-fg">      8</span> <span style="font-style:italic;color:rgb(95,135,135)"># numpy versioning</span>
-<span class="ansi-green-fg ansi-bold">----&gt; 9</span> _np_version <span style="color:rgb(98,98,98)">=</span> np<span style="color:rgb(98,98,98)">.</span>__version__
-<span class="ansi-green-fg">     10</span> _nlv <span style="color:rgb(98,98,98)">=</span> Version(_np_version)
-<span class="ansi-green-fg">     11</span> np_version_lt1p23 <span style="color:rgb(98,98,98)">=</span> _nlv <span style="color:rgb(98,98,98)">&lt;</span> Version(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">1.23</span><span style="color:rgb(175,0,0)">"</span>)
-
-<span class="ansi-red-fg ansi-bold">AttributeError</span>: module 'numpy' has no attribute '__version__'</pre>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  nltk.download(<span class="st">'stopwords'</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">## plotting and visualization</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Unzipping corpora/stopwords.zip.</code></pre>
 </div>
 </div>
-</div>
-<div id="c81447d9" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>GUTENBERG_CSV_URL <span class="op">=</span> <span class="st">"https://www.gutenberg.org/cache/epub/feeds/pg_catalog.csv.gz"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(GUTENBERG_CSV_URL)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> BytesIO(r.content) <span class="im">as</span> f:</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(f, compression<span class="op">=</span><span class="st">'gzip'</span>, quoting<span class="op">=</span>csv.QUOTE_ALL)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<div>
+<p>Our goals in this tutorial is to: 1. Identify the top ten most common words in the Jane Austen text of your choice. 2. Compare the sentiment analysis scores across all of Jane Austen’s works.</p>
+<hr>
+<p>Before we do that we have to figure out how to easily access the text for Austen’s entire corpus. For our purposes we can use Project Gutenberg to grab the text. We’re going to first grab the entire Project Gutenberg catalog to see what texts are included.</p>
+<p><strong>Project Gutenberg</strong> is an online, free library of more than 75,000 free eBooks especially older, classic works in the public domain.</p>
+<p>We have a URL link to a catalog file which we’re going to read in as a Table using <code>pandas</code> and <code>requests</code>.</p>
+<div id="c81447d9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:293}}" data-outputid="3c5d91c5-7b53-40f7-c779-174b1567cb65">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gutenberg_catalog_url <span class="op">=</span> <span class="st">"https://www.gutenberg.org/cache/epub/feeds/pg_catalog.csv.gz"</span> <span class="co">## URL that points to the entire catalog file</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(gutenberg_catalog_url) <span class="co">## using requests module grab the file</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> BytesIO(r.content) <span class="im">as</span> f: <span class="co">## unzip file and save as table object in variable `df`</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(f, compression<span class="op">=</span><span class="st">'gzip'</span>, quoting<span class="op">=</span>csv.QUOTE_ALL)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div id="df-926cd136-55dc-4857-8f94-e285ce81e670" class="colab-df-container">
+    <div>
 
 
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -304,14 +272,1017 @@ File <span class="ansi-green-fg ansi-bold">c:\Users\apivirotto\AppData\Local\ana
 </table>
 
 </div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-926cd136-55dc-4857-8f94-e285ce81e670')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-926cd136-55dc-4857-8f94-e285ce81e670 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-926cd136-55dc-4857-8f94-e285ce81e670');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    </div>
+  </div>
 </div>
 </div>
-<div id="6cb93fe7" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>austen_rows <span class="op">=</span> df[(df[<span class="st">'Authors'</span>].<span class="bu">str</span>.contains(<span class="st">'Austen, Jane'</span>, na<span class="op">=</span><span class="va">False</span>)) <span class="op">&amp;</span> (df[<span class="st">'Type'</span>] <span class="op">==</span> <span class="st">'Text'</span>) <span class="op">&amp;</span> (df[<span class="st">'Language'</span>] <span class="op">==</span> <span class="st">'en'</span>)][:<span class="dv">8</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>austen_rows</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<div>
+<p>A couple things to consider: - What do you notice about the data table? - What variables are there? - How might we identify the texts that belong to Jane Austen?</p>
+<hr>
+<p>You might have said that we can select just those rows where ‘Austen, Jane’ appears in the Authors column. Let’s try that!</p>
+<div id="dW-1KNtJiD4r" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-outputid="d0e35719-2b14-4262-f134-24270f9e9ad2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'Authors'</span>].<span class="bu">str</span>.contains(<span class="st">"Austen, Jane"</span>, na <span class="op">=</span> <span class="va">False</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="df-c317ad5e-e5e1-4ed8-a17f-2cb3548ad21f" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Text#</th>
+<th data-quarto-table-cell-role="th">Type</th>
+<th data-quarto-table-cell-role="th">Issued</th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">Language</th>
+<th data-quarto-table-cell-role="th">Authors</th>
+<th data-quarto-table-cell-role="th">Subjects</th>
+<th data-quarto-table-cell-role="th">LoCC</th>
+<th data-quarto-table-cell-role="th">Bookshelves</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">104</th>
+<td>105</td>
+<td>Text</td>
+<td>1994-02-01</td>
+<td>Persuasion</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">120</th>
+<td>121</td>
+<td>Text</td>
+<td>1994-04-01</td>
+<td>Northanger Abbey</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Gothic Fiction; Category: Novels; Category: Cl...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">140</th>
+<td>141</td>
+<td>Text</td>
+<td>1994-06-01</td>
+<td>Mansfield Park</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">157</th>
+<td>158</td>
+<td>Text</td>
+<td>1994-08-01</td>
+<td>Emma</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>Humorous stories; England -- Fiction; Young wo...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">160</th>
+<td>161</td>
+<td>Text</td>
+<td>1994-09-01</td>
+<td>Sense and Sensibility</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">927</th>
+<td>946</td>
+<td>Text</td>
+<td>1997-06-01</td>
+<td>Lady Susan</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Widows -- Fiction; Mate se...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1190</th>
+<td>1212</td>
+<td>Text</td>
+<td>1998-02-01</td>
+<td>Love and Freindship [sic]</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>Essays; Epistolary fiction; England -- Social ...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Humour; Category:...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1320</th>
+<td>1342</td>
+<td>Text</td>
+<td>1998-06-01</td>
+<td>Pride and Prejudice</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Best Books Ever Listings; Harvard Classics; Ca...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">19768</th>
+<td>19839</td>
+<td>Sound</td>
+<td>2006-11-18</td>
+<td>Emma</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>Humorous stories; England -- Fiction; Young wo...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">20611</th>
+<td>20682</td>
+<td>Sound</td>
+<td>2007-02-03</td>
+<td>Northanger Abbey</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">20615</th>
+<td>20686</td>
+<td>Sound</td>
+<td>2007-02-03</td>
+<td>Pride and Prejudice</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Best Books Ever Listings; Harvard Classics</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">20616</th>
+<td>20687</td>
+<td>Sound</td>
+<td>2007-02-03</td>
+<td>Pride and Prejudice</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Best Books Ever Listings; Harvard Classics</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">21768</th>
+<td>21839</td>
+<td>Text</td>
+<td>2007-06-15</td>
+<td>Sense and Sensibility</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Dobson, Austin, 1840-...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">22882</th>
+<td>22953</td>
+<td>Sound</td>
+<td>2007-10-01</td>
+<td>Lady Susan</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Widows -- Fiction; Mate se...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">22883</th>
+<td>22954</td>
+<td>Sound</td>
+<td>2007-10-01</td>
+<td>Love and Freindship [sic]</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>Epistolary fiction; England -- Social life and...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">22891</th>
+<td>22962</td>
+<td>Sound</td>
+<td>2007-10-01</td>
+<td>Mansfield Park</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">22892</th>
+<td>22963</td>
+<td>Sound</td>
+<td>2007-10-01</td>
+<td>Persuasion</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">22893</th>
+<td>22964</td>
+<td>Sound</td>
+<td>2007-10-01</td>
+<td>Sense and Sensibility</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">25875</th>
+<td>25946</td>
+<td>Text</td>
+<td>2008-07-01</td>
+<td>Gevoel en verstand</td>
+<td>nl</td>
+<td>Austen, Jane, 1775-1817; Loman-van Uildriks, G...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">26230</th>
+<td>26301</td>
+<td>Sound</td>
+<td>2008-08-01</td>
+<td>Pride and Prejudice</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Best Books Ever Listings</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">31027</th>
+<td>31100</td>
+<td>Text</td>
+<td>2010-01-25</td>
+<td>The Complete Project Gutenberg Works of Jane A...</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Widger, David, 1932-2...</td>
+<td>Love stories, English; England -- Social life ...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">33315</th>
+<td>33388</td>
+<td>Text</td>
+<td>2010-08-09</td>
+<td>Raison et sensibilité, ou les deux manières d'...</td>
+<td>fr</td>
+<td>Austen, Jane, 1775-1817; Montolieu, Isabelle d...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>FR Littérature; Category: Romance; Category: N...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">35078</th>
+<td>35151</td>
+<td>Text</td>
+<td>2011-02-03</td>
+<td>Raison et sensibilité, ou les deux manières d'...</td>
+<td>fr</td>
+<td>Austen, Jane, 1775-1817; Montolieu, Isabelle d...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>FR Littérature; Category: Romance; Category: N...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">35090</th>
+<td>35163</td>
+<td>Text</td>
+<td>2011-02-04</td>
+<td>Raison et sensibilité, ou les deux manières d'...</td>
+<td>fr</td>
+<td>Austen, Jane, 1775-1817; Montolieu, Isabelle d...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>FR Littérature; Category: Romance; Category: N...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">36703</th>
+<td>36777</td>
+<td>Text</td>
+<td>2011-07-20</td>
+<td>Persuasion</td>
+<td>fr</td>
+<td>Austen, Jane, 1775-1817; Letorsay, Madame [Tra...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>FR Littérature; Category: Romance; Category: N...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">37357</th>
+<td>37431</td>
+<td>Text</td>
+<td>2011-09-15</td>
+<td>Pride and Prejudice, a play founded on Jane Au...</td>
+<td>en</td>
+<td>MacKaye, Steele, Mrs., 1845-1924; Austen, Jane...</td>
+<td>England -- Drama; Courtship -- Drama; Young wo...</td>
+<td>PR</td>
+<td>Category: Plays/Films/Dramas; Category: Britis...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">37560</th>
+<td>37634</td>
+<td>Text</td>
+<td>2011-10-05</td>
+<td>Raison et sensibilité, ou les deux manières d'...</td>
+<td>fr</td>
+<td>Austen, Jane, 1775-1817; Montolieu, Isabelle d...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>FR Littérature; Category: Novels; Category: Br...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">42003</th>
+<td>42078</td>
+<td>Text</td>
+<td>2013-02-12</td>
+<td>The Letters of Jane Austen\r\nSelected from th...</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Coolidge, Susan, 1835...</td>
+<td>Novelists, English -- 19th century -- Correspo...</td>
+<td>PR</td>
+<td>Category: Biographies; Category: Essays, Lette...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">42596</th>
+<td>42671</td>
+<td>Text</td>
+<td>2013-05-09</td>
+<td>Pride and Prejudice</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Chapman, R. W. (Rober...</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Best Books Ever Listings; Category: Romance; C...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">43666</th>
+<td>43741</td>
+<td>Text</td>
+<td>2013-09-16</td>
+<td>Old friends and new fancies</td>
+<td>en</td>
+<td>Brinton, Sybil G. (Sybil Grace), 1874-1928; Au...</td>
+<td>Mate selection -- Fiction; Courtship -- Fictio...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">45111</th>
+<td>45186</td>
+<td>Text</td>
+<td>2014-03-22</td>
+<td>Ylpeys ja ennakkoluulo</td>
+<td>fi</td>
+<td>Austen, Jane, 1775-1817; Joutsen, O. A. (Otto ...</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">63488</th>
+<td>63569</td>
+<td>Text</td>
+<td>2020-10-28</td>
+<td>The Watsons: By Jane Austen, Concluded by L. O...</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Oulton, L.; Austen-Le...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">74053</th>
+<td>74233</td>
+<td>Text</td>
+<td>2024-08-12</td>
+<td>Fragment of a novel written by Jane Austen, Ja...</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Chapman, R. W. (Rober...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">76934</th>
+<td>77117</td>
+<td>Text</td>
+<td>2025-10-24</td>
+<td>The Watsons</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Brown, Francis, 1874-...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">78469</th>
+<td>78656</td>
+<td>Text</td>
+<td>2026-05-11</td>
+<td>Duologues and scenes from the novels of Jane A...</td>
+<td>en</td>
+<td>Filippi, Rosina, 1866-1930; Austen, Jane, 1775...</td>
+<td>England -- Social life and customs -- Drama; A...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c317ad5e-e5e1-4ed8-a17f-2cb3548ad21f')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-c317ad5e-e5e1-4ed8-a17f-2cb3548ad21f button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-c317ad5e-e5e1-4ed8-a17f-2cb3548ad21f');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    </div>
+  </div>
+</div>
+</div>
+<p>What do you notice? Take a look in the Type, Language, Title, and Author columns.</p>
+<p>Maybe you noticed that the there are a combination of both text and sound (audio) book options in the table. We’re only concerned with text data here so we can filter the sound ones out.</p>
+<p>You might have also noticed that in the Language column that we have several French texts along with a few other languages as well. We can filter for only english text as well. __________________________________________________________________________</p>
+<p>The code snippet below filters the <code>df</code> DataFrame to select only entries that meet specific criteria for Jane Austen’s novels:</p>
+<ol type="1">
+<li><strong><code>df['Authors'].str.contains('Austen, Jane', na=False)</code></strong>: This checks the ‘Authors’ column for entries that contain the string ‘Austen, Jane’. The <code>na=False</code> argument ensures that <code>NaN</code> (Not a Number) values in the ‘Authors’ column are treated as <code>False</code> and don’t raise an error.</li>
+<li><strong><code>df['Type'] == 'Text'</code></strong>: This filters for entries where the ‘Type’ column is exactly ‘Text’, ensuring we’re only looking at actual books and not other content types.</li>
+<li><strong><code>df['Language'] == 'en'</code></strong>: This restricts the results to books written in English.</li>
+</ol>
+<p>These three conditions are combined using the <code>&amp;</code> (AND) operator, so only rows that satisfy all three conditions are selected.</p>
+<div id="6cb93fe7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:926}}" data-outputid="ad0850d5-f665-4ea3-95e0-98cab590b856">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>austen_rows <span class="op">=</span> df[(df[<span class="st">'Authors'</span>].<span class="bu">str</span>.contains(<span class="st">'Austen, Jane'</span>, na<span class="op">=</span><span class="va">False</span>)) <span class="op">&amp;</span> (df[<span class="st">'Type'</span>] <span class="op">==</span> <span class="st">'Text'</span>) <span class="op">&amp;</span> (df[<span class="st">'Language'</span>] <span class="op">==</span> <span class="st">'en'</span>)]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>austen_rows</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="df-8d9ee690-18bd-4513-9a74-07f3a1983e26" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Text#</th>
+<th data-quarto-table-cell-role="th">Type</th>
+<th data-quarto-table-cell-role="th">Issued</th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">Language</th>
+<th data-quarto-table-cell-role="th">Authors</th>
+<th data-quarto-table-cell-role="th">Subjects</th>
+<th data-quarto-table-cell-role="th">LoCC</th>
+<th data-quarto-table-cell-role="th">Bookshelves</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">104</th>
+<td>105</td>
+<td>Text</td>
+<td>1994-02-01</td>
+<td>Persuasion</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">120</th>
+<td>121</td>
+<td>Text</td>
+<td>1994-04-01</td>
+<td>Northanger Abbey</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Gothic Fiction; Category: Novels; Category: Cl...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">140</th>
+<td>141</td>
+<td>Text</td>
+<td>1994-06-01</td>
+<td>Mansfield Park</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">157</th>
+<td>158</td>
+<td>Text</td>
+<td>1994-08-01</td>
+<td>Emma</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>Humorous stories; England -- Fiction; Young wo...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">160</th>
+<td>161</td>
+<td>Text</td>
+<td>1994-09-01</td>
+<td>Sense and Sensibility</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">927</th>
+<td>946</td>
+<td>Text</td>
+<td>1997-06-01</td>
+<td>Lady Susan</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Widows -- Fiction; Mate se...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1190</th>
+<td>1212</td>
+<td>Text</td>
+<td>1998-02-01</td>
+<td>Love and Freindship [sic]</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>Essays; Epistolary fiction; England -- Social ...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Humour; Category:...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1320</th>
+<td>1342</td>
+<td>Text</td>
+<td>1998-06-01</td>
+<td>Pride and Prejudice</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Best Books Ever Listings; Harvard Classics; Ca...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">21768</th>
+<td>21839</td>
+<td>Text</td>
+<td>2007-06-15</td>
+<td>Sense and Sensibility</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Dobson, Austin, 1840-...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">31027</th>
+<td>31100</td>
+<td>Text</td>
+<td>2010-01-25</td>
+<td>The Complete Project Gutenberg Works of Jane A...</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Widger, David, 1932-2...</td>
+<td>Love stories, English; England -- Social life ...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">37357</th>
+<td>37431</td>
+<td>Text</td>
+<td>2011-09-15</td>
+<td>Pride and Prejudice, a play founded on Jane Au...</td>
+<td>en</td>
+<td>MacKaye, Steele, Mrs., 1845-1924; Austen, Jane...</td>
+<td>England -- Drama; Courtship -- Drama; Young wo...</td>
+<td>PR</td>
+<td>Category: Plays/Films/Dramas; Category: Britis...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">42003</th>
+<td>42078</td>
+<td>Text</td>
+<td>2013-02-12</td>
+<td>The Letters of Jane Austen\r\nSelected from th...</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Coolidge, Susan, 1835...</td>
+<td>Novelists, English -- 19th century -- Correspo...</td>
+<td>PR</td>
+<td>Category: Biographies; Category: Essays, Lette...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">42596</th>
+<td>42671</td>
+<td>Text</td>
+<td>2013-05-09</td>
+<td>Pride and Prejudice</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Chapman, R. W. (Rober...</td>
+<td>England -- Fiction; Young women -- Fiction; Lo...</td>
+<td>PR</td>
+<td>Best Books Ever Listings; Category: Romance; C...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">43666</th>
+<td>43741</td>
+<td>Text</td>
+<td>2013-09-16</td>
+<td>Old friends and new fancies</td>
+<td>en</td>
+<td>Brinton, Sybil G. (Sybil Grace), 1874-1928; Au...</td>
+<td>Mate selection -- Fiction; Courtship -- Fictio...</td>
+<td>PR</td>
+<td>Category: Romance; Category: Novels; Category:...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">63488</th>
+<td>63569</td>
+<td>Text</td>
+<td>2020-10-28</td>
+<td>The Watsons: By Jane Austen, Concluded by L. O...</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Oulton, L.; Austen-Le...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">74053</th>
+<td>74233</td>
+<td>Text</td>
+<td>2024-08-12</td>
+<td>Fragment of a novel written by Jane Austen, Ja...</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Chapman, R. W. (Rober...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>Category: Novels; Category: British Literature</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">76934</th>
+<td>77117</td>
+<td>Text</td>
+<td>2025-10-24</td>
+<td>The Watsons</td>
+<td>en</td>
+<td>Austen, Jane, 1775-1817; Brown, Francis, 1874-...</td>
+<td>England -- Social life and customs -- 19th cen...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">78469</th>
+<td>78656</td>
+<td>Text</td>
+<td>2026-05-11</td>
+<td>Duologues and scenes from the novels of Jane A...</td>
+<td>en</td>
+<td>Filippi, Rosina, 1866-1930; Austen, Jane, 1775...</td>
+<td>England -- Social life and customs -- Drama; A...</td>
+<td>PR</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-8d9ee690-18bd-4513-9a74-07f3a1983e26')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-8d9ee690-18bd-4513-9a74-07f3a1983e26 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-8d9ee690-18bd-4513-9a74-07f3a1983e26');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+  <div id="id_a983b4c5-1a75-497d-9146-5a6f62fa1c78">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('austen_rows')" title="Generate code using this dataframe." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"></path>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_a983b4c5-1a75-497d-9146-5a6f62fa1c78 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('austen_rows');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<p>This still leaves us with several replicates of the same book (reprints) along with other texts that we might be less interested in such as the anthology works, adaptations, and fragments of novels. Let’s now select just for texts written solely by Jane Austen.</p>
+<div id="L08wIsBbqdtm" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:439}}" data-outputid="e5599b8c-05e3-4215-a71d-a7f39d100673">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>austen_rows <span class="op">=</span> austen_rows[austen_rows[<span class="st">'Authors'</span>] <span class="op">==</span> <span class="st">'Austen, Jane, 1775-1817'</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>austen_rows</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="df-41b3fad4-6c01-4b8f-ae76-e9f501c6e47a" class="colab-df-container">
+    <div>
 
 
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -430,110 +1401,1017 @@ File <span class="ansi-green-fg ansi-bold">c:\Users\apivirotto\AppData\Local\ana
 </table>
 
 </div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-41b3fad4-6c01-4b8f-ae76-e9f501c6e47a')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-41b3fad4-6c01-4b8f-ae76-e9f501c6e47a button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-41b3fad4-6c01-4b8f-ae76-e9f501c6e47a');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+  <div id="id_668df011-b843-43e4-9637-424b084f55d6">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('austen_rows')" title="Generate code using this dataframe." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"></path>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_668df011-b843-43e4-9637-424b084f55d6 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('austen_rows');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
 </div>
 </div>
-<div id="6abb2563" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>all_books_text <span class="op">=</span> {}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now let’s return to our first goal: find the 10 most common words in the Austen novel of your choice.</p>
+<p>In the first line below, replace the filler text with the Austen novel of your choice from the table above.</p>
+<p>The code:</p>
+<p><code>book_id = austen_rows[austen_rows['Title'] == 'Pride and Prejudice']['Text#'].values[0]</code></p>
+<p>filters the table for the single row that reflects the book of choice (in this case “Pride and Prejudice”) and extracts the ID number (stored in the “Text#” column).</p>
+<p>Using this ID number, we can use the <code>requests</code> package to download the entire text for your given book. If it returns a successful status code, it’ll print <code>Successfully downloaded book ID ##</code> to the screen otherwise it’ll indicate a failure to download the book.</p>
+<div id="DC1AosvtsCdy" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1df8f7de-3c5a-4ff3-8835-7c58925a827a">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#book_id = austen_rows[austen_rows['Title'] == 'INSERT BOOK NAME HERE']['Text#'].values[0]</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>book_id <span class="op">=</span> austen_rows[austen_rows[<span class="st">'Title'</span>] <span class="op">==</span> <span class="st">'Pride and Prejudice'</span>][<span class="st">'Text#'</span>].values[<span class="dv">0</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>book_url <span class="op">=</span> <span class="ss">f"https://www.gutenberg.org/cache/epub/</span><span class="sc">{</span>book_id<span class="sc">}</span><span class="ss">/pg</span><span class="sc">{</span>book_id<span class="sc">}</span><span class="ss">.txt"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(book_url) <span class="co">## this makes the call to the website to download the text</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>: <span class="co"># check if the request was successful</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    book_text <span class="op">=</span> response.text</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Successfully downloaded book ID </span><span class="sc">{</span>book_id<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Failed to download book ID </span><span class="sc">{</span>book_id<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Successfully downloaded book ID 1342</code></pre>
 </div>
-<div id="e0aa64f7" class="cell" data-execution_count="36">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_sentence(sentence):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Clean a sentence by removing punctuation and converting to lowercase."""</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove asterisks, underscores, and other decorative symbols</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    cleaned_sentence <span class="op">=</span> re.sub(<span class="vs">r'</span><span class="pp">[_*#&lt;&gt;+=</span><span class="ch">\\</span><span class="pp">/</span><span class="ch">\[\]</span><span class="pp">{}|]</span><span class="vs">'</span>, <span class="st">''</span>, sentence)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace multiple newlines or spaces with single space</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    cleaned_sentence <span class="op">=</span> re.sub(<span class="vs">r'</span><span class="dv">\s</span><span class="op">+</span><span class="vs">'</span>, <span class="st">' '</span>, cleaned_sentence)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove weird characters (non-ASCII)</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    cleaned_sentence <span class="op">=</span> cleaned_sentence.encode(<span class="st">'ascii'</span>, errors<span class="op">=</span><span class="st">'ignore'</span>).decode()</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Strip leading/trailing spaces</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    cleaned_sentence <span class="op">=</span> cleaned_sentence.strip()</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cleaned_sentence</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="68c76e37" class="cell" data-execution_count="58">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n_books <span class="op">=</span> <span class="bu">len</span>(austen_rows)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n_cols <span class="op">=</span> <span class="dv">2</span>  <span class="co"># Adjust for layout you like</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>n_rows <span class="op">=</span> (n_books <span class="op">+</span> n_cols <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> n_cols</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(n_rows, n_cols, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> axes.flatten()</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>segment <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>sia <span class="op">=</span> SentimentIntensityAnalyzer()</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, bookID <span class="kw">in</span> <span class="bu">enumerate</span>(austen_rows[<span class="st">"Text#"</span>]):</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"https://www.gutenberg.org/cache/epub/</span><span class="sc">{</span>bookID<span class="sc">}</span><span class="ss">/pg</span><span class="sc">{</span>bookID<span class="sc">}</span><span class="ss">.txt"</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    bookname <span class="op">=</span> austen_rows[austen_rows[<span class="st">"Text#"</span>] <span class="op">==</span> bookID][<span class="st">"Title"</span>].values[<span class="dv">0</span>]</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url)  <span class="co">## Make a GET request to the URL</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:  <span class="co">## Check if the request was successful</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Successfully retrieved the book </span><span class="sc">{</span>bookname<span class="sc">}</span><span class="ss">."</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> response.text</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed to retrieve the book page. Status code: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clean the text</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">## remove the header and footer from the response text </span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> response.text.find(<span class="st">"*** START OF THE PROJECT GUTENBERG EBOOK"</span>)  <span class="co">## Find the start of the book text</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    end <span class="op">=</span> response.text.find(<span class="st">"*** END OF THE PROJECT GUTENBERG EBOOK"</span>)  <span class="co">## Find the end of the book text</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    cleaned_text <span class="op">=</span> response.text[start:end]  <span class="co">## Extract the book text between the start and end markers</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    all_books_text[bookID] <span class="op">=</span> [bookname, cleaned_text] <span class="co">## store the book name and cleaned text in a dictionary</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> re.findall(<span class="vs">r'</span><span class="dv">\b</span><span class="pp">[a-z]</span><span class="op">+</span><span class="dv">\b</span><span class="vs">'</span>, cleaned_text.lower()) <span class="co">## find all words in the cleaned text</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words] <span class="co">## remove stop words from the list of words</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    word_counts <span class="op">=</span> Counter(words) <span class="co">## count the frequency of each word in the list of words</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co">    print(f"Most common words in {bookname}:")</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co">    for word, count in word_counts.most_common(10): ## Print the 10 most common words</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="co">        print(f"{word}: {count}")</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    sentences <span class="op">=</span> nltk.sent_tokenize(cleaned_text)  <span class="co">## split the cleaned text into sentences using NLTK's sentence tokenizer</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sentence <span class="kw">in</span> sentences:</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>        cleaned_sentence <span class="op">=</span> clean_sentence(sentence)</span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>        sentiment_scores <span class="op">=</span> sia.polarity_scores(cleaned_sentence)  <span class="co">## Get the sentiment scores for the sentence</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>        results.append((cleaned_sentence, sentiment_scores[<span class="st">'compound'</span>]))  <span class="co">## Append the sentiment scores to the results list</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>    sentiment_df <span class="op">=</span> pd.DataFrame(results, columns<span class="op">=</span>[<span class="st">'Sentence'</span>, <span class="st">'Sentiment'</span>]) <span class="co">## Convert the results list to a DataFrame</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract sentiment scores only</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>    sentiment_scores <span class="op">=</span> [s <span class="cf">for</span> (_, s) <span class="kw">in</span> results]</span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute average sentiment per segment</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>    avgScores <span class="op">=</span> {</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>        i: <span class="bu">sum</span>(sentiment_scores[i<span class="op">*</span>segment:(i<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>segment]) <span class="op">/</span> segment</span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sentiment_scores)<span class="op">//</span>segment)</span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot each book in its own panel</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[idx]</span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>    ax.plot(<span class="bu">list</span>(avgScores.keys()), <span class="bu">list</span>(avgScores.values()), </span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>            marker<span class="op">=</span><span class="st">'o'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>    ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>    ax.set_title(bookname, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean up any unused subplots</span></span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes[<span class="bu">len</span>(austen_rows):]:</span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">'off'</span>)</span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Sentiment Trajectories Across Jane Austen’s Novels"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>fig.supxlabel(<span class="ss">f"Segment (each = </span><span class="sc">{</span>segment<span class="sc">}</span><span class="ss"> sentences)"</span>)</span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>fig.supylabel(<span class="st">"Average Sentiment Score"</span>)</span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.95</span>])</span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can view the top part of the book in the next cell to ensure that the correct book downloaded. In this case, we’re going to ask to see the first 1000 characters by using list indices.</p>
+<div id="6CaTMLeWsprY" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:123}}" data-outputid="fbf41295-4320-4c82-e338-73590cb997cf">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>book_text[:<span class="dv">1000</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>'The Project Gutenberg eBook of Pride and Prejudice\r\n    \r\nThis eBook is for the use of anyone anywhere in the United States and\r\nmost other parts of the world at no cost and with almost no restrictions\r\nwhatsoever. You may copy it, give it away or re-use it under the terms\r\nof the Project Gutenberg License included with this eBook or online\r\nat www.gutenberg.org. If you are not located in the United States,\r\nyou will have to check the laws of the country where you are located\r\nbefore using this eBook.\r\n\r\nTitle: Pride and Prejudice\r\n\r\nAuthor: Jane Austen\r\n\r\n\r\n        \r\nRelease date: June 1, 1998 [eBook #1342]\r\n                Most recently updated: February 10, 2026\r\n\r\nLanguage: English\r\n\r\nOther information and formats: www.gutenberg.org/ebooks/1342\r\n\r\nCredits: Chuck Greif and the Online Distributed Proofreading Team at http://www.pgdp.net (This file was produced from images available at The Internet Archive)\r\n\r\n\r\n*** START OF THE PROJECT GUTENBERG EBOOK PRIDE AND PREJUDICE ***\r\n\r\n\r\n\r\n\r'</code></pre>
+</div>
+</div>
+<p>You might notice towards the bottom of this excerpt from the text that there’s the text “*** START OF THE PROJECT GUTENBERG BOOK” indicating the start of the body of the text of the novel.</p>
+<p>We can find the index position of the start of the string <code>*** START OF THE PROJECT GUTENBERG BOOK</code> by using the <code>find</code> function. <code>find</code> is a built-in method to strings and it returns the index of the first occurence of whatever value is specified. Looking at our string above, we can see one of the first words is “Project”, let’s find what index this starts out at.</p>
+<div id="ZwRUYjBWkt36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="eb8e119c-bc55-4caa-a58a-b9eec268ac21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>book_text.find(<span class="st">"Project"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>4</code></pre>
+</div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Index</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>T</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>h</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>e</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><code>SPACE</code></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>P</td>
+</tr>
+</tbody>
+</table>
+<p>where the P in index 4 is the start of the word Project!</p>
+<p>Now that we know how <code>find</code> works, let’s use it to find the starting and ending indices for the main body of text.</p>
+<div id="V17GYdT5svfv" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="cd657178-12ec-4342-bbbd-04e15dab3a15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">## identify the index of the start of the text</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> book_text.find(<span class="st">"*** START OF THE PROJECT GUTENBERG EBOOK"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">## identify the index of the end of the text</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> book_text.find(<span class="st">"*** END OF THE PROJECT GUTENBERG EBOOK"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The book text starts at position </span><span class="sc">{</span>start<span class="sc">}</span><span class="ss"> and ends at position </span><span class="sc">{</span>end<span class="sc">}</span><span class="ss">. There are a total of </span><span class="sc">{</span><span class="bu">len</span>(book_text)<span class="sc">}</span><span class="ss"> characters in this text."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The book text starts at position 927 and ends at position 744280. There are a total of 763082 characters in this text.</code></pre>
+</div>
+</div>
+<p>Now that we know the starting and ending index positions of the main text, we can use string slicing to extract a portion of our large text.</p>
+<p>String slicing is how we can extract a portion of a string by giving start and ending indicing.</p>
+<p>Example:</p>
+<p><code>STRING[START_INDEX:END_INDEX]</code></p>
+<blockquote class="blockquote">
+<p>Remember indices are 0-based or start at 0!</p>
+</blockquote>
+<div id="7a1qYW0cUfeA" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:123}}" data-outputid="37dbcc0d-9973-44e3-9dc6-6e201a98f313">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Extract the book text between the start and end markers</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>book_body_text <span class="op">=</span> book_text[start:end]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>book_body_text[:<span class="dv">2000</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>'*** START OF THE PROJECT GUTENBERG EBOOK PRIDE AND PREJUDICE ***\r\n\r\n\r\n\r\n\r\n                            [Illustration:\r\n\r\n                             GEORGE ALLEN\r\n                               PUBLISHER\r\n\r\n                        156 CHARING CROSS ROAD\r\n                                LONDON\r\n\r\n                             RUSKIN HOUSE\r\n                                   ]\r\n\r\n                            [Illustration:\r\n\r\n               _Reading Jane’s Letters._      _Chap 34._\r\n                                   ]\r\n\r\n\r\n\r\n\r\n                                PRIDE.\r\n                                  and\r\n                               PREJUDICE\r\n\r\n                                  by\r\n                             Jane Austen,\r\n\r\n                           with a Preface by\r\n                           George Saintsbury\r\n                                  and\r\n                           Illustrations by\r\n                             Hugh Thomson\r\n\r\n                         [Illustration: 1894]\r\n\r\n                       Ruskin       156. Charing\r\n                       House.        Cross Road.\r\n\r\n                                London\r\n                             George Allen.\r\n\r\n\r\n\r\n\r\n             CHISWICK PRESS:--CHARLES WHITTINGHAM AND CO.\r\n                  TOOKS COURT, CHANCERY LANE, LONDON.\r\n\r\n\r\n\r\n\r\n                            [Illustration:\r\n\r\n                          _To J. Comyns Carr\r\n                      in acknowledgment of all I\r\n                       owe to his friendship and\r\n                    advice, these illustrations are\r\n                         gratefully inscribed_\r\n\r\n                            _Hugh Thomson_\r\n                                   ]\r\n\r\n\r\n\r\n\r\nPREFACE.\r\n\r\n[Illustration]\r\n\r\n\r\n_Walt Whitman has somewhere a fine and just distinction between “loving\r\nby allowance” and “loving with personal love.” This distinction applies\r\nto books as well as to men and women; and in the case of the not very\r\nnumerous authors who are the objects of the '</code></pre>
+</div>
+</div>
+<p>So now we have our <code>book_body_text</code> but you might notice that we have lots of extra characters such as new line characters (<code>\r\n</code>).</p>
+<p>We can extract each word individually by using regular expressions (commonly referred to as regex).</p>
+<p>Let’s examine the code we’ll use to do this <code>re.findall(r'\b[a-z]+\b', book_body_text.lower())</code></p>
+<p>Breaking this down step-by-step:</p>
+<ul>
+<li><code>re.findall(pattern, string)</code> - this function will search for the pattern given within the chosen string and return all non-overlapping matches in a list.</li>
+<li><code>r'\b[a-z]+\b'</code> - this particular pattern is asking for all instances of whole words of only lowercase letters. <code>\b</code> indicates the start and end of a word and <code>[a-z]</code> indicates a match for lowercase letters from a to z.</li>
+<li><code>book_body_text.lower()</code> - this converts all the text in the string to lowercase.</li>
+</ul>
+<p>This should give us a list of words in the variable <code>words</code> now. Let’s try it.</p>
+<div id="Uwuxp04ndior" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e002bd29-d36c-48a7-c37f-ab020be9d3f2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re <span class="co">## library for regular expressions</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> re.findall(<span class="vs">r'</span><span class="dv">\b</span><span class="pp">[a-z]</span><span class="op">+</span><span class="dv">\b</span><span class="vs">'</span>, book_body_text.lower())</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(words[:<span class="dv">100</span>])  <span class="co">## Print the first 100 words to see the cleaned text</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(words))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['start', 'of', 'the', 'project', 'gutenberg', 'ebook', 'pride', 'and', 'prejudice', 'illustration', 'george', 'allen', 'publisher', 'charing', 'cross', 'road', 'london', 'ruskin', 'house', 'illustration', 'jane', 's', 'letters', 'pride', 'and', 'prejudice', 'by', 'jane', 'austen', 'with', 'a', 'preface', 'by', 'george', 'saintsbury', 'and', 'illustrations', 'by', 'hugh', 'thomson', 'illustration', 'ruskin', 'charing', 'house', 'cross', 'road', 'london', 'george', 'allen', 'chiswick', 'press', 'charles', 'whittingham', 'and', 'co', 'tooks', 'court', 'chancery', 'lane', 'london', 'illustration', 'j', 'comyns', 'carr', 'in', 'acknowledgment', 'of', 'all', 'i', 'owe', 'to', 'his', 'friendship', 'and', 'advice', 'these', 'illustrations', 'are', 'gratefully', 'preface', 'illustration', 'whitman', 'has', 'somewhere', 'a', 'fine', 'and', 'just', 'distinction', 'between', 'loving', 'by', 'allowance', 'and', 'loving', 'with', 'personal', 'love', 'this', 'distinction']
+127968</code></pre>
+</div>
+</div>
+<p>Great! So now that we have all of the words extracted, we can figure out our first goal: 1. Identify the top ten most common words in the Jane Austen text of your choice.</p>
+<p>There’s a handy function for this from the package collections called <code>Counter</code> which will <em>tally</em> up the number of times each word appears in our list of words.</p>
+<p>Once we get the word counts we can extract the top 10 most common words by using the built-in function <code>.most_common(n)</code> where <code>n</code> is the number of words you’d like it return.</p>
+<div id="92MMkpALhPU6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f81bf719-e0c6-48ae-fbf6-cacaacba97ee">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>word_counts <span class="op">=</span> Counter(words) <span class="co">## count the frequency of each word in the list of words</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>word_counts.most_common(<span class="dv">10</span>) <span class="co">## Print the 10 most common words</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>[('the', 4657),
+ ('to', 4323),
+ ('of', 3841),
+ ('and', 3764),
+ ('her', 2260),
+ ('i', 2098),
+ ('a', 2036),
+ ('in', 1991),
+ ('was', 1871),
+ ('she', 1732)]</code></pre>
+</div>
+</div>
+<p>So what were your top ten most common words? For <em>Pride and Prejudice</em> the most common words are:</p>
+<ol type="1">
+<li>the - 4657 instances</li>
+<li>to - 4323</li>
+<li>of - 3841</li>
+<li>and - 3764</li>
+<li>her - 2260</li>
+<li>i - 2098</li>
+<li>a - 2036</li>
+<li>in - 1991</li>
+<li>was - 1871</li>
+<li>she - 1732</li>
+</ol>
+<p>Do these seem like words that are unique to this novel? You might realize that these are actually mostly common words. In text analysis these extremely common words are called “stop words” and are often filtered out for analyses.</p>
+<p>We could decide and set all the “stop words” manually, but instead we’re going to use another library called <code>nltk</code> (Natural Language Toolkit) which has a built-in list of common stop words.</p>
+<p>We’re going to go ahead and import the library along with the specific module for <code>stopwords</code>. This includes downloadig the words if we haven’t already, and then selecting just the English subset of words.</p>
+<div id="6RUYvG82hWuq" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3e9a2eea-fd3e-4f5e-cebb-39ff72501a8e">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk  <span class="co">## library for natural language processing</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords  <span class="co">## library for stop words</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>)  <span class="co">## Download the stop words list if you haven't already</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))  <span class="co">## Get the set of English stop words</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!</code></pre>
+</div>
+</div>
+<p>Let’s first take a look at the words included in this dataset. In the cell below once you run it, you should be able to scroll through all the words included in the dataset. What do you notice about the words contained within the list <code>stop_words</code>?</p>
+<div id="uf-XhCTK0x-Q" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1ce0b2f3-0743-465a-b7b5-24c131b87c03">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>stop_words</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>{'a',
+ 'about',
+ 'above',
+ 'after',
+ 'again',
+ 'against',
+ 'ain',
+ 'all',
+ 'am',
+ 'an',
+ 'and',
+ 'any',
+ 'are',
+ 'aren',
+ "aren't",
+ 'as',
+ 'at',
+ 'be',
+ 'because',
+ 'been',
+ 'before',
+ 'being',
+ 'below',
+ 'between',
+ 'both',
+ 'but',
+ 'by',
+ 'can',
+ 'couldn',
+ "couldn't",
+ 'd',
+ 'did',
+ 'didn',
+ "didn't",
+ 'do',
+ 'does',
+ 'doesn',
+ "doesn't",
+ 'doing',
+ 'don',
+ "don't",
+ 'down',
+ 'during',
+ 'each',
+ 'few',
+ 'for',
+ 'from',
+ 'further',
+ 'had',
+ 'hadn',
+ "hadn't",
+ 'has',
+ 'hasn',
+ "hasn't",
+ 'have',
+ 'haven',
+ "haven't",
+ 'having',
+ 'he',
+ "he'd",
+ "he'll",
+ "he's",
+ 'her',
+ 'here',
+ 'hers',
+ 'herself',
+ 'him',
+ 'himself',
+ 'his',
+ 'how',
+ 'i',
+ "i'd",
+ "i'll",
+ "i'm",
+ "i've",
+ 'if',
+ 'in',
+ 'into',
+ 'is',
+ 'isn',
+ "isn't",
+ 'it',
+ "it'd",
+ "it'll",
+ "it's",
+ 'its',
+ 'itself',
+ 'just',
+ 'll',
+ 'm',
+ 'ma',
+ 'me',
+ 'mightn',
+ "mightn't",
+ 'more',
+ 'most',
+ 'mustn',
+ "mustn't",
+ 'my',
+ 'myself',
+ 'needn',
+ "needn't",
+ 'no',
+ 'nor',
+ 'not',
+ 'now',
+ 'o',
+ 'of',
+ 'off',
+ 'on',
+ 'once',
+ 'only',
+ 'or',
+ 'other',
+ 'our',
+ 'ours',
+ 'ourselves',
+ 'out',
+ 'over',
+ 'own',
+ 're',
+ 's',
+ 'same',
+ 'shan',
+ "shan't",
+ 'she',
+ "she'd",
+ "she'll",
+ "she's",
+ 'should',
+ "should've",
+ 'shouldn',
+ "shouldn't",
+ 'so',
+ 'some',
+ 'such',
+ 't',
+ 'than',
+ 'that',
+ "that'll",
+ 'the',
+ 'their',
+ 'theirs',
+ 'them',
+ 'themselves',
+ 'then',
+ 'there',
+ 'these',
+ 'they',
+ "they'd",
+ "they'll",
+ "they're",
+ "they've",
+ 'this',
+ 'those',
+ 'through',
+ 'to',
+ 'too',
+ 'under',
+ 'until',
+ 'up',
+ 've',
+ 'very',
+ 'was',
+ 'wasn',
+ "wasn't",
+ 'we',
+ "we'd",
+ "we'll",
+ "we're",
+ "we've",
+ 'were',
+ 'weren',
+ "weren't",
+ 'what',
+ 'when',
+ 'where',
+ 'which',
+ 'while',
+ 'who',
+ 'whom',
+ 'why',
+ 'will',
+ 'with',
+ 'won',
+ "won't",
+ 'wouldn',
+ "wouldn't",
+ 'y',
+ 'you',
+ "you'd",
+ "you'll",
+ "you're",
+ "you've",
+ 'your',
+ 'yours',
+ 'yourself',
+ 'yourselves'}</code></pre>
+</div>
+</div>
+<p>Now we want to iterate through our list of word counts that we extracted from the text of your chosing. For each word with it’s associated count, if it can be found list <code>stop_words</code> then we will delete or discard that word with the count.</p>
+<div id="ReoYNMVehaka" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3897e1a1-c0c9-41bc-db64-47d58b9ef3e5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> <span class="bu">list</span>(word_counts.keys()):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> word <span class="kw">in</span> stop_words:  <span class="co">## Check if the word is a stop word</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">del</span> word_counts[word]  <span class="co">## Remove the stop word from the counts</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>word_counts.most_common(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>[('mr', 807),
+ ('elizabeth', 645),
+ ('could', 530),
+ ('would', 482),
+ ('darcy', 430),
+ ('said', 406),
+ ('mrs', 353),
+ ('bennet', 339),
+ ('much', 335),
+ ('miss', 315)]</code></pre>
+</div>
+</div>
+<p>You should notice that your top ten most common words has now changed. For Pride and Prejudice, the new top ten most common words now include:</p>
+<ol type="1">
+<li>mr - 807 instances</li>
+<li>elizabeth - 645</li>
+<li>could - 530</li>
+<li>would - 482</li>
+<li>darcy - 430</li>
+<li>said - 406</li>
+<li>mrs - 353</li>
+<li>bennet - 339</li>
+<li>much - 335</li>
+<li>miss - 315</li>
+</ol>
+<p>We can also visualize the differences in counts for these top ten most common words in the text. In the cell below, we create a bar graph where each word is on the x-axis and the height of the bar corresponds to the number of instances of the word in the text. Feel free to adjust the graph, by changing the color of the bars in the line:</p>
+<p><code>plt.bar(words, counts, color='blue')</code></p>
+<p>You should also update the title of the figure with the title of the book that you chose.</p>
+<p><code>plt.title('Most Common Words in "BOOK TITLE"')</code></p>
+<div id="P8Fhd-eSh1Ii" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:487}}" data-outputid="2c4e6e82-362d-43d8-d17d-22962ea3d3cc">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>most_common_words <span class="op">=</span> word_counts.most_common(<span class="dv">10</span>)  <span class="co">## Get the most common words</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>words, counts <span class="op">=</span> <span class="bu">zip</span>(<span class="op">*</span>most_common_words)  <span class="co">## Unzip the words and counts into separate lists</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>plt.bar(words, counts, color<span class="op">=</span><span class="st">'powderblue'</span>) <span class="co"># Update the color to your choice (Colors can be found: https://matplotlib.org/stable/gallery/color/named_colors.html)</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Words'</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Most Common Words in "BOOK TITLE"'</span>)  <span class="co"># Update BOOK TITLE with your chosen novel</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)  <span class="co">## Rotate x-axis labels for better readability</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="austen_exercise_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That brings us to completing our first goal: identifying the top ten most common words in your chosen Jane Austen novel.</p>
+<ol type="1">
+<li><p><del>Identify the top ten most common words in the Jane Austen text of your choice.</del></p></li>
+<li><p>Compare the sentiment analysis scores across all of Jane Austen’s works.</p></li>
+</ol>
+<p>Now we want to examine the sentiment across all texts. But what is a sentiment analysis?</p>
+<div id="FBj_A0WbiNWJ" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="22e817e3-3a77-4c2c-b121-30f8ed3077bf">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'vader_lexicon'</span>)  <span class="co">## Download the VADER lexicon for sentiment analysis</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.sentiment <span class="im">import</span> SentimentIntensityAnalyzer  <span class="co">## library for sentiment analysis</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>sia <span class="op">=</span> SentimentIntensityAnalyzer()  <span class="co">## Create a SentimentIntensityAnalyzer object</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package vader_lexicon to /root/nltk_data...</code></pre>
+</div>
+</div>
+<section id="what-is-sentiment-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-sentiment-analysis">What is Sentiment Analysis?</h3>
+<p>Sentiment analysis is a natural language processing (NLP) technique used to determine the emotional tone behind a piece of text. It aims to classify the sentiment expressed in a text as positive, negative, or neutral. It’s widely used to understand public opinion, monitor brand reputation, and analyze customer feedback.</p>
+</section>
+<section id="how-does-vader-valence-aware-dictionary-and-sentiment-reasoner-work" class="level3">
+<h3 class="anchored" data-anchor-id="how-does-vader-valence-aware-dictionary-and-sentiment-reasoner-work">How does VADER (Valence Aware Dictionary and sEntiment Reasoner) work?</h3>
+<p>For this analysis, we are using a lexicon and rule-based sentiment analysis tool called VADER, which is specifically attuned to sentiments expressed in social media. However, it works well on other types of text too. VADER assigns sentiment scores to words in a text based on a pre-built lexicon (a dictionary of words with their sentiment intensity). It then combines these scores, considering factors like punctuation (e.g., ‘!!!!’), capitalization (e.g., ‘GREAT’), and the presence of intensifiers (e.g., ‘very’, ‘extremely’) or negators (e.g., ‘not’, ‘isn’t’) to produce a final sentiment score for the entire text.</p>
+<p>The main output from VADER is a <code>compound</code> score, which is a normalized, weighted composite score ranging from -1 (most extreme negative) to +1 (most extreme positive). We will be focusing on this <code>compound</code> score to assess the sentiment of Jane Austen’s novels.</p>
+<p>The <code>SentimentIntensityAnalyzer</code> from <code>nltk.sentiment</code> is initialized. When you pass a sentence to its <code>polarity_scores</code> method, it returns a dictionary with four scores:</p>
+<ul>
+<li><strong><code>neg</code></strong>: The probability of the sentence being negative.</li>
+<li><strong><code>neu</code></strong>: The probability of the sentence being neutral.</li>
+<li><strong><code>pos</code></strong>: The probability of the sentence being positive.</li>
+<li><strong><code>compound</code></strong>: The normalized, weighted composite score, which is the one we will primarily use. It ranges from -1 (most negative) to +1 (most positive).</li>
+</ul>
+<div id="6cuBXw9fjNGa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d5bc5adf-2de8-4722-99a3-8b9e636ac033">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">## example Sentence</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">=</span> <span class="st">"Jane Austen is the best author of the 19th century."</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>sentiment_scores <span class="op">=</span> sia.polarity_scores(sentence)  <span class="co">## Get the sentiment scores for the sentence</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sentiment_scores)  <span class="co">## Print the sentiment scores for the sentence</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'neg': 0.0, 'neu': 0.682, 'pos': 0.318, 'compound': 0.6369}</code></pre>
+</div>
+</div>
+<p>Try changing the sentence in the cell below to see if you can get a sense for how different combinations of words, punctuations, and capitalizations may change the sentiment score.</p>
+<div id="wtQO9V82M2L1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="630fe230-e7ae-4f73-8f5b-9b792e2c09ad">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">## example testing Sentence</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">=</span> <span class="st">"Jane Austen is the best author of the 19th century."</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>sentiment_scores <span class="op">=</span> sia.polarity_scores(sentence)  <span class="co">## Get the sentiment scores for the sentence</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sentiment_scores)  <span class="co">## Print the sentiment scores for the sentence</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'neg': 0.0, 'neu': 0.682, 'pos': 0.318, 'compound': 0.6369}</code></pre>
+</div>
+</div>
+<p>Now that we know how VADER works, we need to prepare the text for sentiment analysis. The <code>book_body_text</code> contains various formatting characters like <code>\r\n</code> (newline characters) and other decorative symbols that can interfere with accurate sentiment scoring. To address this, we’ll first split the text into individual sentences using <code>nltk.sent_tokenize</code>. Then, we define a helper function <code>clean_sentence</code> to remove these unwanted characters and ensure each sentence is clean before being passed to the sentiment analyzer. This ensures that the sentiment analysis focuses purely on the words and their emotional context.</p>
+<div id="5VFqiOvhj9j5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="eca0e4f9-6650-4b99-d447-0538ea01e5c3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt_tab'</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>sentences <span class="op">=</span> nltk.sent_tokenize(book_body_text)  <span class="co">## split the cleaned text into sentences using NLTK's sentence tokenizer</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sentences[<span class="dv">1000</span>:<span class="dv">1005</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package punkt_tab to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt_tab.zip.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['He was most highly esteemed by Mr. Darcy, a most\r\nintimate, confidential friend.', 'Mr. Darcy often acknowledged himself to\r\nbe under the greatest obligations to my father’s active superintendence;\r\nand when, immediately before my father’s death, Mr. Darcy gave him a\r\nvoluntary promise of providing for me, I am convinced that he felt it\r\nto be as much a debt of gratitude to _him_ as of affection to myself.”\r\n\r\n“How strange!” cried Elizabeth.', '“How abominable!', 'I wonder that the very\r\npride of this Mr. Darcy has not made him just to you.', 'If from no better\r\nmotive, that he should not have been too proud to be dishonest,--for\r\ndishonesty I must call it.”\r\n\r\n“It _is_ wonderful,” replied Wickham; “for almost all his actions may be\r\ntraced to pride; and pride has often been his best friend.']</code></pre>
+</div>
+</div>
+<div id="e0aa64f7" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_sentence(sentence):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Clean a sentence by removing punctuation and converting to lowercase."""</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove asterisks, underscores, and other decorative symbols</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    cleaned_sentence <span class="op">=</span> re.sub(<span class="vs">r'</span><span class="pp">[_*#&lt;&gt;+=</span><span class="ch">\\</span><span class="pp">/</span><span class="ch">\[\]</span><span class="pp">{}|]</span><span class="vs">'</span>, <span class="st">''</span>, sentence)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace multiple newlines or spaces with single space</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    cleaned_sentence <span class="op">=</span> re.sub(<span class="vs">r'</span><span class="dv">\s</span><span class="op">+</span><span class="vs">'</span>, <span class="st">' '</span>, cleaned_sentence)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove weird characters (non-ASCII)</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    cleaned_sentence <span class="op">=</span> cleaned_sentence.encode(<span class="st">'ascii'</span>, errors<span class="op">=</span><span class="st">'ignore'</span>).decode()</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Strip leading/trailing spaces</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    cleaned_sentence <span class="op">=</span> cleaned_sentence.strip()</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cleaned_sentence</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s test our <code>clean_sentence</code> function with a random sentence from the book’s body text.</p>
+<div id="cVPJBFrR3xeW" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="15b639ef-c7e5-430b-b576-24a73cb859a5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>random_sentence <span class="op">=</span> sentences[<span class="dv">1477</span>]</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([random_sentence])</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>cleaned_random_sentence <span class="op">=</span> clean_sentence(random_sentence)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([cleaned_random_sentence])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Nothing could\r\nconsole and nothing appease her.']
+['Nothing could console and nothing appease her.']</code></pre>
+</div>
+</div>
+<div id="_tibVM1eKgvS" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="dbd68509-45d3-4202-94ad-92146a05128d">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sia.polarity_scores(cleaned_random_sentence)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>{'neg': 0.232, 'neu': 0.768, 'pos': 0.0, 'compound': -0.2057}</code></pre>
+</div>
+</div>
+<p>Now that we have a function to clean sentences and understand how to get sentiment scores, we can apply this process to all sentences in our chosen book. We will iterate through each sentence, clean it, calculate its compound sentiment score using <code>sia.polarity_scores</code>, and store both the cleaned sentence and its sentiment score in a DataFrame. This DataFrame will allow us to examine the sentiment flow throughout the book.</p>
+<div id="2u1NUQ8v5i3J" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="39262cbc-3e3d-4544-80e5-5f5c47d3bf54">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sentence <span class="kw">in</span> sentences:</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">## clean the sentence of extra characters to allow for analysis</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    cleaned_sentence <span class="op">=</span> clean_sentence(sentence)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">## get sentiment score from cleaned sentence</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    sentiment_score <span class="op">=</span> sia.polarity_scores(cleaned_sentence)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">## append the cleaned sentence and compound sentiment score to the results list</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    results.append((cleaned_sentence, sentiment_score[<span class="st">'compound'</span>]))</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>sentiment_df <span class="op">=</span> pd.DataFrame(results, columns<span class="op">=</span>[<span class="st">'Sentence'</span>, <span class="st">'Sentiment'</span>]) <span class="co">## Convert the results list to a DataFrame</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>sentiment_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div id="df-197f5e67-b26c-4134-9f72-c5b6ebf84671" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Sentence</th>
+<th data-quarto-table-cell-role="th">Sentiment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>START OF THE PROJECT GUTENBERG EBOOK PRIDE AND...</td>
+<td>0.3034</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>and PREJUDICE by Jane Austen, with a Preface b...</td>
+<td>-0.6166</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Charing House.</td>
+<td>0.0000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Cross Road.</td>
+<td>0.0000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>London George Allen.</td>
+<td>0.0000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4790</th>
+<td>Lady Catherine was extremely indignant on the ...</td>
+<td>-0.8344</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4791</th>
+<td>But at length, by Elizabeths persuasion, he wa...</td>
+<td>-0.7684</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4792</th>
+<td>With the Gardiners they were always on the mos...</td>
+<td>0.0000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4793</th>
+<td>Darcy, as well as Elizabeth, really loved them...</td>
+<td>0.9061</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4794</th>
+<td>Illustration: THE END CHISWICK PRESS:--CHARLES...</td>
+<td>0.0000</td>
+</tr>
+</tbody>
+</table>
+
+<p>4795 rows × 2 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-197f5e67-b26c-4134-9f72-c5b6ebf84671')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-197f5e67-b26c-4134-9f72-c5b6ebf84671 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-197f5e67-b26c-4134-9f72-c5b6ebf84671');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+  <div id="id_b2fe6f06-a79c-4a72-bf77-ab892f8e22fc">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('sentiment_df')" title="Generate code using this dataframe." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"></path>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_b2fe6f06-a79c-4a72-bf77-ab892f8e22fc button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('sentiment_df');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<div id="7cveDi4D6e3U" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:472}}" data-outputid="62ab43e2-97b9-4e84-a942-058e22c1c17d">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plt.plot(sentiment_df[<span class="st">'Sentiment'</span>])</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>plt.plot([x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sentiment_df))], [<span class="dv">0</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sentiment_df))], linestyle <span class="op">=</span> <span class="st">'--'</span>, color <span class="op">=</span> <span class="st">'black'</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Sentence Number'</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Sentiment Score'</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sentiment Analysis of "TITLE"'</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="austen_exercise_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The previous plot shows the sentiment score for each individual sentence. Since there are many sentences, this can look quite noisy. To get a smoother understanding of the sentiment trajectory, we can average the sentiment scores over segments of a certain number of sentences. This helps to highlight the broader emotional shifts within the narrative.</p>
+<div id="RoRuCsSC7Ecq" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:472}}" data-outputid="5b9bb54d-6e7b-4917-d710-8983e2e50417">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>number_of_sentences_per_segment <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>sentiment_scores <span class="op">=</span> <span class="bu">list</span>(sentiment_df[<span class="st">'Sentiment'</span>])</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>avg_scores <span class="op">=</span> []</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sentiment_scores)<span class="op">//</span>number_of_sentences_per_segment):</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  avg_score <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(number_of_sentences_per_segment):</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    avg_score <span class="op">+=</span> sentiment_scores[i<span class="op">*</span>number_of_sentences_per_segment <span class="op">+</span> j]</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  avg_score <span class="op">/=</span> number_of_sentences_per_segment</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  avg_scores.append(avg_score)</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>plt.plot(avg_scores)</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Sentiment Score'</span>)</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Segment Number'</span>)</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sentiment Analysis of "TITLE"'</span>)</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="austen_exercise_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Finally, we can extend this analysis to all of Jane Austen’s novels in our curated list. The following cell iterates through each book, downloads its text, cleans it, performs sentence-level sentiment analysis, and then plots the sentiment trajectory for each novel. This allows for a visual comparison of the emotional arcs across her different works, helping us identify patterns in her storytelling and thematic development.</p>
+<div id="68c76e37" class="cell" data-outputid="9dcaae72-267e-4b0e-816d-5797222f1984" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>all_books_text <span class="op">=</span> {}</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>n_books <span class="op">=</span> <span class="bu">len</span>(austen_rows)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>n_cols <span class="op">=</span> <span class="dv">2</span>  <span class="co"># Adjust for layout you like</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>n_rows <span class="op">=</span> (n_books <span class="op">+</span> n_cols <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> n_cols</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(n_rows, n_cols, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> axes.flatten()</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>segment <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>sia <span class="op">=</span> SentimentIntensityAnalyzer()</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, bookID <span class="kw">in</span> <span class="bu">enumerate</span>(austen_rows[<span class="st">"Text#"</span>]):</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"https://www.gutenberg.org/cache/epub/</span><span class="sc">{</span>bookID<span class="sc">}</span><span class="ss">/pg</span><span class="sc">{</span>bookID<span class="sc">}</span><span class="ss">.txt"</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>    bookname <span class="op">=</span> austen_rows[austen_rows[<span class="st">"Text#"</span>] <span class="op">==</span> bookID][<span class="st">"Title"</span>].values[<span class="dv">0</span>]</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url)  <span class="co">## Make a GET request to the URL</span></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:  <span class="co">## Check if the request was successful</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Successfully retrieved the book </span><span class="sc">{</span>bookname<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> response.text</span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed to retrieve the book page. Status code: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clean the text</span></span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">## remove the header and footer from the response text</span></span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> response.text.find(<span class="st">"*** START OF THE PROJECT GUTENBERG EBOOK"</span>)  <span class="co">## Find the start of the book text</span></span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a>    end <span class="op">=</span> response.text.find(<span class="st">"*** END OF THE PROJECT GUTENBERG EBOOK"</span>)  <span class="co">## Find the end of the book text</span></span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>    cleaned_text <span class="op">=</span> response.text[start:end]  <span class="co">## Extract the book text between the start and end markers</span></span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>    all_books_text[bookID] <span class="op">=</span> [bookname, cleaned_text] <span class="co">## store the book name and cleaned text in a dictionary</span></span>
+<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> re.findall(<span class="vs">r'</span><span class="dv">\b</span><span class="pp">[a-z]</span><span class="op">+</span><span class="dv">\b</span><span class="vs">'</span>, cleaned_text.lower()) <span class="co">## find all words in the cleaned text</span></span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words] <span class="co">## remove stop words from the list of words</span></span>
+<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a>    word_counts <span class="op">=</span> Counter(words) <span class="co">## count the frequency of each word in the list of words</span></span>
+<span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a><span class="co">    print(f"Most common words in {bookname}:")</span></span>
+<span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a><span class="co">    for word, count in word_counts.most_common(10): ## Print the 10 most common words</span></span>
+<span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a><span class="co">        print(f"{word}: {count}")</span></span>
+<span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a>    sentences <span class="op">=</span> nltk.sent_tokenize(cleaned_text)  <span class="co">## split the cleaned text into sentences using NLTK's sentence tokenizer</span></span>
+<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
+<span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sentence <span class="kw">in</span> sentences:</span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a>        cleaned_sentence <span class="op">=</span> clean_sentence(sentence)</span>
+<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a>        sentiment_scores <span class="op">=</span> sia.polarity_scores(cleaned_sentence)  <span class="co">## Get the sentiment scores for the sentence</span></span>
+<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a>        results.append((cleaned_sentence, sentiment_scores[<span class="st">'compound'</span>]))  <span class="co">## Append the sentiment scores to the results list</span></span>
+<span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a>    sentiment_df <span class="op">=</span> pd.DataFrame(results, columns<span class="op">=</span>[<span class="st">'Sentence'</span>, <span class="st">'Sentiment'</span>]) <span class="co">## Convert the results list to a DataFrame</span></span>
+<span id="cb45-54"><a href="#cb45-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract sentiment scores only</span></span>
+<span id="cb45-56"><a href="#cb45-56" aria-hidden="true" tabindex="-1"></a>    sentiment_scores <span class="op">=</span> [s <span class="cf">for</span> (_, s) <span class="kw">in</span> results]</span>
+<span id="cb45-57"><a href="#cb45-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute average sentiment per segment</span></span>
+<span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a>    avgScores <span class="op">=</span> {</span>
+<span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a>        i: <span class="bu">sum</span>(sentiment_scores[i<span class="op">*</span>segment:(i<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>segment]) <span class="op">/</span> segment</span>
+<span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sentiment_scores)<span class="op">//</span>segment)</span>
+<span id="cb45-62"><a href="#cb45-62" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb45-63"><a href="#cb45-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-64"><a href="#cb45-64" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot each book in its own panel</span></span>
+<span id="cb45-65"><a href="#cb45-65" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[idx]</span>
+<span id="cb45-66"><a href="#cb45-66" aria-hidden="true" tabindex="-1"></a>    ax.plot(<span class="bu">list</span>(avgScores.keys()), <span class="bu">list</span>(avgScores.values()),</span>
+<span id="cb45-67"><a href="#cb45-67" aria-hidden="true" tabindex="-1"></a>            marker<span class="op">=</span><span class="st">'o'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb45-68"><a href="#cb45-68" aria-hidden="true" tabindex="-1"></a>    ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb45-69"><a href="#cb45-69" aria-hidden="true" tabindex="-1"></a>    ax.set_title(bookname, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb45-70"><a href="#cb45-70" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb45-71"><a href="#cb45-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-72"><a href="#cb45-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-73"><a href="#cb45-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean up any unused subplots</span></span>
+<span id="cb45-74"><a href="#cb45-74" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes[<span class="bu">len</span>(austen_rows):]:</span>
+<span id="cb45-75"><a href="#cb45-75" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb45-76"><a href="#cb45-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-77"><a href="#cb45-77" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Sentiment Trajectories Across Jane Austen’s Novels"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb45-78"><a href="#cb45-78" aria-hidden="true" tabindex="-1"></a>fig.supxlabel(<span class="ss">f"Segment (each = </span><span class="sc">{</span>segment<span class="sc">}</span><span class="ss"> sentences)"</span>)</span>
+<span id="cb45-79"><a href="#cb45-79" aria-hidden="true" tabindex="-1"></a>fig.supylabel(<span class="st">"Average Sentiment Score"</span>)</span>
+<span id="cb45-80"><a href="#cb45-80" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.95</span>])</span>
+<span id="cb45-81"><a href="#cb45-81" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb45-82"><a href="#cb45-82" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Successfully retrieved the book Persuasion.
 Successfully retrieved the book Northanger Abbey.
@@ -547,13 +2425,27 @@ Successfully retrieved the book Pride and Prejudice.</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="austen_exercise_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="austen_exercise_files/figure-html/cell-28-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>The plots above visualize the sentiment trajectories across all the selected Jane Austen novels. Each line represents a book, showing how the average sentiment (over segments of 25 sentences) changes from the beginning to the end of the narrative. The dashed black line at <code>0</code> represents a neutral sentiment. By comparing these lines, we can observe similarities and differences in the emotional landscapes of her works. For instance, some novels might start with a more positive sentiment and dip into negativity before a positive resolution, while others might maintain a relatively stable emotional tone.</p>
+</section>
+<section id="challenge-activities" class="level2">
+<h2 class="anchored" data-anchor-id="challenge-activities">Challenge Activities</h2>
+<p>Now that you’ve explored the sentiment trajectories of Jane Austen’s novels, here are some challenge activities to further your text analysis skills:</p>
+<ol type="1">
+<li><p><strong>Compare Sentiment of Different Authors</strong>: Extend this analysis to include novels from other authors (e.g., Charles Dickens, the Brontë sisters) and compare their sentiment trajectories with Jane Austen’s. Do different authors exhibit distinct emotional patterns in their writing?</p></li>
+<li><p><strong>Analyze a Single Character’s Sentiment</strong>: Instead of analyzing the entire book, try to extract dialogue or descriptions related to a specific character and analyze their individual sentiment arc throughout the novel. Does their emotional state change significantly over the course of the story?</p></li>
+<li><p><strong>Identify Key Events</strong>: Can you correlate significant shifts in sentiment (e.g., sudden drops or peaks) with major plot points or character developments in the novels? You could try to programmatically identify these points and then manually review the text around them.</p></li>
+<li><p><strong>Explore Other Sentiment Analysis Tools</strong>: Research and implement a different sentiment analysis library or model (e.g., a pre-trained deep learning model) and compare its results with VADER’s. Are there differences in how they classify sentiment?</p></li>
+<li><p><strong>Visualize Specific Emotions</strong>: Instead of just overall sentiment, can you adapt the analysis to detect and visualize specific emotions (e.g., joy, sadness, anger) if using a more advanced sentiment model?</p></li>
+<li><p><strong>Your Own Ideas</strong>: What other questions or analyses come to mind now that you have these tools at your disposal? Don’t be afraid to experiment and explore your own curiosities!</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
