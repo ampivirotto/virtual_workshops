@@ -3,15 +3,9 @@ format:
     html:
         css: ../style.css
         include-in-header: home_button.html
-filters:
-  - pyodide
-execute:
-  echo: true
-  code-tools: true
-  freeze: auto
 ---
 
-::: section 
+::: {.section} 
 
 **Jupyter Notebook**
 
@@ -20,15 +14,9 @@ execute:
 :::
 
 
-::: section
+::: {.section}
 
 **Slide Deck**
 
-<iframe
-  src="slideshow.html"
-  style="border: 1px solid #eee;"
-  loading="lazy"
-  allowfullscreen>
-</iframe>
 
 ::: 
