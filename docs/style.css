@@ -73,9 +73,10 @@ section {
   box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
 }
 
-iframe {
+.slide-deck {
+  border: 3px solid #dee2e6;
   width: 100%;
-  display: block;
+  height: 475px;
 }
 
 /* Individual grey exercise boxes inside each orange section */
